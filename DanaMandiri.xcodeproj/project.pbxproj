@@ -10,6 +10,8 @@
 		73AF98392E979B4F006BFCCA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AF982F2E979B4F006BFCCA /* AppDelegate.swift */; };
 		73AF983C2E979B4F006BFCCA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73AF98302E979B4F006BFCCA /* Assets.xcassets */; };
 		73AF983E2E979B4F006BFCCA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73AF98332E979B4F006BFCCA /* LaunchScreen.storyboard */; };
+		73AF984E2E97A4B1006BFCCA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 73AF984C2E97A4B1006BFCCA /* Localizable.strings */; };
+		73AF98512E97A5FA006BFCCA /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AF98502E97A5F5006BFCCA /* Base.swift */; };
 		FAF4A314172EA700A19B78FE /* Pods_DanaMandiri.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B04719A34419DAC2CE3439 /* Pods_DanaMandiri.framework */; };
 /* End PBXBuildFile section */
 
@@ -22,6 +24,10 @@
 		73AF98312E979B4F006BFCCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		73AF98322E979B4F006BFCCA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		73AF98402E979B7F006BFCCA /* DanaMandiri.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DanaMandiri.entitlements; sourceTree = "<group>"; };
+		73AF98472E97A38F006BFCCA /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		73AF984D2E97A4B1006BFCCA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		73AF984F2E97A538006BFCCA /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
+		73AF98502E97A5F5006BFCCA /* Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
 		D506D2406C71CC1BED782247 /* Pods-DanaMandiri.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DanaMandiri.debug.xcconfig"; path = "Target Support Files/Pods-DanaMandiri/Pods-DanaMandiri.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -60,6 +66,7 @@
 			children = (
 				73AF98312E979B4F006BFCCA /* Info.plist */,
 				73AF98302E979B4F006BFCCA /* Assets.xcassets */,
+				73AF984C2E97A4B1006BFCCA /* Localizable.strings */,
 				73AF98402E979B7F006BFCCA /* DanaMandiri.entitlements */,
 				73AF982F2E979B4F006BFCCA /* AppDelegate.swift */,
 				73AF98332E979B4F006BFCCA /* LaunchScreen.storyboard */,
@@ -76,6 +83,7 @@
 		73AF98412E979DEF006BFCCA /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				73AF98502E97A5F5006BFCCA /* Base.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -175,6 +183,7 @@
 			knownRegions = (
 				en,
 				Base,
+				id,
 			);
 			mainGroup = 73AF980E2E979B47006BFCCA;
 			minimizedProjectReferenceProxies = 1;
@@ -194,6 +203,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				73AF983C2E979B4F006BFCCA /* Assets.xcassets in Resources */,
+				73AF984E2E97A4B1006BFCCA /* Localizable.strings in Resources */,
 				73AF983E2E979B4F006BFCCA /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -251,6 +261,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73AF98512E97A5FA006BFCCA /* Base.swift in Sources */,
 				73AF98392E979B4F006BFCCA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -262,8 +273,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				73AF98322E979B4F006BFCCA /* Base */,
+				73AF98472E97A38F006BFCCA /* id */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		73AF984C2E97A4B1006BFCCA /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				73AF984D2E97A4B1006BFCCA /* en */,
+				73AF984F2E97A538006BFCCA /* id */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -362,6 +383,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -425,6 +447,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
