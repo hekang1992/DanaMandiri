@@ -12,6 +12,13 @@
 		73AF983E2E979B4F006BFCCA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73AF98332E979B4F006BFCCA /* LaunchScreen.storyboard */; };
 		73AF984E2E97A4B1006BFCCA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 73AF984C2E97A4B1006BFCCA /* Localizable.strings */; };
 		73AF98512E97A5FA006BFCCA /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AF98502E97A5F5006BFCCA /* Base.swift */; };
+		73AF98532E97A6C3006BFCCA /* BaseNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AF98522E97A6C3006BFCCA /* BaseNavController.swift */; };
+		73AF98552E97A6EC006BFCCA /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AF98542E97A6EC006BFCCA /* StartViewController.swift */; };
+		73AF98582E97A73A006BFCCA /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AF98572E97A736006BFCCA /* Color.swift */; };
+		73AF985D2E97A8D8006BFCCA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AF985C2E97A8D8006BFCCA /* LoginViewController.swift */; };
+		73AF985F2E97A8EF006BFCCA /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AF985E2E97A8E5006BFCCA /* LoginViewModel.swift */; };
+		73AF98612E97A9A8006BFCCA /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AF98602E97A9A4006BFCCA /* BaseModel.swift */; };
+		73AF98632E97ABA4006BFCCA /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AF98622E97AB9D006BFCCA /* NetworkService.swift */; };
 		FAF4A314172EA700A19B78FE /* Pods_DanaMandiri.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B04719A34419DAC2CE3439 /* Pods_DanaMandiri.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +35,13 @@
 		73AF984D2E97A4B1006BFCCA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		73AF984F2E97A538006BFCCA /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
 		73AF98502E97A5F5006BFCCA /* Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
+		73AF98522E97A6C3006BFCCA /* BaseNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavController.swift; sourceTree = "<group>"; };
+		73AF98542E97A6EC006BFCCA /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		73AF98572E97A736006BFCCA /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		73AF985C2E97A8D8006BFCCA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		73AF985E2E97A8E5006BFCCA /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		73AF98602E97A9A4006BFCCA /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
+		73AF98622E97AB9D006BFCCA /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		D506D2406C71CC1BED782247 /* Pods-DanaMandiri.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DanaMandiri.debug.xcconfig"; path = "Target Support Files/Pods-DanaMandiri/Pods-DanaMandiri.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,6 +84,8 @@
 				73AF98402E979B7F006BFCCA /* DanaMandiri.entitlements */,
 				73AF982F2E979B4F006BFCCA /* AppDelegate.swift */,
 				73AF98332E979B4F006BFCCA /* LaunchScreen.storyboard */,
+				73AF98562E97A72C006BFCCA /* Utilities */,
+				73AF98592E97A814006BFCCA /* Networking */,
 				73AF98462E97A119006BFCCA /* Login */,
 				73AF98452E979E24006BFCCA /* Auth */,
 				73AF98442E979E1D006BFCCA /* Order */,
@@ -84,6 +100,8 @@
 			isa = PBXGroup;
 			children = (
 				73AF98502E97A5F5006BFCCA /* Base.swift */,
+				73AF98542E97A6EC006BFCCA /* StartViewController.swift */,
+				73AF98522E97A6C3006BFCCA /* BaseNavController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -119,8 +137,43 @@
 		73AF98462E97A119006BFCCA /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				73AF985B2E97A8AE006BFCCA /* Controller */,
+				73AF985A2E97A8A2006BFCCA /* ViewModel */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		73AF98562E97A72C006BFCCA /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				73AF98572E97A736006BFCCA /* Color.swift */,
+				73AF98602E97A9A4006BFCCA /* BaseModel.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		73AF98592E97A814006BFCCA /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				73AF98622E97AB9D006BFCCA /* NetworkService.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		73AF985A2E97A8A2006BFCCA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				73AF985E2E97A8E5006BFCCA /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		73AF985B2E97A8AE006BFCCA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				73AF985C2E97A8D8006BFCCA /* LoginViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		95C0CE5AC4F98B0FD974E43C /* Frameworks */ = {
@@ -261,8 +314,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73AF985D2E97A8D8006BFCCA /* LoginViewController.swift in Sources */,
 				73AF98512E97A5FA006BFCCA /* Base.swift in Sources */,
+				73AF98552E97A6EC006BFCCA /* StartViewController.swift in Sources */,
+				73AF98532E97A6C3006BFCCA /* BaseNavController.swift in Sources */,
+				73AF98632E97ABA4006BFCCA /* NetworkService.swift in Sources */,
+				73AF98582E97A73A006BFCCA /* Color.swift in Sources */,
 				73AF98392E979B4F006BFCCA /* AppDelegate.swift in Sources */,
+				73AF985F2E97A8EF006BFCCA /* LoginViewModel.swift in Sources */,
+				73AF98612E97A9A8006BFCCA /* BaseModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
