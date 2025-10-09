@@ -1,0 +1,6 @@
+framework module Pods_DanaMandiri {
+  umbrella header "Pods-DanaMandiri-umbrella.h"
+
+  export *
+  module * { export * }
+}

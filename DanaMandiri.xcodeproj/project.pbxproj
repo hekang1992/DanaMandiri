@@ -10,15 +10,19 @@
 		73AF98392E979B4F006BFCCA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AF982F2E979B4F006BFCCA /* AppDelegate.swift */; };
 		73AF983C2E979B4F006BFCCA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73AF98302E979B4F006BFCCA /* Assets.xcassets */; };
 		73AF983E2E979B4F006BFCCA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73AF98332E979B4F006BFCCA /* LaunchScreen.storyboard */; };
+		FAF4A314172EA700A19B78FE /* Pods_DanaMandiri.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B04719A34419DAC2CE3439 /* Pods_DanaMandiri.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		14B04719A34419DAC2CE3439 /* Pods_DanaMandiri.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DanaMandiri.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		471AFA02D171BDEEB46A6C25 /* Pods-DanaMandiri.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DanaMandiri.release.xcconfig"; path = "Target Support Files/Pods-DanaMandiri/Pods-DanaMandiri.release.xcconfig"; sourceTree = "<group>"; };
 		73AF98172E979B47006BFCCA /* DanaMandiri.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DanaMandiri.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73AF982F2E979B4F006BFCCA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73AF98302E979B4F006BFCCA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		73AF98312E979B4F006BFCCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		73AF98322E979B4F006BFCCA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		73AF98402E979B7F006BFCCA /* DanaMandiri.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DanaMandiri.entitlements; sourceTree = "<group>"; };
+		D506D2406C71CC1BED782247 /* Pods-DanaMandiri.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DanaMandiri.debug.xcconfig"; path = "Target Support Files/Pods-DanaMandiri/Pods-DanaMandiri.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +30,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAF4A314172EA700A19B78FE /* Pods_DanaMandiri.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -37,6 +42,8 @@
 			children = (
 				73AF98382E979B4F006BFCCA /* DanaMandiri */,
 				73AF98182E979B47006BFCCA /* Products */,
+				B9F7DF6E094AA7317D1E26B8 /* Pods */,
+				95C0CE5AC4F98B0FD974E43C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,6 +63,7 @@
 				73AF98402E979B7F006BFCCA /* DanaMandiri.entitlements */,
 				73AF982F2E979B4F006BFCCA /* AppDelegate.swift */,
 				73AF98332E979B4F006BFCCA /* LaunchScreen.storyboard */,
+				73AF98462E97A119006BFCCA /* Login */,
 				73AF98452E979E24006BFCCA /* Auth */,
 				73AF98442E979E1D006BFCCA /* Order */,
 				73AF98432E979E14006BFCCA /* Home */,
@@ -100,6 +108,30 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
+		73AF98462E97A119006BFCCA /* Login */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		95C0CE5AC4F98B0FD974E43C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				14B04719A34419DAC2CE3439 /* Pods_DanaMandiri.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B9F7DF6E094AA7317D1E26B8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D506D2406C71CC1BED782247 /* Pods-DanaMandiri.debug.xcconfig */,
+				471AFA02D171BDEEB46A6C25 /* Pods-DanaMandiri.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -107,17 +139,17 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 73AF982A2E979B49006BFCCA /* Build configuration list for PBXNativeTarget "DanaMandiri" */;
 			buildPhases = (
+				7A951000F05CCE9D1E89566D /* [CP] Check Pods Manifest.lock */,
 				73AF98132E979B47006BFCCA /* Sources */,
 				73AF98142E979B47006BFCCA /* Frameworks */,
 				73AF98152E979B47006BFCCA /* Resources */,
+				7B63C66F73D480AE1D8F504F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = DanaMandiri;
-			packageProductDependencies = (
-			);
 			productName = DanaMandiri;
 			productReference = 73AF98172E979B47006BFCCA /* DanaMandiri.app */;
 			productType = "com.apple.product-type.application";
@@ -168,6 +200,52 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7A951000F05CCE9D1E89566D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DanaMandiri-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7B63C66F73D480AE1D8F504F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DanaMandiri/Pods-DanaMandiri-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DanaMandiri/Pods-DanaMandiri-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DanaMandiri/Pods-DanaMandiri-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		73AF98132E979B47006BFCCA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -193,6 +271,7 @@
 /* Begin XCBuildConfiguration section */
 		73AF982B2E979B49006BFCCA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D506D2406C71CC1BED782247 /* Pods-DanaMandiri.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -202,6 +281,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 8K9YQ3M42C;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DanaMandiri/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Dana Mandiri";
@@ -209,6 +289,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -234,6 +315,7 @@
 		};
 		73AF982C2E979B49006BFCCA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 471AFA02D171BDEEB46A6C25 /* Pods-DanaMandiri.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -243,6 +325,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 8K9YQ3M42C;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DanaMandiri/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Dana Mandiri";
@@ -250,6 +333,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
