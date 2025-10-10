@@ -71,19 +71,25 @@ extension StartViewController {
                                               responseType: BaseModel.self) { result in
             switch result {
             case .success(let success):
-                LoadingHUD.hide()
                 if ["0", "00"].contains(success.aboutation) {
                     if let model = success.salin {
                         CinInfoModel.shared.cinModel = model
+                        let cin = model.cin ?? ""
+                        if let lang = AppLanguage(rawValue: cin) {
+                            LanguageManager.setLanguage(lang)
+                        }
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
                             NotificationCenter.default.post(name: Notification.Name("switchRootVc"), object: nil)
                         }
                     }
                 }else {
-                    ToastHUD.showToastText(form: self.view, message: success.filmably ?? "")
+                    ToastProgressHUD.showToastText(message: success.filmably ?? "")
                 }
+                LoadingHUD.hide()
+                break
             case .failure(_):
                 LoadingHUD.hide()
+                break
             }
         }
     }

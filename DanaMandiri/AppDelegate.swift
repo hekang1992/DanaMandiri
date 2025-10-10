@@ -39,7 +39,7 @@ extension AppDelegate {
     
     @objc func switchRootVc(_ noti: Notification) {
         if AuthLoginManager.shared.isLoggedIn {
-            self.window?.rootViewController = BaseTabBarController()
+            self.window?.rootViewController = CustomTabBarController()
         } else {
             self.window?.rootViewController = BaseNavigationController(rootViewController: LoginViewController())
         }

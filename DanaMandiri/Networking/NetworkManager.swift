@@ -136,7 +136,7 @@ struct APIQueryBuilder {
         let deviceName: String = UIDevice.current.name
         let idfv: String = IDFVManager.shared.getPersistentIDFV() ?? ""
         let systemVersion: String = UIDevice.current.systemVersion
-        let appID: String = "dana-mandiri"
+        let appID: String = "dana" + "-" + "mandiri"
         let authToken: String = AuthLoginManager.shared.getAuthToken() ?? ""
         let cin: String = CinInfoModel.shared.cinModel?.cin ?? ""
         

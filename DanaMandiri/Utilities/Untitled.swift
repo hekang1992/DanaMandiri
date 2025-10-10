@@ -7,9 +7,10 @@
 
 import UIKit
 import AdSupport
+import Foundation
+import KRProgressHUD
 import KeychainAccess
 import AppTrackingTransparency
-import KRProgressHUD
 
 class IDFVManager {
     static let shared = IDFVManager()
@@ -164,8 +165,8 @@ enum VPNStatus {
     }
 }
 
-class ToastHUD {
-    static func showToastText(form view: UIView, message: String) {
+class ToastProgressHUD {
+    static func showToastText(message: String) {
         KRProgressHUD.showMessage(message)
     }
 }
