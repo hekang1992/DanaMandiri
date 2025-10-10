@@ -7,24 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		732C1C7C2E9895830005A18F /* LoadingHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732C1C7B2E9895820005A18F /* LoadingHUD.swift */; };
+		732C1C7E2E9898220005A18F /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732C1C7D2E9898180005A18F /* Extension.swift */; };
+		732C1C802E98AEEB0005A18F /* Untitled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732C1C7F2E98AEEA0005A18F /* Untitled.swift */; };
+		732C1C822E98CBFB0005A18F /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732C1C812E98CBFB0005A18F /* BaseTabBarController.swift */; };
 		73AF98392E979B4F006BFCCA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AF982F2E979B4F006BFCCA /* AppDelegate.swift */; };
 		73AF983C2E979B4F006BFCCA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73AF98302E979B4F006BFCCA /* Assets.xcassets */; };
 		73AF983E2E979B4F006BFCCA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73AF98332E979B4F006BFCCA /* LaunchScreen.storyboard */; };
 		73AF984E2E97A4B1006BFCCA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 73AF984C2E97A4B1006BFCCA /* Localizable.strings */; };
 		73AF98512E97A5FA006BFCCA /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AF98502E97A5F5006BFCCA /* Base.swift */; };
-		73AF98532E97A6C3006BFCCA /* BaseNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AF98522E97A6C3006BFCCA /* BaseNavController.swift */; };
+		73AF98532E97A6C3006BFCCA /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AF98522E97A6C3006BFCCA /* BaseNavigationController.swift */; };
 		73AF98552E97A6EC006BFCCA /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AF98542E97A6EC006BFCCA /* StartViewController.swift */; };
 		73AF98582E97A73A006BFCCA /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AF98572E97A736006BFCCA /* Color.swift */; };
 		73AF985D2E97A8D8006BFCCA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AF985C2E97A8D8006BFCCA /* LoginViewController.swift */; };
 		73AF985F2E97A8EF006BFCCA /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AF985E2E97A8E5006BFCCA /* LoginViewModel.swift */; };
 		73AF98612E97A9A8006BFCCA /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AF98602E97A9A4006BFCCA /* BaseModel.swift */; };
-		73AF98632E97ABA4006BFCCA /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AF98622E97AB9D006BFCCA /* NetworkService.swift */; };
+		73AF98632E97ABA4006BFCCA /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AF98622E97AB9D006BFCCA /* NetworkManager.swift */; };
 		FAF4A314172EA700A19B78FE /* Pods_DanaMandiri.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B04719A34419DAC2CE3439 /* Pods_DanaMandiri.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		14B04719A34419DAC2CE3439 /* Pods_DanaMandiri.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DanaMandiri.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		471AFA02D171BDEEB46A6C25 /* Pods-DanaMandiri.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DanaMandiri.release.xcconfig"; path = "Target Support Files/Pods-DanaMandiri/Pods-DanaMandiri.release.xcconfig"; sourceTree = "<group>"; };
+		732C1C7B2E9895820005A18F /* LoadingHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingHUD.swift; sourceTree = "<group>"; };
+		732C1C7D2E9898180005A18F /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		732C1C7F2E98AEEA0005A18F /* Untitled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Untitled.swift; sourceTree = "<group>"; };
+		732C1C812E98CBFB0005A18F /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		73AF98172E979B47006BFCCA /* DanaMandiri.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DanaMandiri.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73AF982F2E979B4F006BFCCA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73AF98302E979B4F006BFCCA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -35,13 +43,13 @@
 		73AF984D2E97A4B1006BFCCA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		73AF984F2E97A538006BFCCA /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
 		73AF98502E97A5F5006BFCCA /* Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
-		73AF98522E97A6C3006BFCCA /* BaseNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavController.swift; sourceTree = "<group>"; };
+		73AF98522E97A6C3006BFCCA /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		73AF98542E97A6EC006BFCCA /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		73AF98572E97A736006BFCCA /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		73AF985C2E97A8D8006BFCCA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		73AF985E2E97A8E5006BFCCA /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		73AF98602E97A9A4006BFCCA /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
-		73AF98622E97AB9D006BFCCA /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		73AF98622E97AB9D006BFCCA /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		D506D2406C71CC1BED782247 /* Pods-DanaMandiri.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DanaMandiri.debug.xcconfig"; path = "Target Support Files/Pods-DanaMandiri/Pods-DanaMandiri.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -101,7 +109,8 @@
 			children = (
 				73AF98502E97A5F5006BFCCA /* Base.swift */,
 				73AF98542E97A6EC006BFCCA /* StartViewController.swift */,
-				73AF98522E97A6C3006BFCCA /* BaseNavController.swift */,
+				732C1C812E98CBFB0005A18F /* BaseTabBarController.swift */,
+				73AF98522E97A6C3006BFCCA /* BaseNavigationController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -146,8 +155,10 @@
 		73AF98562E97A72C006BFCCA /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				732C1C7F2E98AEEA0005A18F /* Untitled.swift */,
 				73AF98572E97A736006BFCCA /* Color.swift */,
-				73AF98602E97A9A4006BFCCA /* BaseModel.swift */,
+				732C1C7D2E9898180005A18F /* Extension.swift */,
+				732C1C7B2E9895820005A18F /* LoadingHUD.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -155,7 +166,8 @@
 		73AF98592E97A814006BFCCA /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				73AF98622E97AB9D006BFCCA /* NetworkService.swift */,
+				73AF98602E97A9A4006BFCCA /* BaseModel.swift */,
+				73AF98622E97AB9D006BFCCA /* NetworkManager.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -317,10 +329,14 @@
 				73AF985D2E97A8D8006BFCCA /* LoginViewController.swift in Sources */,
 				73AF98512E97A5FA006BFCCA /* Base.swift in Sources */,
 				73AF98552E97A6EC006BFCCA /* StartViewController.swift in Sources */,
-				73AF98532E97A6C3006BFCCA /* BaseNavController.swift in Sources */,
-				73AF98632E97ABA4006BFCCA /* NetworkService.swift in Sources */,
+				73AF98532E97A6C3006BFCCA /* BaseNavigationController.swift in Sources */,
+				732C1C7E2E9898220005A18F /* Extension.swift in Sources */,
+				732C1C7C2E9895830005A18F /* LoadingHUD.swift in Sources */,
+				732C1C802E98AEEB0005A18F /* Untitled.swift in Sources */,
+				73AF98632E97ABA4006BFCCA /* NetworkManager.swift in Sources */,
 				73AF98582E97A73A006BFCCA /* Color.swift in Sources */,
 				73AF98392E979B4F006BFCCA /* AppDelegate.swift in Sources */,
+				732C1C822E98CBFB0005A18F /* BaseTabBarController.swift in Sources */,
 				73AF985F2E97A8EF006BFCCA /* LoginViewModel.swift in Sources */,
 				73AF98612E97A9A8006BFCCA /* BaseModel.swift in Sources */,
 			);

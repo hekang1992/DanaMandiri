@@ -14,6 +14,8 @@ target 'DanaMandiri' do
   pod 'Alamofire'
   pod 'Kingfisher'
   pod 'FBSDKCoreKit'
+  pod 'KRProgressHUD'
+  pod 'KeychainAccess'
   pod 'TYAlertController'
   pod 'IQKeyboardManagerSwift', '~> 6.5.16'
   

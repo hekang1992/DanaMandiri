@@ -1,5 +1,5 @@
 //
-//  BaseNavController.swift
+//  BaseNavigationController.swift
 //  DanaMandiri
 //
 //  Created by hekang on 2025/10/9.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BaseNavController: UINavigationController {
+class BaseNavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
