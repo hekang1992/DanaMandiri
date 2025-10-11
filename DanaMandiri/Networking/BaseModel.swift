@@ -54,5 +54,7 @@ struct socialModel: Codable {
     var able: String?
     var histriie: String?
     var janu: String?
-    
+    var minaclike: String?
+    var scolieer: String?
+    var testth: String?
 }

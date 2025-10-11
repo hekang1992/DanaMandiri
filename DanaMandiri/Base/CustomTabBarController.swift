@@ -13,35 +13,16 @@ class CustomTabBarController: UIViewController {
     private let tabBarHeight: CGFloat = 85
     private let customTabBar = UIView()
     private var buttons: [UIButton] = []
-    private var childVCs: [UIViewController] = []
+    private var childVCs: [UIViewController?] = [nil, nil, nil]
     private var selectedIndex: Int = 0
+    private var currentViewController: UIViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        setupChildren()
         setupCustomTabBar()
         select(index: 0)
-    }
-    
-    private func setupChildren() {
-        let homeVC = BaseNavigationController(rootViewController: HomeViewController())
-        let orderVc = BaseNavigationController(rootViewController: OrderViewController())
-        let centerVc = BaseNavigationController(rootViewController: CenterViewController())
-        
-        childVCs = [homeVC, orderVc, centerVc]
-        
-        for vc in childVCs {
-            addChild(vc)
-            view.addSubview(vc.view)
-            vc.view.snp.makeConstraints { make in
-                make.top.left.right.equalToSuperview()
-                make.bottom.equalToSuperview().inset(tabBarHeight)
-            }
-            vc.didMove(toParent: self)
-            vc.view.isHidden = true
-        }
     }
     
     private func setupCustomTabBar() {
@@ -109,16 +90,57 @@ class CustomTabBarController: UIViewController {
     private func select(index: Int) {
         guard index >= 0 && index < childVCs.count else { return }
         
-        childVCs[selectedIndex].view.isHidden = true
-        childVCs[index].view.isHidden = false
-        selectedIndex = index
+        currentViewController?.view.isHidden = true
         
+        updateButtonAppearance(selectedIndex: index)
+        
+        if childVCs[index] == nil {
+            let vc = createViewController(for: index)
+            childVCs[index] = vc
+            addChild(vc)
+            view.insertSubview(vc.view, belowSubview: customTabBar)
+            vc.view.snp.makeConstraints { make in
+                make.top.left.right.equalToSuperview()
+                make.bottom.equalToSuperview().inset(tabBarHeight)
+            }
+            vc.didMove(toParent: self)
+        }
+        
+        if let selectedVC = childVCs[index] {
+            selectedVC.view.isHidden = false
+            currentViewController = selectedVC
+        }
+        
+        selectedIndex = index
+    }
+    
+    private func createViewController(for index: Int) -> UIViewController {
+        switch index {
+        case 0:
+            return BaseNavigationController(rootViewController: HomeViewController())
+        case 1:
+            return BaseNavigationController(rootViewController: OrderViewController())
+        case 2:
+            return BaseNavigationController(rootViewController: CenterViewController())
+        default:
+            return UIViewController()
+        }
+    }
+    
+    private func updateButtonAppearance(selectedIndex: Int) {
         for (i, btn) in buttons.enumerated() {
-            let isSelected = (i == index)
+            let isSelected = (i == selectedIndex)
             btn.isSelected = isSelected
             btn.backgroundColor = isSelected ? UIColor(hexString: "#009F1E").withAlphaComponent(0.36) : .white
             btn.tintColor = isSelected ? .black : .gray
         }
     }
     
+    func getCurrentViewController() -> UIViewController? {
+        return currentViewController
+    }
+    
+    func switchToTab(index: Int) {
+        select(index: index)
+    }
 }

@@ -33,6 +33,12 @@
 		73AF985F2E97A8EF006BFCCA /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AF985E2E97A8E5006BFCCA /* LoginViewModel.swift */; };
 		73AF98612E97A9A8006BFCCA /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AF98602E97A9A4006BFCCA /* BaseModel.swift */; };
 		73AF98632E97ABA4006BFCCA /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AF98622E97AB9D006BFCCA /* NetworkManager.swift */; };
+		73F71AA12E99E9E300BB6091 /* SmallTwoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F71AA02E99E9E300BB6091 /* SmallTwoViewCell.swift */; };
+		73F71AA32E99EF6A00BB6091 /* SmallOneViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F71AA22E99EF6A00BB6091 /* SmallOneViewCell.swift */; };
+		73F71AA52E99F47D00BB6091 /* SmallThreeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F71AA42E99F47D00BB6091 /* SmallThreeViewCell.swift */; };
+		73F71AA72E99F48700BB6091 /* SmallFourViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F71AA62E99F48700BB6091 /* SmallFourViewCell.swift */; };
+		73F71AA92E99F67100BB6091 /* SmallThreeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F71AA82E99F67100BB6091 /* SmallThreeCollectionViewCell.swift */; };
+		73F71AAB2E9A030900BB6091 /* OrderListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F71AAA2E9A030900BB6091 /* OrderListView.swift */; };
 		FAF4A314172EA700A19B78FE /* Pods_DanaMandiri.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B04719A34419DAC2CE3439 /* Pods_DanaMandiri.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +76,12 @@
 		73AF985E2E97A8E5006BFCCA /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		73AF98602E97A9A4006BFCCA /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		73AF98622E97AB9D006BFCCA /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		73F71AA02E99E9E300BB6091 /* SmallTwoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallTwoViewCell.swift; sourceTree = "<group>"; };
+		73F71AA22E99EF6A00BB6091 /* SmallOneViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallOneViewCell.swift; sourceTree = "<group>"; };
+		73F71AA42E99F47D00BB6091 /* SmallThreeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallThreeViewCell.swift; sourceTree = "<group>"; };
+		73F71AA62E99F48700BB6091 /* SmallFourViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallFourViewCell.swift; sourceTree = "<group>"; };
+		73F71AA82E99F67100BB6091 /* SmallThreeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallThreeCollectionViewCell.swift; sourceTree = "<group>"; };
+		73F71AAA2E9A030900BB6091 /* OrderListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListView.swift; sourceTree = "<group>"; };
 		D506D2406C71CC1BED782247 /* Pods-DanaMandiri.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DanaMandiri.debug.xcconfig"; path = "Target Support Files/Pods-DanaMandiri/Pods-DanaMandiri.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -150,6 +162,11 @@
 				732C1C992E9904080005A18F /* SmallMainView.swift */,
 				732C1C972E98FCE10005A18F /* HomeViewModel.swift */,
 				732C1C912E98F5850005A18F /* HomeViewController.swift */,
+				73F71AA22E99EF6A00BB6091 /* SmallOneViewCell.swift */,
+				73F71AA02E99E9E300BB6091 /* SmallTwoViewCell.swift */,
+				73F71AA42E99F47D00BB6091 /* SmallThreeViewCell.swift */,
+				73F71AA82E99F67100BB6091 /* SmallThreeCollectionViewCell.swift */,
+				73F71AA62E99F48700BB6091 /* SmallFourViewCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -157,6 +174,7 @@
 		73AF98442E979E1D006BFCCA /* Order */ = {
 			isa = PBXGroup;
 			children = (
+				73F71AAA2E9A030900BB6091 /* OrderListView.swift */,
 				732C1C8F2E98F57B0005A18F /* OrderViewController.swift */,
 			);
 			path = Order;
@@ -356,20 +374,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73F71AA72E99F48700BB6091 /* SmallFourViewCell.swift in Sources */,
 				73AF985D2E97A8D8006BFCCA /* LoginViewController.swift in Sources */,
 				732C1C982E98FCE70005A18F /* HomeViewModel.swift in Sources */,
+				73F71AAB2E9A030900BB6091 /* OrderListView.swift in Sources */,
 				73AF98512E97A5FA006BFCCA /* BaseViewController.swift in Sources */,
+				73F71AA52E99F47D00BB6091 /* SmallThreeViewCell.swift in Sources */,
 				732C1C922E98F5850005A18F /* HomeViewController.swift in Sources */,
 				73AF98552E97A6EC006BFCCA /* StartViewController.swift in Sources */,
 				73AF98532E97A6C3006BFCCA /* BaseNavigationController.swift in Sources */,
 				732C1C7E2E9898220005A18F /* Extension.swift in Sources */,
 				732C1C7C2E9895830005A18F /* LoadingHUD.swift in Sources */,
+				73F71AA32E99EF6A00BB6091 /* SmallOneViewCell.swift in Sources */,
 				732C1C802E98AEEB0005A18F /* Untitled.swift in Sources */,
 				73AF98632E97ABA4006BFCCA /* NetworkManager.swift in Sources */,
 				732C1C942E98F58E0005A18F /* CenterViewController.swift in Sources */,
 				732C1C8A2E98DBC20005A18F /* PhoneCodeView.swift in Sources */,
 				732C1C842E98CD8B0005A18F /* LoginView.swift in Sources */,
 				732C1C8C2E98EB460005A18F /* CustomTabBarController.swift in Sources */,
+				73F71AA92E99F67100BB6091 /* SmallThreeCollectionViewCell.swift in Sources */,
 				732C1C862E98CFAC0005A18F /* PhoneListView.swift in Sources */,
 				73AF98582E97A73A006BFCCA /* Color.swift in Sources */,
 				732C1C962E98FCDC0005A18F /* HomeView.swift in Sources */,
@@ -379,6 +402,7 @@
 				732C1C9A2E9904200005A18F /* SmallMainView.swift in Sources */,
 				732C1C882E98D6180005A18F /* LanguageManager.swift in Sources */,
 				732C1C902E98F57B0005A18F /* OrderViewController.swift in Sources */,
+				73F71AA12E99E9E300BB6091 /* SmallTwoViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

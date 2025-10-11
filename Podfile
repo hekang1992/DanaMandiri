@@ -18,5 +18,6 @@ target 'DanaMandiri' do
   pod 'KeychainAccess'
   pod 'TYAlertController'
   pod 'IQKeyboardManagerSwift', '~> 6.5.16'
+  pod 'FSPagerView'
   
 end

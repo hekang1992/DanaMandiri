@@ -47,7 +47,7 @@ class HomeViewController: UIViewController {
         }
         
         /// REFRESH_HOME_INFO
-        smallView.scrollView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+        smallView.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
             self.getHomeInfo()
         })
         
@@ -62,6 +62,8 @@ class HomeViewController: UIViewController {
                 self.smallView.isHidden = false
                 self.homeView.isHidden = true
                 self.smallView.smallModel = listArray[index].social?.first
+                self.smallView.smallModelArray = listArray
+                self.smallView.tableView.reloadData()
             } else {
                 print("❌ no successfultic")
                 /// BIG_CARD
@@ -83,7 +85,7 @@ extension HomeViewController {
     
     private func getHomeInfo() {
         homeViewModel.getHomeInfo { [weak self] model in
-            self?.smallView.scrollView.mj_header?.endRefreshing()
+            self?.smallView.tableView.mj_header?.endRefreshing()
             if ["0", "00"].contains(model.aboutation) {
                 self?.homeModel.accept(model)
             }

@@ -6,6 +6,7 @@ PODS:
     - FBAEMKit (= 18.0.1)
     - FBSDKCoreKit_Basics (= 18.0.1)
   - FBSDKCoreKit_Basics (18.0.1)
+  - FSPagerView (0.8.3)
   - IQKeyboardManagerSwift (6.5.16)
   - KeychainAccess (4.2.2)
   - Kingfisher (8.5.0)
@@ -28,6 +29,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - FBSDKCoreKit
+  - FSPagerView
   - IQKeyboardManagerSwift (~> 6.5.16)
   - KeychainAccess
   - Kingfisher
@@ -45,6 +47,7 @@ SPEC REPOS:
     - FBAEMKit
     - FBSDKCoreKit
     - FBSDKCoreKit_Basics
+    - FSPagerView
     - IQKeyboardManagerSwift
     - KeychainAccess
     - Kingfisher
@@ -63,6 +66,7 @@ SPEC CHECKSUMS:
   FBAEMKit: b2ed182002dbcb65d5a60059c9693d322186cd00
   FBSDKCoreKit: 7f96852f2539bdb88ba8d47e5ab4ae70a6f8d691
   FBSDKCoreKit_Basics: 22d4c1a509ded4e45116f3bb167a14907550f62e
+  FSPagerView: 670405b2f18e2a87fa37f20b00de783e562c25a8
   IQKeyboardManagerSwift: 12d89768845bb77b55cc092ecc2b1f9370f06b76
   KeychainAccess: c0c4f7f38f6fc7bbe58f5702e25f7bd2f65abf51
   Kingfisher: ff0d31a1f07bdff6a1ebb3ba08b8e6e567b6500c
@@ -76,6 +80,6 @@ SPEC CHECKSUMS:
   SnapKit: d612e99e678a2d3b95bf60b0705ed0a35c03484a
   TYAlertController: c121090edb0bea7426f987da94cdddd81eef4231
 
-PODFILE CHECKSUM: c5950984fe63c203d95ba2c8b1a95cb5f3435f11
+PODFILE CHECKSUM: d8ffed660828433b81c46f9d7befa9f0aade0461
 
 COCOAPODS: 1.16.2
