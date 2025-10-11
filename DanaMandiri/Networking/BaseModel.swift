@@ -36,4 +36,23 @@ struct salinModel: Codable {
     var cin: String?
     var thatise: String?
     var cast: String?
+    var sipirangeular: [sipirangeularModel]?
+}
+
+struct sipirangeularModel: Codable {
+    var skillette: String?
+    var social: [socialModel]?
+}
+
+struct socialModel: Codable {
+    var alate: String?
+    var platyid: String?
+    var gnaraster: String?
+    var vertindustryent: String?
+    var tern: String?
+    var multaing: String?
+    var able: String?
+    var histriie: String?
+    var janu: String?
+    
 }

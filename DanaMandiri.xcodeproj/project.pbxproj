@@ -18,6 +18,9 @@
 		732C1C902E98F57B0005A18F /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732C1C8F2E98F57B0005A18F /* OrderViewController.swift */; };
 		732C1C922E98F5850005A18F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732C1C912E98F5850005A18F /* HomeViewController.swift */; };
 		732C1C942E98F58E0005A18F /* CenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732C1C932E98F58E0005A18F /* CenterViewController.swift */; };
+		732C1C962E98FCDC0005A18F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732C1C952E98FCDC0005A18F /* HomeView.swift */; };
+		732C1C982E98FCE70005A18F /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732C1C972E98FCE10005A18F /* HomeViewModel.swift */; };
+		732C1C9A2E9904200005A18F /* SmallMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732C1C992E9904080005A18F /* SmallMainView.swift */; };
 		73AF98392E979B4F006BFCCA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AF982F2E979B4F006BFCCA /* AppDelegate.swift */; };
 		73AF983C2E979B4F006BFCCA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73AF98302E979B4F006BFCCA /* Assets.xcassets */; };
 		73AF983E2E979B4F006BFCCA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73AF98332E979B4F006BFCCA /* LaunchScreen.storyboard */; };
@@ -47,6 +50,9 @@
 		732C1C8F2E98F57B0005A18F /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 		732C1C912E98F5850005A18F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		732C1C932E98F58E0005A18F /* CenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterViewController.swift; sourceTree = "<group>"; };
+		732C1C952E98FCDC0005A18F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		732C1C972E98FCE10005A18F /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		732C1C992E9904080005A18F /* SmallMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallMainView.swift; sourceTree = "<group>"; };
 		73AF98172E979B47006BFCCA /* DanaMandiri.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DanaMandiri.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73AF982F2E979B4F006BFCCA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73AF98302E979B4F006BFCCA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -140,6 +146,9 @@
 		73AF98432E979E14006BFCCA /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				732C1C952E98FCDC0005A18F /* HomeView.swift */,
+				732C1C992E9904080005A18F /* SmallMainView.swift */,
+				732C1C972E98FCE10005A18F /* HomeViewModel.swift */,
 				732C1C912E98F5850005A18F /* HomeViewController.swift */,
 			);
 			path = Home;
@@ -348,6 +357,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				73AF985D2E97A8D8006BFCCA /* LoginViewController.swift in Sources */,
+				732C1C982E98FCE70005A18F /* HomeViewModel.swift in Sources */,
 				73AF98512E97A5FA006BFCCA /* BaseViewController.swift in Sources */,
 				732C1C922E98F5850005A18F /* HomeViewController.swift in Sources */,
 				73AF98552E97A6EC006BFCCA /* StartViewController.swift in Sources */,
@@ -362,9 +372,11 @@
 				732C1C8C2E98EB460005A18F /* CustomTabBarController.swift in Sources */,
 				732C1C862E98CFAC0005A18F /* PhoneListView.swift in Sources */,
 				73AF98582E97A73A006BFCCA /* Color.swift in Sources */,
+				732C1C962E98FCDC0005A18F /* HomeView.swift in Sources */,
 				73AF98392E979B4F006BFCCA /* AppDelegate.swift in Sources */,
 				73AF985F2E97A8EF006BFCCA /* LoginViewModel.swift in Sources */,
 				73AF98612E97A9A8006BFCCA /* BaseModel.swift in Sources */,
+				732C1C9A2E9904200005A18F /* SmallMainView.swift in Sources */,
 				732C1C882E98D6180005A18F /* LanguageManager.swift in Sources */,
 				732C1C902E98F57B0005A18F /* OrderViewController.swift in Sources */,
 			);
