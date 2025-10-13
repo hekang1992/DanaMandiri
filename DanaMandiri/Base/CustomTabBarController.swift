@@ -89,30 +89,30 @@ class CustomTabBarController: UIViewController, CustomTabBarControllerDelegate {
     
     private func select(index: Int) {
         guard index >= 0 && index < childVCs.count else { return }
-        
-        currentViewController?.view.isHidden = true
-        
-        updateButtonAppearance(selectedIndex: index)
-        
+
+        if let currentVC = currentViewController {
+            currentVC.willMove(toParent: nil)
+            currentVC.view.removeFromSuperview()
+            currentVC.removeFromParent()
+        }
+
+        let newVC = childVCs[index] ?? createViewController(for: index)
         if childVCs[index] == nil {
-            let vc = createViewController(for: index)
-            childVCs[index] = vc
-            addChild(vc)
-            view.insertSubview(vc.view, belowSubview: customTabBar)
-            vc.view.snp.makeConstraints { make in
-                make.top.left.right.equalToSuperview()
-                make.bottom.equalToSuperview().inset(tabBarHeight)
-            }
-            vc.didMove(toParent: self)
+            childVCs[index] = newVC
         }
-        
-        if let selectedVC = childVCs[index] {
-            selectedVC.view.isHidden = false
-            currentViewController = selectedVC
+
+        addChild(newVC)
+        view.insertSubview(newVC.view, belowSubview: customTabBar)
+        newVC.view.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
-        
+        newVC.didMove(toParent: self)
+
+        currentViewController = newVC
+        updateButtonAppearance(selectedIndex: index)
         selectedIndex = index
     }
+
     
     private func createViewController(for index: Int) -> UIViewController {
         switch index {

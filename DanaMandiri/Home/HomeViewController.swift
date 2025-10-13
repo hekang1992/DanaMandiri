@@ -38,16 +38,22 @@ class HomeViewController: UIViewController {
         
         view.addSubview(smallView)
         smallView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.left.right.top.equalToSuperview()
+            make.bottom.equalToSuperview().inset(85)
         }
         
         view.addSubview(homeView)
         homeView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.left.right.top.equalToSuperview()
+            make.bottom.equalToSuperview().inset(85)
         }
         
         /// REFRESH_HOME_INFO
         smallView.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+            self.getHomeInfo()
+        })
+        
+        homeView.scrollView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
             self.getHomeInfo()
         })
         
@@ -69,6 +75,8 @@ class HomeViewController: UIViewController {
                 /// BIG_CARD
                 self.smallView.isHidden = true
                 self.homeView.isHidden = false
+                let index = listArray.firstIndex(where: { $0.skillette == "tricesimition" }) ?? 0
+                self.homeView.smallModel = listArray[index].social?.first
             }
         }).disposed(by: disposeBag)
         
@@ -86,6 +94,7 @@ extension HomeViewController {
     private func getHomeInfo() {
         homeViewModel.getHomeInfo { [weak self] model in
             self?.smallView.tableView.mj_header?.endRefreshing()
+            self?.homeView.scrollView.mj_header?.endRefreshing()
             if ["0", "00"].contains(model.aboutation) {
                 self?.homeModel.accept(model)
             }

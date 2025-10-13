@@ -21,6 +21,9 @@
 		732C1C962E98FCDC0005A18F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732C1C952E98FCDC0005A18F /* HomeView.swift */; };
 		732C1C982E98FCE70005A18F /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732C1C972E98FCE10005A18F /* HomeViewModel.swift */; };
 		732C1C9A2E9904200005A18F /* SmallMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732C1C992E9904080005A18F /* SmallMainView.swift */; };
+		7376564E2E9C9E990018258E /* CommonHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7376564D2E9C9E990018258E /* CommonHeadView.swift */; };
+		737656502E9CABF80018258E /* LogOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7376564F2E9CABF80018258E /* LogOutView.swift */; };
+		737656522E9CC5870018258E /* DeleteAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737656512E9CC5870018258E /* DeleteAccountView.swift */; };
 		73AF98392E979B4F006BFCCA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AF982F2E979B4F006BFCCA /* AppDelegate.swift */; };
 		73AF983C2E979B4F006BFCCA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73AF98302E979B4F006BFCCA /* Assets.xcassets */; };
 		73AF983E2E979B4F006BFCCA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73AF98332E979B4F006BFCCA /* LaunchScreen.storyboard */; };
@@ -64,6 +67,9 @@
 		732C1C952E98FCDC0005A18F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		732C1C972E98FCE10005A18F /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		732C1C992E9904080005A18F /* SmallMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallMainView.swift; sourceTree = "<group>"; };
+		7376564D2E9C9E990018258E /* CommonHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonHeadView.swift; sourceTree = "<group>"; };
+		7376564F2E9CABF80018258E /* LogOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutView.swift; sourceTree = "<group>"; };
+		737656512E9CC5870018258E /* DeleteAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountView.swift; sourceTree = "<group>"; };
 		73AF98172E979B47006BFCCA /* DanaMandiri.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DanaMandiri.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73AF982F2E979B4F006BFCCA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73AF98302E979B4F006BFCCA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -219,6 +225,9 @@
 				73AF98572E97A736006BFCCA /* Color.swift */,
 				732C1C7D2E9898180005A18F /* Extension.swift */,
 				732C1C7B2E9895820005A18F /* LoadingHUD.swift */,
+				7376564D2E9C9E990018258E /* CommonHeadView.swift */,
+				7376564F2E9CABF80018258E /* LogOutView.swift */,
+				737656512E9CC5870018258E /* DeleteAccountView.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -408,6 +417,7 @@
 				73AF98632E97ABA4006BFCCA /* NetworkManager.swift in Sources */,
 				732C1C942E98F58E0005A18F /* CenterViewController.swift in Sources */,
 				73F71AAF2E9A1FB600BB6091 /* CenterListViewModel.swift in Sources */,
+				7376564E2E9C9E990018258E /* CommonHeadView.swift in Sources */,
 				732C1C8A2E98DBC20005A18F /* PhoneCodeView.swift in Sources */,
 				732C1C842E98CD8B0005A18F /* LoginView.swift in Sources */,
 				732C1C8C2E98EB460005A18F /* CustomTabBarController.swift in Sources */,
@@ -416,10 +426,12 @@
 				73AF98582E97A73A006BFCCA /* Color.swift in Sources */,
 				732C1C962E98FCDC0005A18F /* HomeView.swift in Sources */,
 				73AF98392E979B4F006BFCCA /* AppDelegate.swift in Sources */,
+				737656522E9CC5870018258E /* DeleteAccountView.swift in Sources */,
 				73AF985F2E97A8EF006BFCCA /* LoginViewModel.swift in Sources */,
 				73AF98612E97A9A8006BFCCA /* BaseModel.swift in Sources */,
 				732C1C9A2E9904200005A18F /* SmallMainView.swift in Sources */,
 				732C1C882E98D6180005A18F /* LanguageManager.swift in Sources */,
+				737656502E9CABF80018258E /* LogOutView.swift in Sources */,
 				732C1C902E98F57B0005A18F /* OrderViewController.swift in Sources */,
 				73F71AA12E99E9E300BB6091 /* SmallTwoViewCell.swift in Sources */,
 				73F71AAD2E9A1CD600BB6091 /* CenterListView.swift in Sources */,

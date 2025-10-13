@@ -25,3 +25,14 @@
 "Applying" = "Applying";
 "Repayment" = "Repayment";
 "Finish" = "Finish";
+"Settings" = "Settings";
+"Go Out" = "Go Out";
+"Account Cancellation" = "Account Cancellation";
+"Confirm to exit?" = "Confirm to exit?";
+"Are you sure you want to exit the loan app? If you have outstanding loans, you can log in at any time to check your repayment progress." = "Are you sure you want to exit the loan app? If you have outstanding loans, you can log in at any time to check your repayment progress.";
+"Cancel" = "Cancel";
+"Exit" = "Exit";
+"Log out" = "Log out";
+"Confirm to cancel account?" = "Confirm to cancel account?";
+"I have read and agree to the above" = "I have read and agree to the above";
+"Please review and confirm the agreement" = "Please review and confirm the agreement";

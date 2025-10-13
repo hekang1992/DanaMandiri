@@ -25,3 +25,14 @@
 "Applying" = "Melamar";
 "Repayment" = "Pelunasan";
 "Finish" = "Selesai";
+"Settings" = "Pengaturan";
+"Go Out" = "Keluar";
+"Account Cancellation" = "Pembatalan Akun";
+"Confirm to exit?" = "Konfirmasi untuk keluar?";
+"Are you sure you want to exit the loan app? If you have outstanding loans, you can log in at any time to check your repayment progress." = "Yakin ingin keluar dari aplikasi pinjaman? Jika Anda memiliki pinjaman yang belum dibayar, Anda dapat masuk kapan saja untuk memeriksa progres pembayaran Anda.";
+"Cancel" = "Membatalkan";
+"Exit" = "Keluar";
+"Log out" = "Keluar";
+"Confirm to cancel account?" = "Konfirmasi untuk membatalkan akun?";
+"I have read and agree to the above" = "Saya telah membaca dan menyetujui hal di atas";
+"Please review and confirm the agreement" = "Silakan tinjau dan konfirmasi perjanjian";

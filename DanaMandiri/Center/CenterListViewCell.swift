@@ -52,7 +52,7 @@ class CenterListViewCell: UITableViewCell {
         
         bgView.snp.makeConstraints { make in
             make.top.left.right.equalToSuperview()
-            make.height.equalTo(68)
+            make.height.equalTo(64)
             make.bottom.equalToSuperview()
         }
         logoImageView.snp.makeConstraints { make in

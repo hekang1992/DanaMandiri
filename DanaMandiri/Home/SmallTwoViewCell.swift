@@ -43,8 +43,6 @@ class SmallTwoViewCell: UITableViewCell {
         }
     }
 
-
-    
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
         bgImageView.image = UIImage(named: "sm_little_image")
@@ -195,8 +193,6 @@ class SmallTwoViewCell: UITableViewCell {
             make.height.equalTo(50)
             make.bottom.equalToSuperview().offset(-16)
         }
-        
-        
     }
     
     required init?(coder: NSCoder) {
