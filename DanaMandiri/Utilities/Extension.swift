@@ -7,6 +7,13 @@
 
 import UIKit
 
+let SCHEME_URL = "stalactmagazineate://isoify.uxoriment.bolaally/"
+let SCHEME_HOME_URL = SCHEME_URL + "fringesque"
+let SCHEME_SETTING_URL = SCHEME_URL + "raiseability"
+let SCHEME_LOGIN_URL = SCHEME_URL + "musc"
+let SCHEME_ORDER_URL = SCHEME_URL + "engyaire"
+let SCHEME_PRODUCT_URL = SCHEME_URL + "whoitious"
+
 extension UIFont {
     
     static func system(_ size: CGFloat, weightValue: CGFloat) -> UIFont {

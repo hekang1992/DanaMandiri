@@ -37,6 +37,7 @@ struct salinModel: Codable {
     var thatise: String?
     var cast: String?
     var sipirangeular: [sipirangeularModel]?
+    var equize: [equizeModel]?
 }
 
 struct sipirangeularModel: Codable {
@@ -57,4 +58,10 @@ struct socialModel: Codable {
     var minaclike: String?
     var scolieer: String?
     var testth: String?
+}
+
+struct equizeModel: Codable {
+    var ctenitive: String?
+    var senselike: String?
+    var kilolaughish: String?
 }

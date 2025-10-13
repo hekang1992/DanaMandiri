@@ -6,24 +6,49 @@
 //
 
 import UIKit
+import SnapKit
+import MJRefresh
 
 class CenterViewController: UIViewController {
+    
+    lazy var centerListView: CenterListView = {
+        let centerListView = CenterListView(frame: .zero)
+        return centerListView
+    }()
+    
+    let viewModel = CenterListViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        view.addSubview(centerListView)
+        centerListView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        self.centerListView.scrollView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+            self.getCenterInfo()
+        })
+        
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getCenterInfo()
     }
-    */
 
+}
+
+extension CenterViewController {
+    
+    private func getCenterInfo() {
+        viewModel.getCenterInfo { model in
+            self.centerListView.scrollView.mj_header?.endRefreshing()
+            if ["0", "00"].contains(model.aboutation) {
+                self.centerListView.model = model
+            }
+        }
+    }
 }

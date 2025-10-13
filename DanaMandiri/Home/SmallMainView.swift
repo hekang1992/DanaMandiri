@@ -70,7 +70,7 @@ class SmallMainView: UIView {
         }
         tableView.snp.makeConstraints { make in
             make.left.right.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-5)
+            make.bottom.equalToSuperview()
             make.top.equalTo(listLabel.snp.bottom).offset(5)
         }
     }

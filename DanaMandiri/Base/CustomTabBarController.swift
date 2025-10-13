@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class CustomTabBarController: UIViewController {
+class CustomTabBarController: UIViewController, CustomTabBarControllerDelegate {
     
     private let tabBarHeight: CGFloat = 85
     private let customTabBar = UIView()
@@ -117,11 +117,17 @@ class CustomTabBarController: UIViewController {
     private func createViewController(for index: Int) -> UIViewController {
         switch index {
         case 0:
-            return BaseNavigationController(rootViewController: HomeViewController())
+            let homeVC = BaseNavigationController(rootViewController: HomeViewController())
+            homeVC.tabBarDelegate = self
+            return homeVC
         case 1:
-            return BaseNavigationController(rootViewController: OrderViewController())
+            let orderVC = BaseNavigationController(rootViewController: OrderViewController())
+            orderVC.tabBarDelegate = self
+            return orderVC
         case 2:
-            return BaseNavigationController(rootViewController: CenterViewController())
+            let centerVC = BaseNavigationController(rootViewController: CenterViewController())
+            centerVC.tabBarDelegate = self
+            return centerVC
         default:
             return UIViewController()
         }
@@ -143,4 +149,24 @@ class CustomTabBarController: UIViewController {
     func switchToTab(index: Int) {
         select(index: index)
     }
+    
+    func setTabBarHidden(_ hidden: Bool, animated: Bool = true) {
+        if animated {
+            UIView.animate(withDuration: 0.25) {
+                self.customTabBar.alpha = hidden ? 0 : 1
+                self.customTabBar.transform = hidden ?
+                    CGAffineTransform(translationX: 0, y: self.tabBarHeight) :
+                    CGAffineTransform.identity
+            }
+        } else {
+            customTabBar.alpha = hidden ? 0 : 1
+            customTabBar.transform = hidden ?
+                CGAffineTransform(translationX: 0, y: tabBarHeight) :
+                CGAffineTransform.identity
+        }
+    }
+}
+
+protocol CustomTabBarControllerDelegate: AnyObject {
+    func setTabBarHidden(_ hidden: Bool, animated: Bool)
 }
