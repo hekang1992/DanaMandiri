@@ -1,0 +1,61 @@
+# 这是针对 Swift 项目优化的 .gitignore 文件
+# 来源：https://github.com/github/gitignore/blob/main/Swift.gitignore
+
+# 生成的文件
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.moved-aside
+*.pyc
+*.perspectivev3
+
+# 编译生成的文件
+build/
+DerivedData/
+
+# 打包文件
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Swift Package Manager
+# 注意：如果你的项目本身就是一个 Swift Package，请注释掉下一行
+.Packages/
+.build/
+
+# CocoaPods
+# 注意：如果你使用 CocoaPods，请取消注释下面几行
+# Pods/
+# 如果不想提交 Podfile.lock，可以取消注释下一行（通常建议提交）
+# Podfile.lock
+
+# Carthage
+# 注意：如果你使用 Carthage，请取消注释下面几行
+# Carthage/Build
+# Carthage/Checkouts
+
+# 快速 API 文档
+docs/
+fastlane/report.xml
+
+# 代码注入工具
+*.tmproj
+
+#  playground 相关
+playground.xcworkspace/contents.xcworkspacedata
+
+#  Swift Package Manager 的符号链接
+.swiftpm
+
+#  Swift 5.3 及以后版本的编译数据库
+*.build/
+
+# 本地配置，如 API Keys
+*.xcconfig
+.localized
+
+# 个人设置
+**/xcuserdata/
+
+# 临时文件
+*.tmp
