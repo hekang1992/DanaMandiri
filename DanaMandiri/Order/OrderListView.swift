@@ -13,6 +13,14 @@ class OrderListView: UIView {
     private var selectedIndex: Int = 0
     
     private var filterButtons: [UIButton] = []
+    
+    var clickBlock: ((String) -> Void)?
+    
+    var modelArray: [sipirangeularModel]? {
+        didSet {
+            
+        }
+    }
    
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
@@ -85,6 +93,20 @@ class OrderListView: UIView {
         return fourBtn
     }()
     
+    lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .plain)
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = UIColor.clear
+        tableView.register(OrderListViewCell.self, forCellReuseIdentifier: "OrderListViewCell")
+        tableView.estimatedRowHeight = 80
+        tableView.showsVerticalScrollIndicator = false
+        tableView.contentInsetAdjustmentBehavior = .never
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.delegate = self
+        tableView.dataSource = self
+        return tableView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -104,6 +126,7 @@ class OrderListView: UIView {
         stackView.addArrangedSubview(twoBtn)
         stackView.addArrangedSubview(threeBtn)
         stackView.addArrangedSubview(fourBtn)
+        addSubview(tableView)
         
         bgImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -121,6 +144,10 @@ class OrderListView: UIView {
         }
         stackView.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(5)
+        }
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(stackView.snp.bottom).offset(5)
+            make.left.right.bottom.equalToSuperview()
         }
     }
     
@@ -159,13 +186,13 @@ class OrderListView: UIView {
     private func handleFilterSelection(at index: Int) {
         switch index {
         case 0:
-            print("选中了：All")
+            self.clickBlock?(String(2+2))
         case 1:
-            print("选中了：Applying")
+            self.clickBlock?(String(2+5))
         case 2:
-            print("选中了：Repayment")
+            self.clickBlock?(String(2+4))
         case 3:
-            print("选中了：Finish")
+            self.clickBlock?(String(2+3))
         default:
             break
         }
@@ -180,4 +207,21 @@ class OrderListView: UIView {
     func getSelectedIndex() -> Int {
         return selectedIndex
     }
+}
+
+extension OrderListView: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return modelArray?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let model = modelArray?[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "OrderListViewCell", for: indexPath) as! OrderListViewCell
+        cell.backgroundColor = .clear
+        cell.selectionStyle = .none
+        cell.model = model
+        return cell
+    }
+    
 }

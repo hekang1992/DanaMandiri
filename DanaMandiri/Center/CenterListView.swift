@@ -142,7 +142,7 @@ class CenterListView: UIView {
         }
         
         let cin = CinInfoModel.shared.cinModel?.cin ?? ""
-        if cin == "462" {
+        if cin == "460" {
             yqImageView.isHidden = true
             yqImageView.snp.remakeConstraints { make in
                 make.centerX.equalToSuperview()

@@ -20,6 +20,8 @@ class HomeViewModel {
                     break
                 case .failure(_):
                     LoadingHUD.hide()
+                    let model = BaseModel()
+                    completion(model)
                     break
                 }
             }

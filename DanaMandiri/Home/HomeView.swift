@@ -82,7 +82,7 @@ class HomeView: UIView {
     
     lazy var descImageView: UIImageView = {
         let descImageView = UIImageView()
-        descImageView.image = UIImage(named: "desc_smalen_image")
+        descImageView.image = UIImage(named: "one_de_bg_image")
         return descImageView
     }()
     

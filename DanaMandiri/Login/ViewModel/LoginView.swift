@@ -7,8 +7,12 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
 class LoginView: UIView {
+    
+    let disposeBag = DisposeBag()
     
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
@@ -73,6 +77,30 @@ class LoginView: UIView {
         listLabel.text = "Dana Mandiri"
         return listLabel
     }()
+    
+    lazy var stackView: UIStackView = {
+        let stackView = UIStackView(frame: .zero)
+        stackView.axis = .horizontal
+        stackView.alignment = .center
+        stackView.distribution = .fillProportionally
+        stackView.spacing = 5
+        return stackView
+    }()
+    
+    lazy var cycleBtn: UIButton = {
+        let cycleBtn = UIButton(type: .custom)
+        cycleBtn.setImage(UIImage(named: "normal_login_x"), for: .normal)
+        cycleBtn.setImage(UIImage(named: "sel_login_x"), for: .selected)
+        return cycleBtn
+    }()
+    
+    lazy var priBtn: UIButton = {
+        let priBtn = UIButton(type: .custom)
+        let cin = CinInfoModel.shared.cinModel?.cin ?? ""
+        priBtn.contentHorizontalAlignment = .left
+        priBtn.setImage(cin == "460" ? UIImage(named: "id_pri_image") : UIImage(named: "in_pri_image"), for: .normal)
+        return priBtn
+    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -83,6 +111,9 @@ class LoginView: UIView {
         bgView.addSubview(phoneListView)
         bgView.addSubview(phoneCodeView)
         bgView.addSubview(againBtn)
+        bgView.addSubview(stackView)
+        stackView.addArrangedSubview(cycleBtn)
+        stackView.addArrangedSubview(priBtn)
         scrollView.addSubview(footImageView)
         scrollView.addSubview(listLabel)
         
@@ -126,6 +157,13 @@ class LoginView: UIView {
             make.height.equalTo(50)
         }
         
+        stackView.snp.makeConstraints { make in
+            make.top.equalTo(againBtn.snp.bottom).offset(20)
+            make.centerX.equalToSuperview()
+            make.left.equalToSuperview().offset(31)
+            make.height.equalTo(16)
+        }
+        
         footImageView.snp.makeConstraints { make in
             make.top.equalTo(bgView.snp.bottom).offset(30)
             make.centerX.equalToSuperview()
@@ -145,6 +183,10 @@ class LoginView: UIView {
         }else {
             liImageView.image = UIImage(named: "in_desc_image")
         }
+        
+        cycleBtn.rx.tap.subscribe(onNext: {
+            self.cycleBtn.isSelected.toggle()
+        }).disposed(by: disposeBag)
     }
     
     @MainActor required init?(coder: NSCoder) {

@@ -1,15 +1,15 @@
 //
-//  Untitled.swift
+//  OrderListViewModel.swift
 //  DanaMandiri
 //
-//  Created by hekang on 2025/10/11.
+//  Created by hekang on 2025/10/13.
 //
 
-class CenterListViewModel {
+class OrderListViewModel {
     
-    func getCenterInfo(completion: @escaping (BaseModel) -> Void) {
+    func getOrderListInfo(with json: [String: Any], completion: @escaping (BaseModel) -> Void) {
         LoadingHUD.show(text: "Loading...")
-        NetworkManager.shared.getRequest(url: "/taxile/thatise", responseType: BaseModel.self) { result in
+        NetworkManager.shared.postJsonRequest(url: "/taxile/social", json: json, responseType: BaseModel.self) { result in
             switch result {
             case .success(let success):
                 LoadingHUD.hide()
@@ -23,5 +23,6 @@ class CenterListViewModel {
             }
         }
     }
+    
     
 }

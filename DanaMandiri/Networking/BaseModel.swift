@@ -9,13 +9,19 @@ struct BaseModel: Codable {
     var aboutation: String?
     var filmably: String?
     var salin: salinModel?
-
+    
     enum CodingKeys: String, CodingKey {
         case aboutation
         case filmably
         case salin
     }
-
+    
+    init(aboutation: String? = nil, filmably: String? = nil, salin: salinModel? = nil) {
+        self.aboutation = aboutation
+        self.filmably = filmably
+        self.salin = salin
+    }
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         if let strValue = try? container.decode(String.self, forKey: .aboutation) {
@@ -25,12 +31,11 @@ struct BaseModel: Codable {
         } else {
             aboutation = nil
         }
-
+        
         filmably = try? container.decode(String.self, forKey: .filmably)
         salin = try? container.decode(salinModel.self, forKey: .salin)
     }
 }
-
 
 struct salinModel: Codable {
     var cin: String?
@@ -43,6 +48,13 @@ struct salinModel: Codable {
 struct sipirangeularModel: Codable {
     var skillette: String?
     var social: [socialModel]?
+    var selendom: String? /// finish
+    var westernenne: westernenneModel?
+    var vertindustryent: String?///logo
+    var alate: String?///name
+    var natureivity: String?///pageurl
+    var toous: String?
+    var indiition: String?
 }
 
 struct socialModel: Codable {
@@ -64,4 +76,19 @@ struct equizeModel: Codable {
     var ctenitive: String?
     var senselike: String?
     var kilolaughish: String?
+}
+
+struct westernenneModel: Codable {
+    var formatStatus: String?
+    var selendom: String?
+    var clysmative: String?
+    var threeite: String?
+    var lepo: String?
+    var testth: String?
+    var histriie: String?
+    var able: String?
+    var multaing: String?
+    var staritious: String?
+    var itiner: String?
+    var indiition: String?
 }
