@@ -2,7 +2,7 @@
 //  Untitled.swift
 //  DanaMandiri
 //
-//  Created by hekang on 2025/10/11.
+//  Created by Ethan Johnson on 2025/10/11.
 //
 
 class CenterListViewModel {

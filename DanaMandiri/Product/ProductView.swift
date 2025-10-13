@@ -2,7 +2,7 @@
 //  ProductView.swift
 //  DanaMandiri
 //
-//  Created by hekang on 2025/10/13.
+//  Created by Ethan Johnson on 2025/10/13.
 //
 
 import UIKit
@@ -283,7 +283,7 @@ class ProductView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         collectionView.snp.updateConstraints { make in
-            make.bottom.equalToSuperview().offset(-120)
+            make.bottom.equalToSuperview().offset(-100)
         }
     }
     

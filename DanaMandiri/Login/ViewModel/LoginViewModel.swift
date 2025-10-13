@@ -2,7 +2,7 @@
 //  LoginViewModel.swift
 //  DanaMandiri
 //
-//  Created by hekang on 2025/10/9.
+//  Created by Ethan Johnson on 2025/10/9.
 //
 
 class LoginViewModel {
