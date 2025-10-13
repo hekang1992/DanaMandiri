@@ -43,6 +43,10 @@ struct salinModel: Codable {
     var cast: String?
     var sipirangeular: [sipirangeularModel]?
     var equize: [equizeModel]?
+    /// NEXT_URL
+    var singleain: String?
+    var etharium: ethariumModel?
+    var lessast: [lessastModel]?
 }
 
 struct sipirangeularModel: Codable {
@@ -70,6 +74,7 @@ struct socialModel: Codable {
     var minaclike: String?
     var scolieer: String?
     var testth: String?
+    var testnature: Int?
 }
 
 struct equizeModel: Codable {
@@ -91,4 +96,36 @@ struct westernenneModel: Codable {
     var staritious: String?
     var itiner: String?
     var indiition: String?
+}
+
+struct ethariumModel: Codable {
+    var standal: standalModel?
+    var miritude: String?
+    var tergable: String?
+    var vertindustryent: String?
+    var coprattack: String?
+    var rep: String?
+}
+
+struct standalModel: Codable {
+    var actionish: actionishModel?
+    var bothor: bothorModel?
+}
+
+struct actionishModel: Codable {
+    var ctenitive: String?
+    var evidenceish: String?
+}
+
+struct bothorModel: Codable {
+    var ctenitive: String?
+    var evidenceish: String?
+}
+
+struct lessastModel: Codable {
+    var ctenitive: String?
+    var raptaceous: String?
+    /// 是否完成
+    var articleit: Int?
+    var firmacity: String?
 }

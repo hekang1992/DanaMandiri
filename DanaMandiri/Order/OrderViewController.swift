@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import MJRefresh
 
-class OrderViewController: UIViewController {
+class OrderViewController: BaseViewController {
     
     lazy var listView: OrderListView = {
         let listView = OrderListView(frame: .zero)

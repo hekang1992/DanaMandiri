@@ -184,7 +184,7 @@ class SmallTwoViewCell: UITableViewCell {
         }
         logoImageView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(31)
-            make.right.equalToSuperview().offset(31)
+            make.right.equalToSuperview().offset(-31)
             make.size.equalTo(CGSize(width: 51, height: 51))
         }
         applyLabel.snp.makeConstraints { make in

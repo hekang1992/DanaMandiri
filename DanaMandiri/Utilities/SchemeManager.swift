@@ -65,10 +65,31 @@ class SchemeManager {
         case .order:
             break
         case .product:
+            if let tabBar = UIApplication.shared.windows.first?.rootViewController as? CustomTabBarController {
+                if let nav = tabBar.getCurrentViewController() as? UINavigationController {
+                    let productDetailVC = ProductDetailViewController()
+                    let productID = QueryValueManager.queryValue(from: url, for: "response") ?? ""
+                    productDetailVC.productID = productID
+                    nav.pushViewController(productDetailVC, animated: true)
+                }
+            }
             break
         case .unknown:
             break
         }
     }
+    
+}
+
+class QueryValueManager {
+   static func queryValue(from urlString: String, for name: String) -> String? {
+        guard let url = URL(string: urlString),
+              let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
+              let items = components.queryItems else {
+            return nil
+        }
+        return items.first(where: { $0.name == name })?.value
+    }
+
     
 }

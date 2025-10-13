@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import MJRefresh
 
-class CenterViewController: UIViewController {
+class CenterViewController: BaseViewController {
     
     lazy var centerListView: CenterListView = {
         let centerListView = CenterListView(frame: .zero)

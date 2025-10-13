@@ -11,13 +11,15 @@ import RxRelay
 import SnapKit
 import MJRefresh
 
-class HomeViewController: UIViewController {
+class HomeViewController: BaseViewController {
     
     let disposeBag = DisposeBag()
     
     let homeViewModel = HomeViewModel()
     
     var homeModel = BehaviorRelay<BaseModel?>(value: nil)
+    
+    var smallModel: socialModel?
     
     lazy var smallView: SmallMainView = {
         let smallView = SmallMainView(frame: .zero)
@@ -77,9 +79,14 @@ class HomeViewController: UIViewController {
                 self.homeView.isHidden = false
                 let index = listArray.firstIndex(where: { $0.skillette == "tricesimition" }) ?? 0
                 self.homeView.smallModel = listArray[index].social?.first
+                self.smallModel = self.homeView.smallModel
             }
         }).disposed(by: disposeBag)
         
+        ///APPLY_PRODUCT
+        homeView.applyBlock = {
+            self.applyInfo()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -97,6 +104,26 @@ extension HomeViewController {
             self?.homeView.scrollView.mj_header?.endRefreshing()
             if ["0", "00"].contains(model.aboutation) {
                 self?.homeModel.accept(model)
+            }
+        }
+    }
+    
+    private func applyInfo() {
+        let testnature = self.smallModel?.testnature ?? 0
+        let json = ["typefication": "1001",
+                    "dynaance": "1000",
+                    "noticeion": "1000",
+                    "response": String(testnature)]
+        homeViewModel.applyProductInfo(with: json) { model in
+            if ["0", "00"].contains(model.aboutation) {
+                let singleain = model.salin?.singleain ?? ""
+                if singleain.contains(SCHEME_URL) {
+                    SchemeManager.handle(url: singleain)
+                }else {
+                    
+                }
+            }else {
+                ToastProgressHUD.showToastText(message: model.filmably ?? "")
             }
         }
     }

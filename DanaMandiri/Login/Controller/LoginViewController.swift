@@ -52,6 +52,19 @@ extension LoginViewController {
     private func toLoginInfo() {
         let phone = self.loginView.phoneListView.phoneTx.text ?? ""
         let code = self.loginView.phoneCodeView.phoneTx.text ?? ""
+        if phone.isEmpty {
+            ToastProgressHUD.showToastText(message: LanguageManager.localizedString(for: "Please enter your phone number"))
+            return
+        }
+        if code.isEmpty {
+            ToastProgressHUD.showToastText(message: "")
+            ToastProgressHUD.showToastText(message: LanguageManager.localizedString(for: "Please enter the verification code"))
+            return
+        }
+        if self.loginView.cycleBtn.isSelected == false {
+            ToastProgressHUD.showToastText(message: LanguageManager.localizedString(for: "Please review and confirm the agreement"))
+            return
+        }
         let json = ["thatise": phone,
                     "sophoency": code,
                     "himselfform": "tologin",

@@ -8,8 +8,15 @@
 import UIKit
 import SnapKit
 import Kingfisher
+import RxSwift
+import RxCocoa
+import RxGesture
 
 class HomeView: UIView {
+    
+    let disposeBag = DisposeBag()
+    
+    var applyBlock: (() -> Void)?
     
     var smallModel: socialModel? {
         didSet {
@@ -74,9 +81,11 @@ class HomeView: UIView {
         return headImageView
     }()
     
+    /// CLICK_DIJI_INFO
     lazy var bigImageView: UIImageView = {
         let bigImageView = UIImageView()
         bigImageView.image = UIImage(named: "home_bgmi_image")
+        bigImageView.isUserInteractionEnabled = true
         return bigImageView
     }()
     
@@ -170,6 +179,7 @@ class HomeView: UIView {
         applyLabel.backgroundColor = UIColor.init(hexString: "#009F1E")
         applyLabel.layer.borderWidth = 2
         applyLabel.layer.borderColor = UIColor.black.cgColor
+        applyLabel.isUserInteractionEnabled = true
         return applyLabel
     }()
     
@@ -279,6 +289,7 @@ class HomeView: UIView {
             make.height.equalTo(44)
             make.bottom.equalToSuperview().offset(-42)
         }
+        
         descImageView.snp.makeConstraints { make in
             make.top.equalTo(bigImageView.snp.bottom).offset(15)
             make.left.equalToSuperview()
@@ -346,6 +357,11 @@ class HomeView: UIView {
                 make.bottom.equalToSuperview().offset(-10)
             }
         }
+        
+        bigImageView.rx.tapGesture().when(.recognized).subscribe(onNext: { _ in
+            self.applyBlock?()
+        }).disposed(by: disposeBag)
+        
     }
     
     required init?(coder: NSCoder) {

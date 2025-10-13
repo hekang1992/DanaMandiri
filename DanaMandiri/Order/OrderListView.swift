@@ -18,9 +18,19 @@ class OrderListView: UIView {
     
     var modelArray: [sipirangeularModel]? {
         didSet {
-            
+            guard let modelArray = modelArray else { return }
+            if modelArray.count > 0 {
+                emptyView.isHidden = true
+            }else {
+                emptyView.isHidden = false
+            }
         }
     }
+    
+    lazy var emptyView: EmptyView = {
+        let emptyView = EmptyView(frame: .zero)
+        return emptyView
+    }()
    
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
@@ -127,6 +137,7 @@ class OrderListView: UIView {
         stackView.addArrangedSubview(threeBtn)
         stackView.addArrangedSubview(fourBtn)
         addSubview(tableView)
+        addSubview(emptyView)
         
         bgImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -146,6 +157,10 @@ class OrderListView: UIView {
             make.edges.equalToSuperview().inset(5)
         }
         tableView.snp.makeConstraints { make in
+            make.top.equalTo(stackView.snp.bottom).offset(5)
+            make.left.right.bottom.equalToSuperview()
+        }
+        emptyView.snp.makeConstraints { make in
             make.top.equalTo(stackView.snp.bottom).offset(5)
             make.left.right.bottom.equalToSuperview()
         }
