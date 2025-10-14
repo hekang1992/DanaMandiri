@@ -21,13 +21,13 @@ class BaseViewController: UIViewController {
         view.backgroundColor = .white
     }
     
-    func popToSpecificViewController() {
-//        guard let navigationController = self.navigationController else { return }
-//        if let targetVC = navigationController.viewControllers.first(where: { $0 is AppStepViewViewController }) {
-//            navigationController.popToViewController(targetVC, animated: true)
-//        } else {
-//            navigationController.popViewController(animated: true)
-//        }
+    func popToDetailViewController() {
+        guard let navigationController = self.navigationController else { return }
+        if let targetVC = navigationController.viewControllers.first(where: { $0 is ProductDetailViewController }) {
+            navigationController.popToViewController(targetVC, animated: true)
+        } else {
+            navigationController.popViewController(animated: true)
+        }
     }
     
 }

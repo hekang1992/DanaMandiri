@@ -90,7 +90,7 @@ class NetworkManager {
         url: String,
         image: UIImage,
         parameters: [String: Any]? = nil,
-        imageName: String = "file",
+        imageName: String = "habitetic",
         headers: HTTPHeaders? = nil,
         responseType: T.Type,
         completion: @escaping (Result<T, Error>) -> Void) {

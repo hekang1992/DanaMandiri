@@ -54,6 +54,20 @@
 		73F71AAB2E9A030900BB6091 /* OrderListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F71AAA2E9A030900BB6091 /* OrderListView.swift */; };
 		73F71AAD2E9A1CD600BB6091 /* CenterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F71AAC2E9A1CD600BB6091 /* CenterListView.swift */; };
 		73F71AAF2E9A1FB600BB6091 /* CenterListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F71AAE2E9A1FB500BB6091 /* CenterListViewModel.swift */; };
+		73FD441A2E9DF0A30075D082 /* PersonalImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FD44192E9DF0A30075D082 /* PersonalImageViewController.swift */; };
+		73FD441C2E9DF0B60075D082 /* PersonalImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FD441B2E9DF0B60075D082 /* PersonalImageView.swift */; };
+		73FD441E2E9DF0CB0075D082 /* PersonalImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FD441D2E9DF0CB0075D082 /* PersonalImageViewModel.swift */; };
+		73FD44202E9E03020075D082 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FD441F2E9E03010075D082 /* CameraManager.swift */; };
+		73FD44222E9E15680075D082 /* PopPersonalInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FD44212E9E15680075D082 /* PopPersonalInfoView.swift */; };
+		73FD44242E9E26830075D082 /* FaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FD44232E9E26830075D082 /* FaceViewController.swift */; };
+		73FD44262E9E28C30075D082 /* FaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FD44252E9E28BA0075D082 /* FaceView.swift */; };
+		73FD442A2E9E29D30075D082 /* BothCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FD44292E9E29D30075D082 /* BothCompleteViewController.swift */; };
+		73FD442C2E9E2DAD0075D082 /* BothComleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FD442B2E9E2DAA0075D082 /* BothComleteView.swift */; };
+		73FD44312E9E34160075D082 /* BasicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FD44302E9E34160075D082 /* BasicViewController.swift */; };
+		73FD44332E9E3E200075D082 /* BasicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FD44322E9E3E200075D082 /* BasicView.swift */; };
+		73FD44352E9E3E290075D082 /* BasicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FD44342E9E3E260075D082 /* BasicViewModel.swift */; };
+		73FD44372E9E3EDF0075D082 /* TapClickViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FD44362E9E3EDF0075D082 /* TapClickViewCell.swift */; };
+		73FD44392E9E3EF00075D082 /* EnterInputViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FD44382E9E3EF00075D082 /* EnterInputViewCell.swift */; };
 		FAF4A314172EA700A19B78FE /* Pods_DanaMandiri.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B04719A34419DAC2CE3439 /* Pods_DanaMandiri.framework */; };
 /* End PBXBuildFile section */
 
@@ -112,6 +126,20 @@
 		73F71AAA2E9A030900BB6091 /* OrderListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListView.swift; sourceTree = "<group>"; };
 		73F71AAC2E9A1CD600BB6091 /* CenterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterListView.swift; sourceTree = "<group>"; };
 		73F71AAE2E9A1FB500BB6091 /* CenterListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterListViewModel.swift; sourceTree = "<group>"; };
+		73FD44192E9DF0A30075D082 /* PersonalImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalImageViewController.swift; sourceTree = "<group>"; };
+		73FD441B2E9DF0B60075D082 /* PersonalImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalImageView.swift; sourceTree = "<group>"; };
+		73FD441D2E9DF0CB0075D082 /* PersonalImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalImageViewModel.swift; sourceTree = "<group>"; };
+		73FD441F2E9E03010075D082 /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
+		73FD44212E9E15680075D082 /* PopPersonalInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopPersonalInfoView.swift; sourceTree = "<group>"; };
+		73FD44232E9E26830075D082 /* FaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceViewController.swift; sourceTree = "<group>"; };
+		73FD44252E9E28BA0075D082 /* FaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceView.swift; sourceTree = "<group>"; };
+		73FD44292E9E29D30075D082 /* BothCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BothCompleteViewController.swift; sourceTree = "<group>"; };
+		73FD442B2E9E2DAA0075D082 /* BothComleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BothComleteView.swift; sourceTree = "<group>"; };
+		73FD44302E9E34160075D082 /* BasicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicViewController.swift; sourceTree = "<group>"; };
+		73FD44322E9E3E200075D082 /* BasicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicView.swift; sourceTree = "<group>"; };
+		73FD44342E9E3E260075D082 /* BasicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicViewModel.swift; sourceTree = "<group>"; };
+		73FD44362E9E3EDF0075D082 /* TapClickViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapClickViewCell.swift; sourceTree = "<group>"; };
+		73FD44382E9E3EF00075D082 /* EnterInputViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterInputViewCell.swift; sourceTree = "<group>"; };
 		D506D2406C71CC1BED782247 /* Pods-DanaMandiri.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DanaMandiri.debug.xcconfig"; path = "Target Support Files/Pods-DanaMandiri/Pods-DanaMandiri.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -281,12 +309,66 @@
 		73B1AD802E9D2977001590B8 /* Product */ = {
 			isa = PBXGroup;
 			children = (
+				73FD44172E9DF0780075D082 /* One */,
+				73FD44182E9DF0840075D082 /* Two */,
+				73FD442D2E9E33D50075D082 /* Three */,
+				73FD442E2E9E33DD0075D082 /* Four */,
+				73FD442F2E9E33E30075D082 /* Five */,
+			);
+			path = Product;
+			sourceTree = "<group>";
+		};
+		73FD44172E9DF0780075D082 /* One */ = {
+			isa = PBXGroup;
+			children = (
 				73B1AD852E9D325C001590B8 /* ProductView.swift */,
 				73B1AD832E9D3248001590B8 /* ProductViewModel.swift */,
 				73B1AD812E9D299B001590B8 /* ProductDetailViewController.swift */,
 				73B1AD872E9D4442001590B8 /* ProductCollectionViewCell.swift */,
 			);
-			path = Product;
+			path = One;
+			sourceTree = "<group>";
+		};
+		73FD44182E9DF0840075D082 /* Two */ = {
+			isa = PBXGroup;
+			children = (
+				73FD441F2E9E03010075D082 /* CameraManager.swift */,
+				73FD441B2E9DF0B60075D082 /* PersonalImageView.swift */,
+				73FD441D2E9DF0CB0075D082 /* PersonalImageViewModel.swift */,
+				73FD44192E9DF0A30075D082 /* PersonalImageViewController.swift */,
+				73FD44212E9E15680075D082 /* PopPersonalInfoView.swift */,
+				73FD44252E9E28BA0075D082 /* FaceView.swift */,
+				73FD44232E9E26830075D082 /* FaceViewController.swift */,
+				73FD442B2E9E2DAA0075D082 /* BothComleteView.swift */,
+				73FD44292E9E29D30075D082 /* BothCompleteViewController.swift */,
+			);
+			path = Two;
+			sourceTree = "<group>";
+		};
+		73FD442D2E9E33D50075D082 /* Three */ = {
+			isa = PBXGroup;
+			children = (
+				73FD44322E9E3E200075D082 /* BasicView.swift */,
+				73FD44342E9E3E260075D082 /* BasicViewModel.swift */,
+				73FD44302E9E34160075D082 /* BasicViewController.swift */,
+				73FD44362E9E3EDF0075D082 /* TapClickViewCell.swift */,
+				73FD44382E9E3EF00075D082 /* EnterInputViewCell.swift */,
+			);
+			path = Three;
+			sourceTree = "<group>";
+		};
+		73FD442E2E9E33DD0075D082 /* Four */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Four;
+			sourceTree = "<group>";
+		};
+		73FD442F2E9E33E30075D082 /* Five */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Five;
 			sourceTree = "<group>";
 		};
 		95C0CE5AC4F98B0FD974E43C /* Frameworks */ = {
@@ -429,14 +511,19 @@
 			files = (
 				73F71AA72E99F48700BB6091 /* SmallFourViewCell.swift in Sources */,
 				73AF985D2E97A8D8006BFCCA /* LoginViewController.swift in Sources */,
+				73FD442C2E9E2DAD0075D082 /* BothComleteView.swift in Sources */,
+				73FD44262E9E28C30075D082 /* FaceView.swift in Sources */,
 				73B1AD882E9D4442001590B8 /* ProductCollectionViewCell.swift in Sources */,
 				732C1C982E98FCE70005A18F /* HomeViewModel.swift in Sources */,
 				73D9D3052E9A555B00E223C0 /* SchemeManager.swift in Sources */,
 				73F71AAB2E9A030900BB6091 /* OrderListView.swift in Sources */,
 				73D9D3072E9A606500E223C0 /* SettingViewController.swift in Sources */,
+				73FD442A2E9E29D30075D082 /* BothCompleteViewController.swift in Sources */,
+				73FD44392E9E3EF00075D082 /* EnterInputViewCell.swift in Sources */,
 				73AF98512E97A5FA006BFCCA /* BaseViewController.swift in Sources */,
 				73F71AA52E99F47D00BB6091 /* SmallThreeViewCell.swift in Sources */,
 				732C1C922E98F5850005A18F /* HomeViewController.swift in Sources */,
+				73FD44372E9E3EDF0075D082 /* TapClickViewCell.swift in Sources */,
 				73AF98552E97A6EC006BFCCA /* StartViewController.swift in Sources */,
 				73AF98532E97A6C3006BFCCA /* BaseNavigationController.swift in Sources */,
 				732C1C7E2E9898220005A18F /* Extension.swift in Sources */,
@@ -454,18 +541,27 @@
 				732C1C8A2E98DBC20005A18F /* PhoneCodeView.swift in Sources */,
 				732C1C842E98CD8B0005A18F /* LoginView.swift in Sources */,
 				73B1AD822E9D299B001590B8 /* ProductDetailViewController.swift in Sources */,
+				73FD44242E9E26830075D082 /* FaceViewController.swift in Sources */,
 				732C1C8C2E98EB460005A18F /* CustomTabBarController.swift in Sources */,
 				73F71AA92E99F67100BB6091 /* SmallThreeCollectionViewCell.swift in Sources */,
 				732C1C862E98CFAC0005A18F /* PhoneListView.swift in Sources */,
 				73AF98582E97A73A006BFCCA /* Color.swift in Sources */,
 				732C1C962E98FCDC0005A18F /* HomeView.swift in Sources */,
 				73AF98392E979B4F006BFCCA /* AppDelegate.swift in Sources */,
+				73FD44332E9E3E200075D082 /* BasicView.swift in Sources */,
+				73FD44312E9E34160075D082 /* BasicViewController.swift in Sources */,
 				737656522E9CC5870018258E /* DeleteAccountView.swift in Sources */,
+				73FD44202E9E03020075D082 /* CameraManager.swift in Sources */,
+				73FD441C2E9DF0B60075D082 /* PersonalImageView.swift in Sources */,
 				73AF985F2E97A8EF006BFCCA /* LoginViewModel.swift in Sources */,
+				73FD441A2E9DF0A30075D082 /* PersonalImageViewController.swift in Sources */,
 				73AF98612E97A9A8006BFCCA /* BaseModel.swift in Sources */,
+				73FD44352E9E3E290075D082 /* BasicViewModel.swift in Sources */,
+				73FD44222E9E15680075D082 /* PopPersonalInfoView.swift in Sources */,
 				732C1C9A2E9904200005A18F /* SmallMainView.swift in Sources */,
 				732C1C882E98D6180005A18F /* LanguageManager.swift in Sources */,
 				737656502E9CABF80018258E /* LogOutView.swift in Sources */,
+				73FD441E2E9DF0CB0075D082 /* PersonalImageViewModel.swift in Sources */,
 				732C1C902E98F57B0005A18F /* OrderViewController.swift in Sources */,
 				737656582E9CFBCE0018258E /* EmptyView.swift in Sources */,
 				737656562E9CE42D0018258E /* OrderListViewCell.swift in Sources */,

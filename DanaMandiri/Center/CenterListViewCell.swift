@@ -34,7 +34,7 @@ class CenterListViewCell: UITableViewCell {
     
     lazy var eightImageView: UIImageView = {
         let eightImageView = UIImageView()
-        eightImageView.image = UIImage(named: "right_ce_image")
+        eightImageView.image = UIImage(named: "ril_li_image_c")
         return eightImageView
     }()
     

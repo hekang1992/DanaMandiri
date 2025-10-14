@@ -13,6 +13,8 @@ class ProductView: UIView {
     
     private var collectionViewHeightConstraint: Constraint?
     
+    var cellClickBlock: ((lessastModel) -> Void)?
+    
     var model: BaseModel? {
         didSet {
             guard let model = model else { return }
@@ -298,6 +300,8 @@ extension ProductView: UICollectionViewDataSource, UICollectionViewDelegateFlowL
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCollectionViewCell",
                                                       for: indexPath) as! ProductCollectionViewCell
+        let listModel = model?.salin?.lessast?[indexPath.row]
+        cell.model = listModel
         return cell
     }
     
@@ -314,6 +318,8 @@ extension ProductView: UICollectionViewDataSource, UICollectionViewDelegateFlowL
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        if let listModel = model?.salin?.lessast?[indexPath.row] {
+            self.cellClickBlock?(listModel)
+        }
     }
 }

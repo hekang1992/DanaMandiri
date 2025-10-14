@@ -47,6 +47,13 @@ struct salinModel: Codable {
     var singleain: String?
     var etharium: ethariumModel?
     var lessast: [lessastModel]?
+    var shake: shakeModel?
+    var phobthougharian: phobthougharianModel?
+    var feliimportant: feliimportantModel?
+    var pachyade: String?
+    var segetical: String?
+    var polyward: String?
+    var clastoon: [clastoonModel]?
 }
 
 struct sipirangeularModel: Codable {
@@ -105,6 +112,7 @@ struct ethariumModel: Codable {
     var vertindustryent: String?
     var coprattack: String?
     var rep: String?
+    var presentality: String?
 }
 
 struct standalModel: Codable {
@@ -128,4 +136,47 @@ struct lessastModel: Codable {
     /// 是否完成
     var articleit: Int?
     var firmacity: String?
+    /// 具体的步骤
+    var resourceosity: String?
+}
+
+struct shakeModel: Codable {
+    var resourceosity: String?
+    var ctenitive: String?
+}
+
+struct phobthougharianModel: Codable {
+    var articleit: Int?
+    var singleain: String?
+    var fullacity: fullacityModel?
+     
+}
+
+struct fullacityModel: Codable {
+    var pachyade: String?
+    var segetical: String?
+    var polyward: String?
+}
+
+struct feliimportantModel: Codable {
+    var articleit: Int?
+    var singleain: String?
+}
+
+struct clastoonModel: Codable {
+    var ctenitive: String?
+    var raptaceous: String?
+    var aboutation: String?
+    /// EMUN
+    var uxori: String?
+    /// 回血的值
+    var prehens: String?
+    var skillette: String?
+    var uncifear: String?
+    var aboveent: [aboveentModel]?
+}
+
+struct aboveentModel: Codable {
+    var pachyade: String?
+    var skillette: Int?
 }

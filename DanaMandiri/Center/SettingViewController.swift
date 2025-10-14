@@ -98,7 +98,6 @@ class SettingViewController: BaseViewController {
             self.navigationController?.popToRootViewController(animated: true)
         }).disposed(by: disposeBag)
         
-        
         view.addSubview(bgView)
         bgView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
