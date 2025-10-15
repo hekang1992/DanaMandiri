@@ -169,7 +169,7 @@ struct clastoonModel: Codable {
     var aboutation: String?
     /// EMUN
     var uxori: String?
-    /// 回血的值
+    /// 回写的值
     var prehens: String?
     var skillette: String?
     var uncifear: String?

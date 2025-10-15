@@ -10,6 +10,8 @@ import SnapKit
 
 class EnterInputViewCell: UITableViewCell {
     
+    var textChangedHandler: ((String) -> Void)?
+    
     var model: clastoonModel? {
         didSet {
             guard let model = model else { return }
@@ -17,6 +19,12 @@ class EnterInputViewCell: UITableViewCell {
             nameTx.placeholder = model.raptaceous ?? ""
             let uncifear = model.uncifear ?? ""
             nameTx.keyboardType = uncifear == "1" ? .numberPad : .default
+            let prehens = model.prehens ?? ""
+            if prehens.isEmpty {
+                nameTx.text = ""
+            }else {
+                nameTx.text = prehens
+            }
         }
     }
     
@@ -36,13 +44,15 @@ class EnterInputViewCell: UITableViewCell {
         ])
         nameTx.attributedPlaceholder = attrString
         nameTx.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight(600))
-        nameTx.textColor = UIColor.init(hexString: "#0E0F0F")
+        nameTx.textColor = UIColor.init(hexString: "#009F1E")
         nameTx.backgroundColor = .white
         nameTx.layer.cornerRadius = 14
         nameTx.clipsToBounds = true
         nameTx.leftView = UIView(frame: CGRectMake(0, 0, 10, 10))
         nameTx.leftViewMode = .always
         nameTx.backgroundColor = UIColor.init(hexString: "#EDF0F2")
+        nameTx.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        nameTx.delegate = self
         return nameTx
     }()
 
@@ -69,4 +79,18 @@ class EnterInputViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        let nameValue = textField.text ?? ""
+        textChangedHandler?(nameValue)
+        print("输入的值: \(nameValue)")
+    }
+    
+}
+
+extension EnterInputViewCell: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }

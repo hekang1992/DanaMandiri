@@ -7,10 +7,17 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import TYAlertController
+import RxCocoa
 
 class BasicView: UIView {
     
     var model: BaseModel?
+    
+    let disposeBag = DisposeBag()
+    
+    var tapClickBlock: ((TapClickViewCell, Int) -> Void)?
     
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
@@ -26,7 +33,7 @@ class BasicView: UIView {
         tableView.dataSource = self
         return tableView
     }()
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(tableView)
@@ -42,6 +49,7 @@ class BasicView: UIView {
 }
 
 extension BasicView: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return model?.salin?.clastoon?.count ?? 0
     }
@@ -54,15 +62,62 @@ extension BasicView: UITableViewDelegate, UITableViewDataSource {
             cell.model = listModel
             cell.backgroundColor = .clear
             cell.selectionStyle = .none
+            cell.textChangedHandler = { [weak self] text in
+                self?.model?.salin?.clastoon?[indexPath.row].prehens = text
+            }
             return cell
         }else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TapClickViewCell", for: indexPath) as! TapClickViewCell
             cell.model = listModel
             cell.backgroundColor = .clear
             cell.selectionStyle = .none
+            /// CITY_INFO
+            if uxori == "xylical" {
+                if let listModel = listModel {
+                    self.enumClick(with: cell, listModel: listModel, indexPath: indexPath)
+                }
+            }else {
+                if let listModel = listModel {
+                    self.enumClick(with: cell, listModel: listModel, indexPath: indexPath)
+                }
+            }
             return cell
         }
-        
     }
-        
+    
+}
+
+extension BasicView {
+    
+    private func enumClick(with cell: TapClickViewCell, listModel: clastoonModel, indexPath: IndexPath) {
+        cell.tapClickBlock = { [weak self] in
+            if let self = self, let viewController = self.getViewController() {
+                self.endEditing(true)
+                let popView = PopSelectInfoView(frame: self.bounds)
+                popView.model = listModel
+                let alertVc = TYAlertController(alert: popView, preferredStyle: .alert)!
+                viewController.present(alertVc, animated: true)
+                
+                popView.cancelBtn.rx.tap.subscribe(onNext: {
+                    viewController.dismiss(animated: true)
+                }).disposed(by: disposeBag)
+                
+                popView.tapClickIndexBlock = { [weak self] bindex in
+                    guard let self = self else { return }
+                    let prehens = self.model?.salin?.clastoon?[indexPath.row].aboveent?[bindex].pachyade ?? ""
+                    let skillette = self.model?.salin?.clastoon?[indexPath.row].aboveent?[bindex].skillette ?? 0
+                    cell.nameTx.text = prehens
+                    viewController.dismiss(animated: true) {
+                        self.model?.salin?.clastoon?[indexPath.row].prehens = prehens
+                        self.model?.salin?.clastoon?[indexPath.row].skillette = String(skillette)
+                    }
+                }
+            }
+        }
+    }
+    
+    private func cityClick(with cell: TapClickViewCell, listModel: clastoonModel, indexPath: IndexPath) {
+        self.endEditing(true)
+    }
+    
 }

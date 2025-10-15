@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import RxSwift
 import RxCocoa
+import TYAlertController
 
 class BasicViewController: BaseViewController {
     
@@ -112,6 +113,19 @@ class BasicViewController: BaseViewController {
             }
         }
         
+        againBtn.rx.tap.subscribe(onNext: { [weak self] in
+            self?.saveInfo()
+        }).disposed(by: disposeBag)
+        
     }
 
+}
+
+extension BasicViewController {
+    
+    private func saveInfo() {
+        let model = self.basicView.model
+        print("skillette=========\(model?.salin?.clastoon?.first?.skillette ?? "")")
+    }
+    
 }

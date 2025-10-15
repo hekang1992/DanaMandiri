@@ -87,6 +87,13 @@ class HomeViewController: BaseViewController {
         homeView.applyBlock = {
             self.applyInfo()
         }
+        
+        homeViewModel.getAdressInfo { model in
+            if ["0", "00"].contains(model.aboutation) {
+                CityAddressModel.shared.cityModel = model.salin
+            }
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

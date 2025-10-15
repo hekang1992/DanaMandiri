@@ -170,3 +170,11 @@ class ToastProgressHUD {
         KRProgressHUD.showMessage(message)
     }
 }
+
+
+/// 城市数据model
+class CityAddressModel{
+    static let shared = CityAddressModel()
+    private init() {}
+    var cityModel: salinModel?
+}

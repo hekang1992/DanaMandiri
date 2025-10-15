@@ -44,4 +44,18 @@ class HomeViewModel {
         }
     }
     
+    func getAdressInfo(completion: @escaping (BaseModel) -> Void) {
+        NetworkManager.shared.getRequest(url: "/taxile/mercveryitious", responseType: BaseModel.self) { result in
+            switch result {
+            case .success(let success):
+                completion(success)
+                break
+            case .failure(let failure):
+                let model = BaseModel()
+                completion(model)
+                break
+            }
+        }
+    }
+    
 }
