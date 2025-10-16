@@ -45,7 +45,7 @@ class CommonHeadView: UIView {
         }
         listLabel.snp.makeConstraints { make in
             make.center.equalToSuperview()
-            make.size.equalTo(CGSize(width: 150, height: 18))
+            make.size.equalTo(CGSize(width: 250, height: 18))
         }
     }
     

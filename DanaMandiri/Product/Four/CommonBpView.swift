@@ -89,7 +89,7 @@ extension CommonBpView {
                     let skillette = self.model?.salin?.toughel?.sipirangeular?[indexPath.row].archile?[bindex].skillette ?? ""
                     cell.nameTx.text = prehens
                     viewController.dismiss(animated: true) {
-                        self.model?.salin?.toughel?.sipirangeular?[indexPath.row].pachyade = prehens
+                        self.model?.salin?.toughel?.sipirangeular?[indexPath.row].clastoon = prehens
                         self.model?.salin?.toughel?.sipirangeular?[indexPath.row].phytfew = String(skillette)
                     }
                 }

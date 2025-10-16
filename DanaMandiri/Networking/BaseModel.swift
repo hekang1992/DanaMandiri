@@ -79,6 +79,7 @@ struct sipirangeularModel: Codable {
     var merilet: String?
     var phytfew: String?/// 1 2
     var archile: [aboveentModel]?
+    var clastoon: String?
 }
 
 struct socialModel: Codable {

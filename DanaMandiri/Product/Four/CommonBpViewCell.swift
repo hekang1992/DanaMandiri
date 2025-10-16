@@ -25,13 +25,13 @@ class CommonBpViewCell: UITableViewCell {
             
             nameLabel.text = model.lepsie ?? ""
             nameTx.placeholder = model.significant ?? ""
-            nameTx.text = model.pachyade ?? ""
+            nameTx.text = model.clastoon ?? ""
             
             phoneLabel.text = model.fluxous ?? ""
             phoneTx.placeholder = model.legment ?? ""
             
-            let merilet = model.merilet ?? ""
             let pachyade = model.pachyade ?? ""
+            let merilet = model.merilet ?? ""
             let pn = "\(pachyade)-\(merilet)"
             phoneTx.text = pn == "-" ? "" : pn
             
