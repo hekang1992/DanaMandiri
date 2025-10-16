@@ -74,7 +74,7 @@ extension BasicView: UITableViewDelegate, UITableViewDataSource {
             /// CITY_INFO
             if uxori == "xylical" {
                 if let listModel = listModel {
-                    self.enumClick(with: cell, listModel: listModel, indexPath: indexPath)
+                    self.cityClick(with: cell, listModel: listModel, indexPath: indexPath)
                 }
             }else {
                 if let listModel = listModel {
@@ -117,7 +117,27 @@ extension BasicView {
     }
     
     private func cityClick(with cell: TapClickViewCell, listModel: clastoonModel, indexPath: IndexPath) {
-        self.endEditing(true)
+        cell.tapClickBlock = { [weak self] in
+            if let self = self, let viewController = self.getViewController() {
+                self.endEditing(true)
+                let popView = PopSelectCityInfoView(frame: self.bounds)
+                popView.model = listModel
+                let alertVc = TYAlertController(alert: popView, preferredStyle: .alert)!
+                viewController.present(alertVc, animated: true)
+                
+                popView.cancelBtn.rx.tap.subscribe(onNext: {
+                    viewController.dismiss(animated: true)
+                }).disposed(by: disposeBag)
+                
+                popView.confirmBlock = { [weak self] nameStr in
+                    guard let self = self else { return }
+                    cell.nameTx.text = nameStr
+                    viewController.dismiss(animated: true) {
+                        self.model?.salin?.clastoon?[indexPath.row].prehens = nameStr
+                    }
+                }
+            }
+        }
     }
     
 }

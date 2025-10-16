@@ -53,7 +53,9 @@ class TapClickViewCell: UITableViewCell {
         nameTx.leftView = UIView(frame: CGRectMake(0, 0, 10, 10))
         nameTx.leftViewMode = .always
         nameTx.isUserInteractionEnabled = false
-        nameTx.backgroundColor = UIColor.init(hexString: "#EDF0F2")        
+        nameTx.backgroundColor = UIColor.init(hexString: "#EDF0F2")
+        nameTx.rightView = UIView(frame: CGRectMake(0, 0, 40, 40))
+        nameTx.rightViewMode = .always
         return nameTx
     }()
     

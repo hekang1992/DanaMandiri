@@ -66,6 +66,9 @@ struct sipirangeularModel: Codable {
     var natureivity: String?///pageurl
     var toous: String?
     var indiition: String?
+    /// PROVICE_INFO
+    var pachyade: String?
+    var lampetic: [lampeticModel]?
 }
 
 struct socialModel: Codable {
@@ -179,4 +182,10 @@ struct clastoonModel: Codable {
 struct aboveentModel: Codable {
     var pachyade: String?
     var skillette: Int?
+}
+
+struct lampeticModel: Codable {
+    /// CITY_INFO
+    var pachyade: String?
+    var lampetic: [lampeticModel]?
 }

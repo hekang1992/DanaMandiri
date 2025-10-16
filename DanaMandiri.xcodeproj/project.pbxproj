@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		73204E402EA092C20040FE1E /* AddressPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73204E3F2EA092C00040FE1E /* AddressPickerView.swift */; };
+		73204E422EA09CB70040FE1E /* PopSelectCityInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73204E412EA09CB70040FE1E /* PopSelectCityInfoView.swift */; };
 		732C1C7C2E9895830005A18F /* LoadingHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732C1C7B2E9895820005A18F /* LoadingHUD.swift */; };
 		732C1C7E2E9898220005A18F /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732C1C7D2E9898180005A18F /* Extension.swift */; };
 		732C1C802E98AEEB0005A18F /* Untitled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732C1C7F2E98AEEA0005A18F /* Untitled.swift */; };
@@ -76,6 +78,8 @@
 /* Begin PBXFileReference section */
 		14B04719A34419DAC2CE3439 /* Pods_DanaMandiri.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DanaMandiri.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		471AFA02D171BDEEB46A6C25 /* Pods-DanaMandiri.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DanaMandiri.release.xcconfig"; path = "Target Support Files/Pods-DanaMandiri/Pods-DanaMandiri.release.xcconfig"; sourceTree = "<group>"; };
+		73204E3F2EA092C00040FE1E /* AddressPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressPickerView.swift; sourceTree = "<group>"; };
+		73204E412EA09CB70040FE1E /* PopSelectCityInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopSelectCityInfoView.swift; sourceTree = "<group>"; };
 		732C1C7B2E9895820005A18F /* LoadingHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingHUD.swift; sourceTree = "<group>"; };
 		732C1C7D2E9898180005A18F /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		732C1C7F2E98AEEA0005A18F /* Untitled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Untitled.swift; sourceTree = "<group>"; };
@@ -359,6 +363,8 @@
 				73FD44382E9E3EF00075D082 /* EnterInputViewCell.swift */,
 				7387D9972E9F3D3F005A5777 /* PopSelectInfoView.swift */,
 				7387D9992E9F4C53005A5777 /* PopSelectInfoViewCell.swift */,
+				73204E3F2EA092C00040FE1E /* AddressPickerView.swift */,
+				73204E412EA09CB70040FE1E /* PopSelectCityInfoView.swift */,
 			);
 			path = Three;
 			sourceTree = "<group>";
@@ -542,6 +548,7 @@
 				732C1C802E98AEEB0005A18F /* Untitled.swift in Sources */,
 				73AF98632E97ABA4006BFCCA /* NetworkManager.swift in Sources */,
 				732C1C942E98F58E0005A18F /* CenterViewController.swift in Sources */,
+				73204E402EA092C20040FE1E /* AddressPickerView.swift in Sources */,
 				73F71AAF2E9A1FB600BB6091 /* CenterListViewModel.swift in Sources */,
 				7376564E2E9C9E990018258E /* CommonHeadView.swift in Sources */,
 				732C1C8A2E98DBC20005A18F /* PhoneCodeView.swift in Sources */,
@@ -557,6 +564,7 @@
 				73FD44332E9E3E200075D082 /* BasicView.swift in Sources */,
 				73FD44312E9E34160075D082 /* BasicViewController.swift in Sources */,
 				737656522E9CC5870018258E /* DeleteAccountView.swift in Sources */,
+				73204E422EA09CB70040FE1E /* PopSelectCityInfoView.swift in Sources */,
 				73FD44202E9E03020075D082 /* CameraManager.swift in Sources */,
 				73FD441C2E9DF0B60075D082 /* PersonalImageView.swift in Sources */,
 				73AF985F2E97A8EF006BFCCA /* LoginViewModel.swift in Sources */,
