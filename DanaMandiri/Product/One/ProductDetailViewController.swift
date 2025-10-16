@@ -67,7 +67,12 @@ class ProductDetailViewController: BaseViewController {
         productView.borrowBtn.rx.tap.subscribe(onNext: { [weak self] in
             let resourceosity = self?.shakeModel?.resourceosity ?? ""
             /// IMAGE_PERSONAL_INFO
-            self?.goPageWithType(type: resourceosity)
+            if resourceosity.isEmpty {
+                /// ORDER_INFO
+                self?.orderToPage()
+            }else {
+                self?.goPageWithType(type: resourceosity)
+            }
         }).disposed(by: disposeBag)
         
     }
@@ -139,8 +144,42 @@ extension ProductDetailViewController {
             basicVc.productID = productID
             self.navigationController?.pushViewController(basicVc, animated: true)
             break
+        case "consumer":
+            let cnpVc = CommonBpViewController()
+            cnpVc.productID = productID
+            self.navigationController?.pushViewController(cnpVc, animated: true)
+            break
+        case "anderdom":
+            let youngVc = ChangeYoungViewController()
+            youngVc.productID = productID
+            self.navigationController?.pushViewController(youngVc, animated: true)
+            break
         default:
             break
         }
     }
+    
+    private func orderToPage() {
+        let noency = self.model?.salin?.etharium?.presentality ?? ""
+        let tergable = self.model?.salin?.etharium?.tergable ?? ""
+        let coprattack = self.model?.salin?.etharium?.coprattack ?? ""
+        let tentsure = String(self.model?.salin?.etharium?.tentsure ?? 0)
+        let json = ["noency": noency,
+                    "tergable": tergable,
+                    "quartplaceise": "1",
+                    "coprattack": coprattack,
+                    "tentsure": tentsure]
+        viewModel.orderInfo(with: json) { [weak self] model in
+            if ["0", "00"].contains(model.aboutation) {
+                let singleain = model.salin?.singleain ?? ""
+                let webVc = UnieerLifeViewController()
+                webVc.pageUrl = singleain
+                webVc.productID = self?.productID ?? ""
+                self?.navigationController?.pushViewController(webVc, animated: true)
+            }else {
+                ToastProgressHUD.showToastText(message: model.filmably ?? "")
+            }
+        }
+    }
+    
 }

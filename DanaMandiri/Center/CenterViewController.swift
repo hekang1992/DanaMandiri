@@ -17,10 +17,10 @@ class CenterViewController: BaseViewController {
     }()
     
     let viewModel = CenterListViewModel()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         view.addSubview(centerListView)
         centerListView.snp.makeConstraints { make in
@@ -31,13 +31,24 @@ class CenterViewController: BaseViewController {
             self.getCenterInfo()
         })
         
+        self.centerListView.cellTapBlock = { [weak self] kilolaughish in
+            guard let self = self else { return }
+            if kilolaughish.contains(SCHEME_URL) {
+                SchemeManager.handle(url: kilolaughish)
+            }else {
+                let webVc = UnieerLifeViewController()
+                webVc.pageUrl = kilolaughish
+                self.navigationController?.pushViewController(webVc, animated: true)
+            }
+        }
+        
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getCenterInfo()
     }
-
+    
 }
 
 extension CenterViewController {

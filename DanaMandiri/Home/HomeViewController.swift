@@ -116,18 +116,21 @@ extension HomeViewController {
     }
     
     private func applyInfo() {
-        let testnature = self.smallModel?.testnature ?? 0
+        let testnature = String(self.smallModel?.testnature ?? 0)
         let json = ["typefication": "1001",
                     "dynaance": "1000",
                     "noticeion": "1000",
-                    "response": String(testnature)]
-        homeViewModel.applyProductInfo(with: json) { model in
+                    "response": testnature]
+        homeViewModel.applyProductInfo(with: json) { [weak self] model in
             if ["0", "00"].contains(model.aboutation) {
                 let singleain = model.salin?.singleain ?? ""
                 if singleain.contains(SCHEME_URL) {
                     SchemeManager.handle(url: singleain)
                 }else {
-                    
+                    let webVc = UnieerLifeViewController()
+                    webVc.pageUrl = singleain
+                    webVc.productID = testnature
+                    self?.navigationController?.pushViewController(webVc, animated: true)
                 }
             }else {
                 ToastProgressHUD.showToastText(message: model.filmably ?? "")

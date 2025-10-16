@@ -26,7 +26,7 @@ class BaseViewController: UIViewController {
         if let targetVC = navigationController.viewControllers.first(where: { $0 is ProductDetailViewController }) {
             navigationController.popToViewController(targetVC, animated: true)
         } else {
-            navigationController.popViewController(animated: true)
+            navigationController.popToRootViewController(animated: true)
         }
     }
     

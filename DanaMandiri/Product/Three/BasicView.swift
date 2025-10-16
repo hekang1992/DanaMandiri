@@ -105,7 +105,7 @@ extension BasicView {
                 popView.tapClickIndexBlock = { [weak self] bindex in
                     guard let self = self else { return }
                     let prehens = self.model?.salin?.clastoon?[indexPath.row].aboveent?[bindex].pachyade ?? ""
-                    let skillette = self.model?.salin?.clastoon?[indexPath.row].aboveent?[bindex].skillette ?? 0
+                    let skillette = self.model?.salin?.clastoon?[indexPath.row].aboveent?[bindex].skillette ?? ""
                     cell.nameTx.text = prehens
                     viewController.dismiss(animated: true) {
                         self.model?.salin?.clastoon?[indexPath.row].prehens = prehens

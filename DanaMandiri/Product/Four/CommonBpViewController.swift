@@ -1,8 +1,8 @@
 //
-//  BasicViewController.swift
+//  CommonBpViewController.swift
 //  DanaMandiri
 //
-//  Created by hekang on 2025/10/14.
+//  Created by hekang on 2025/10/16.
 //
 
 import UIKit
@@ -11,13 +11,15 @@ import RxSwift
 import RxCocoa
 import TYAlertController
 
-class BasicViewController: BaseViewController {
+class CommonBpViewController: BaseViewController {
     
     var productID: String = ""
     
     let disposeBag = DisposeBag()
     
-    let viewModel = BasicViewModel()
+    let viewModel = CommonBpViewModel()
+    
+    var dictArray: [[String: String]] = []
     
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
@@ -28,7 +30,7 @@ class BasicViewController: BaseViewController {
     lazy var typeImageView: UIImageView = {
         let typeImageView = UIImageView()
         let cin = CinInfoModel.shared.cinModel?.cin ?? ""
-        typeImageView.image = cin == "460" ? UIImage(named: "basic_bg_od_image") : UIImage(named: "basic_bg_en_image")
+        typeImageView.image = cin == "460" ? UIImage(named: "cnp_id_bg_image") : UIImage(named: "cnp_in_bg_image")
         return typeImageView
     }()
     
@@ -52,9 +54,9 @@ class BasicViewController: BaseViewController {
         return againBtn
     }()
     
-    lazy var basicView: BasicView = {
-        let basicView = BasicView()
-        return basicView
+    lazy var bpView: CommonBpView = {
+        let bpView = CommonBpView()
+        return bpView
     }()
     
     override func viewDidLoad() {
@@ -99,48 +101,59 @@ class BasicViewController: BaseViewController {
             make.bottom.equalToSuperview().offset(-20)
         }
         
-        bgView.addSubview(basicView)
-        basicView.snp.makeConstraints { make in
+        bgView.addSubview(bpView)
+        bpView.snp.makeConstraints { make in
             make.top.left.right.equalToSuperview()
             make.bottom.equalTo(againBtn.snp.top).offset(-10)
         }
         
-        let json = ["response": productID, "slogon": "1"]
-        viewModel.getBasicInfo(with: json) { model in
+        let json = ["response": productID, "notacy": "cp"]
+        viewModel.getCommonBpInfo(with: json) { model in
             if ["0", "00"].contains(model.aboutation) {
-                self.basicView.model = model
-                self.basicView.tableView.reloadData()
+                self.bpView.model = model
+                self.bpView.tableView.reloadData()
             }
         }
         
         againBtn.rx.tap.subscribe(onNext: { [weak self] in
-            self?.saveInfo()
+            if let self = self, let model = self.bpView.model {
+                dictArray.removeAll()
+                let modelArray = model.salin?.toughel?.sipirangeular ?? []
+                modelArray.forEach { model in
+                    let merilet = model.merilet ?? ""
+                    let pachyade = model.pachyade ?? ""
+                    let phytfew = model.phytfew ?? ""
+                    let fallacy = model.fallacy ?? ""
+                    let dict = ["merilet": merilet,
+                                "pachyade": pachyade,
+                                "phytfew": phytfew,
+                                "fallacy": fallacy]
+                    self.dictArray.append(dict)
+                }
+                sagePbInfo(with: dictArray)
+            }
         }).disposed(by: disposeBag)
         
     }
 
 }
 
-extension BasicViewController {
+extension CommonBpViewController {
     
-    private func saveInfo() {
-        var json = ["response": productID]
-        let modelArray = self.basicView.model?.salin?.clastoon ?? []
-        modelArray.forEach { model in
-            let uxori = model.uxori ?? ""
-            let key = model.aboutation ?? ""
-            if uxori == "pellsome" {
-                json[key] = model.skillette ?? ""
-            }else {
-                json[key] = model.prehens ?? ""
+    private func sagePbInfo(with dictArray: [[String: String]]) {
+        var jsonSring: String = ""
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: dictArray, options: [])
+            if let jsonString = String(data: jsonData, encoding: .utf8) {
+                jsonSring = jsonString
             }
+        } catch {
+            print("Failed JSON: \(error)")
         }
-        saveBasicInfo(to: json)
-        print("json======\(json)")
-    }
-    
-    private func saveBasicInfo(to json: [String: String]) {
-        viewModel.saveBasicInfo(with: json) { [weak self] model in
+        
+        
+        let json = ["response": productID, "salin": jsonSring]
+        viewModel.saveCommonBpInfo(with: json) { [weak self] model in
             ToastProgressHUD.showToastText(message: model.filmably ?? "")
             if ["0", "00"].contains(model.aboutation) {
                 self?.popToDetailViewController()

@@ -8,8 +8,12 @@
 import UIKit
 import SnapKit
 import MJRefresh
+import RxSwift
+import RxGesture
 
 class OrderViewController: BaseViewController {
+    
+    let disposeBag = DisposeBag()
     
     lazy var listView: OrderListView = {
         let listView = OrderListView(frame: .zero)
@@ -19,10 +23,10 @@ class OrderViewController: BaseViewController {
     let viewModel = OrderListViewModel()
     
     var type: String = "4"
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.addSubview(listView)
         listView.snp.makeConstraints { make in
             make.left.right.top.equalToSuperview()
@@ -37,6 +41,22 @@ class OrderViewController: BaseViewController {
         listView.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
             self.getListInfo(with: self.type)
         })
+        
+        listView.cellTapBlock = { [weak self] pageUrl in
+            if pageUrl.contains(SCHEME_URL) {
+                SchemeManager.handle(url: pageUrl)
+            }else {
+                let webVc = UnieerLifeViewController()
+                webVc.pageUrl = pageUrl
+                self?.navigationController?.pushViewController(webVc, animated: true)
+            }
+        }
+        
+        listView.emptyView.rx.tapGesture().when(.recognized).subscribe(onNext: { _ in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                NotificationCenter.default.post(name: Notification.Name("switchRootVc"), object: nil)
+            }
+        }).disposed(by: disposeBag)
         
     }
     

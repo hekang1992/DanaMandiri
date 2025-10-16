@@ -13,6 +13,11 @@ import IQKeyboardManagerSwift
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    lazy var tabbarVc: CustomTabBarController = {
+        let tabbarVc = CustomTabBarController()
+        return tabbarVc
+    }()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -35,14 +40,26 @@ extension AppDelegate {
             name: NSNotification.Name("switchRootVc"),
             object: nil
         )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(toSecondVc(_:)),
+            name: NSNotification.Name("toSecondVc"),
+            object: nil
+        )
+        
     }
     
     @objc func switchRootVc(_ noti: Notification) {
         if AuthLoginManager.shared.isLoggedIn {
-            self.window?.rootViewController = CustomTabBarController()
+            tabbarVc.select(index: 0)
+            self.window?.rootViewController = tabbarVc
         } else {
             self.window?.rootViewController = BaseNavigationController(rootViewController: LoginViewController())
         }
+    }
+    
+    @objc func toSecondVc(_ noti: Notification) {
+        tabbarVc.select(index: 1)
     }
     
     func initKeyBord() {

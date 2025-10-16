@@ -59,3 +59,8 @@
 "Confirming" = "Mengonfirmasi";
 "*Please check your lD information correctly, oncesubmitted it is not changed again" = "*Mohon periksa kembali informasi lD Anda dengan benar, jika sudah terkirim tidak akan diubah lagi";
 "Please select an item" = "Silakan pilih satu item";
+"Please choose the relationship" = "Silakan pilih hubungan";
+"Contacts permission is not enabled" = "Izin kontak belum diaktifkan";
+"Please go to Settings and enable contacts access to continue using this feature" = "Silakan buka Pengaturan dan aktifkan izin kontak untuk melanjutkan penggunaan fitur ini";
+"The phone number is incorrect, please select again" = "Nomor ponsel salah, silakan pilih lagi";
+"The name is incorrect, please select again" = "Namanya salah, silakan pilih lagi";

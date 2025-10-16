@@ -1,5 +1,5 @@
 //
-//  BasicViewController.swift
+//  ChangeYoungViewController.swift
 //  DanaMandiri
 //
 //  Created by hekang on 2025/10/14.
@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import TYAlertController
 
-class BasicViewController: BaseViewController {
+class ChangeYoungViewController: BaseViewController {
     
     var productID: String = ""
     
@@ -28,7 +28,7 @@ class BasicViewController: BaseViewController {
     lazy var typeImageView: UIImageView = {
         let typeImageView = UIImageView()
         let cin = CinInfoModel.shared.cinModel?.cin ?? ""
-        typeImageView.image = cin == "460" ? UIImage(named: "basic_bg_od_image") : UIImage(named: "basic_bg_en_image")
+        typeImageView.image = cin == "460" ? UIImage(named: "ybn_id_bg_image") : UIImage(named: "ybak_bg_image")
         return typeImageView
     }()
     
@@ -106,7 +106,7 @@ class BasicViewController: BaseViewController {
         }
         
         let json = ["response": productID, "slogon": "1"]
-        viewModel.getBasicInfo(with: json) { model in
+        viewModel.getBankInfo(with: json) { model in
             if ["0", "00"].contains(model.aboutation) {
                 self.basicView.model = model
                 self.basicView.tableView.reloadData()
@@ -121,7 +121,7 @@ class BasicViewController: BaseViewController {
 
 }
 
-extension BasicViewController {
+extension ChangeYoungViewController {
     
     private func saveInfo() {
         var json = ["response": productID]
@@ -140,7 +140,7 @@ extension BasicViewController {
     }
     
     private func saveBasicInfo(to json: [String: String]) {
-        viewModel.saveBasicInfo(with: json) { [weak self] model in
+        viewModel.saveBankInfo(with: json) { [weak self] model in
             ToastProgressHUD.showToastText(message: model.filmably ?? "")
             if ["0", "00"].contains(model.aboutation) {
                 self?.popToDetailViewController()

@@ -16,6 +16,8 @@ class OrderListView: UIView {
     
     var clickBlock: ((String) -> Void)?
     
+    var cellTapBlock: ((String) -> Void)?
+    
     var modelArray: [sipirangeularModel]? {
         didSet {
             guard let modelArray = modelArray else { return }
@@ -201,13 +203,13 @@ class OrderListView: UIView {
     private func handleFilterSelection(at index: Int) {
         switch index {
         case 0:
-            self.clickBlock?(String(2+2))
+            self.clickBlock?(String(2 + 1 + 1))
         case 1:
-            self.clickBlock?(String(2+5))
+            self.clickBlock?(String(2 + 3 + 2))
         case 2:
-            self.clickBlock?(String(2+4))
+            self.clickBlock?(String(2 + 2 + 2))
         case 3:
-            self.clickBlock?(String(2+3))
+            self.clickBlock?(String(2 + 2 + 1))
         default:
             break
         }
@@ -237,6 +239,12 @@ extension OrderListView: UITableViewDelegate, UITableViewDataSource {
         cell.selectionStyle = .none
         cell.model = model
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let model = modelArray?[indexPath.row]
+        let natureivity = model?.natureivity ?? ""
+        self.cellTapBlock?(natureivity)
     }
     
 }

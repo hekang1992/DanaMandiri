@@ -87,32 +87,32 @@ class CustomTabBarController: UIViewController, CustomTabBarControllerDelegate {
         select(index: sender.tag)
     }
     
-    private func select(index: Int) {
+    func select(index: Int) {
         guard index >= 0 && index < childVCs.count else { return }
-
+        
         if let currentVC = currentViewController {
             currentVC.willMove(toParent: nil)
             currentVC.view.removeFromSuperview()
             currentVC.removeFromParent()
         }
-
+        
         let newVC = childVCs[index] ?? createViewController(for: index)
         if childVCs[index] == nil {
             childVCs[index] = newVC
         }
-
+        
         addChild(newVC)
         view.insertSubview(newVC.view, belowSubview: customTabBar)
         newVC.view.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
         newVC.didMove(toParent: self)
-
+        
         currentViewController = newVC
         updateButtonAppearance(selectedIndex: index)
         selectedIndex = index
     }
-
+    
     
     private func createViewController(for index: Int) -> UIViewController {
         switch index {
@@ -155,14 +155,14 @@ class CustomTabBarController: UIViewController, CustomTabBarControllerDelegate {
             UIView.animate(withDuration: 0.25) {
                 self.customTabBar.alpha = hidden ? 0 : 1
                 self.customTabBar.transform = hidden ?
-                    CGAffineTransform(translationX: 0, y: self.tabBarHeight) :
-                    CGAffineTransform.identity
+                CGAffineTransform(translationX: 0, y: self.tabBarHeight) :
+                CGAffineTransform.identity
             }
         } else {
             customTabBar.alpha = hidden ? 0 : 1
             customTabBar.transform = hidden ?
-                CGAffineTransform(translationX: 0, y: tabBarHeight) :
-                CGAffineTransform.identity
+            CGAffineTransform(translationX: 0, y: tabBarHeight) :
+            CGAffineTransform.identity
         }
     }
 }

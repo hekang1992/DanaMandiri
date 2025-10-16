@@ -63,6 +63,9 @@ class SchemeManager {
             }
             break
         case .order:
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                NotificationCenter.default.post(name: Notification.Name("toSecondVc"), object: nil)
+            }
             break
         case .product:
             if let tabBar = UIApplication.shared.windows.first?.rootViewController as? CustomTabBarController {

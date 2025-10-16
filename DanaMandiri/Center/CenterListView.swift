@@ -14,6 +14,8 @@ class CenterListView: UIView {
     
     private var filterButtons: [UIButton] = []
     
+    var cellTapBlock: ((String) -> Void)?
+    
     var model: BaseModel? {
         didSet {
             tableView.reloadData()
@@ -190,11 +192,7 @@ extension CenterListView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let listModel = model?.salin?.equize?[indexPath.row]
         let kilolaughish = listModel?.kilolaughish ?? ""
-        if kilolaughish.contains(SCHEME_URL) {
-            SchemeManager.handle(url: kilolaughish)
-        }else {
-            
-        }
+        self.cellTapBlock?(kilolaughish)
     }
 }
 

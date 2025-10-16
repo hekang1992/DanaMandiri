@@ -54,6 +54,7 @@ struct salinModel: Codable {
     var segetical: String?
     var polyward: String?
     var clastoon: [clastoonModel]?
+    var toughel: toughelModel?
 }
 
 struct sipirangeularModel: Codable {
@@ -69,6 +70,15 @@ struct sipirangeularModel: Codable {
     /// PROVICE_INFO
     var pachyade: String?
     var lampetic: [lampeticModel]?
+    var evidenceish: String?
+    var lepsie: String?
+    var significant: String?
+    var fluxous: String?
+    var legment: String?
+    var fallacy: String?
+    var merilet: String?
+    var phytfew: String?/// 1 2
+    var archile: [aboveentModel]?
 }
 
 struct socialModel: Codable {
@@ -116,6 +126,7 @@ struct ethariumModel: Codable {
     var coprattack: String?
     var rep: String?
     var presentality: String?
+    var tentsure: Int?
 }
 
 struct standalModel: Codable {
@@ -170,18 +181,55 @@ struct clastoonModel: Codable {
     var ctenitive: String?
     var raptaceous: String?
     var aboutation: String?
-    /// EMUN
     var uxori: String?
-    /// 回写的值
     var prehens: String?
     var skillette: String?
     var uncifear: String?
     var aboveent: [aboveentModel]?
+
+    enum CodingKeys: String, CodingKey {
+        case ctenitive, raptaceous, aboutation, uxori, prehens, skillette, uncifear, aboveent
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        ctenitive = try? container.decode(String.self, forKey: .ctenitive)
+        raptaceous = try? container.decode(String.self, forKey: .raptaceous)
+        aboutation = try? container.decode(String.self, forKey: .aboutation)
+        uxori = try? container.decode(String.self, forKey: .uxori)
+        prehens = try? container.decode(String.self, forKey: .prehens)
+        skillette = try? container.decode(String.self, forKey: .skillette)
+        aboveent = try? container.decode([aboveentModel].self, forKey: .aboveent)
+
+        if let intValue = try? container.decode(Int.self, forKey: .uncifear) {
+            uncifear = String(intValue)
+        } else if let strValue = try? container.decode(String.self, forKey: .uncifear) {
+            uncifear = strValue
+        } else {
+            uncifear = nil
+        }
+    }
 }
 
 struct aboveentModel: Codable {
     var pachyade: String?
-    var skillette: Int?
+    var skillette: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case pachyade, skillette
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        pachyade = try container.decodeIfPresent(String.self, forKey: .pachyade)
+        if let intValue = try? container.decode(Int.self, forKey: .skillette) {
+            skillette = String(intValue)
+        } else if let stringValue = try? container.decode(String.self, forKey: .skillette) {
+            skillette = stringValue
+        } else {
+            skillette = nil
+        }
+    }
 }
 
 struct lampeticModel: Codable {
@@ -189,3 +237,8 @@ struct lampeticModel: Codable {
     var pachyade: String?
     var lampetic: [lampeticModel]?
 }
+
+struct toughelModel: Codable {
+    var sipirangeular: [sipirangeularModel]?
+}
+

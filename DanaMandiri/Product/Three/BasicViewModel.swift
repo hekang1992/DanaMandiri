@@ -25,4 +25,56 @@ final class BasicViewModel {
         }
     }
     
+    func saveBasicInfo(with json: [String: Any], completion: @escaping (BaseModel) -> Void) {
+        LoadingHUD.show(text: "Loading...")
+        NetworkManager.shared.postJsonRequest(url: "/taxile/nihilics", json: json, responseType: BaseModel.self) { result in
+            switch result {
+            case .success(let success):
+                LoadingHUD.hide()
+                completion(success)
+                break
+            case .failure(_):
+                LoadingHUD.hide()
+                let model = BaseModel()
+                completion(model)
+                break
+            }
+        }
+    }
+    
+    /// GET_BANK_INFO
+    func getBankInfo(with json: [String: Any], completion: @escaping (BaseModel) -> Void) {
+        LoadingHUD.show(text: "Loading...")
+        NetworkManager.shared.postJsonRequest(url: "/taxile/kilolaughish", json: json, responseType: BaseModel.self) { result in
+            switch result {
+            case .success(let success):
+                LoadingHUD.hide()
+                completion(success)
+                break
+            case .failure(_):
+                LoadingHUD.hide()
+                let model = BaseModel()
+                completion(model)
+                break
+            }
+        }
+    }
+    
+    func saveBankInfo(with json: [String: Any], completion: @escaping (BaseModel) -> Void) {
+        LoadingHUD.show(text: "Loading...")
+        NetworkManager.shared.postJsonRequest(url: "/taxile/sipirangeular", json: json, responseType: BaseModel.self) { result in
+            switch result {
+            case .success(let success):
+                LoadingHUD.hide()
+                completion(success)
+                break
+            case .failure(_):
+                LoadingHUD.hide()
+                let model = BaseModel()
+                completion(model)
+                break
+            }
+        }
+    }
+    
 }
