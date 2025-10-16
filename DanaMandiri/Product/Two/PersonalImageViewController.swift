@@ -34,7 +34,7 @@ class PersonalImageViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         view.addSubview(bgImageView)
         bgImageView.snp.makeConstraints { make in
@@ -105,7 +105,7 @@ extension PersonalImageViewController {
                     print("cancel=======")
                 }
             }
-
+            
         }
     }
     
@@ -141,6 +141,38 @@ extension PersonalImageViewController {
         popView.againBtn.rx.tap.subscribe(onNext: { [weak self] in
             self?.saveImageInfo(with: popView)
         }).disposed(by: disposeBag)
+        
+        popView.timeBlock = { time in
+            let popTimeView = PopSelectTimeInfoView(frame: self.view.bounds)
+            popTimeView.defaultDateString = time
+            popTimeView.confirmBlock = { dateStr in
+                popView.timeLabel.text = dateStr
+                popTimeView.removeFromSuperview()
+            }
+            
+            popTimeView.cancelBtn.rx.tap.subscribe(onNext: { _ in
+                popTimeView.removeFromSuperview()
+            }).disposed(by: self.disposeBag)
+            
+            if let window = UIApplication.shared.connectedScenes
+                .compactMap({ $0 as? UIWindowScene })
+                .first?.windows.first(where: { $0.isKeyWindow }) {
+                
+                window.addSubview(popTimeView)
+                popTimeView.bgImageView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+                popTimeView.bgImageView.alpha = 0
+                UIView.animate(withDuration: 0.25,
+                               delay: 0,
+                               usingSpringWithDamping: 0.8,
+                               initialSpringVelocity: 0.5,
+                               options: .curveEaseOut,
+                               animations: {
+                    popTimeView.bgImageView.transform = .identity
+                    popTimeView.bgImageView.alpha = 1
+                })
+            }
+        }
+        
     }
     
     private func saveImageInfo(with popView: PopPersonalInfoView) {

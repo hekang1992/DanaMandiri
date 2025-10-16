@@ -50,7 +50,7 @@ class SettingViewController: BaseViewController {
         vLabel.textColor = UIColor.init(hexString: "#8D8D8D")
         vLabel.textAlignment = .center
         vLabel.font = UIFont.system(14, weightValue: 500)
-        vLabel.text = "Version：1.0.0"
+        vLabel.text = "\(LanguageManager.localizedString(for: "Version")): 1.0.0"
         return vLabel
     }()
     
@@ -127,7 +127,7 @@ class SettingViewController: BaseViewController {
         }
         
         vLabel.rx.tapGesture().when(.recognized).subscribe(onNext: { _ in
-            ToastProgressHUD.showToastText(message: "Version: 1.0.0")
+            ToastProgressHUD.showToastText(message: "\(LanguageManager.localizedString(for: "Version")): 1.0.0")
         }).disposed(by: disposeBag)
         
         bgView.addSubview(againBtn)

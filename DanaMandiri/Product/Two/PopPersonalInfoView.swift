@@ -7,8 +7,14 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxGesture
 
 class PopPersonalInfoView: UIView {
+    
+    var timeBlock: ((String) -> Void)?
+    
+    let disposeBag = DisposeBag()
     
     var model: salinModel? {
         didSet {
@@ -234,6 +240,7 @@ class PopPersonalInfoView: UIView {
             make.centerY.equalToSuperview()
             make.left.equalToSuperview().offset(10)
             make.height.equalTo(30)
+            make.right.equalToSuperview().offset(-10)
         }
         
         rightImageView.snp.makeConstraints { make in
@@ -254,6 +261,11 @@ class PopPersonalInfoView: UIView {
             make.top.equalTo(againBtn.snp.bottom).offset(12)
             make.bottom.equalToSuperview().offset(-10)
         }
+        
+        timeLabel.rx.tapGesture().when(.recognized).subscribe(onNext: { [weak self] _ in
+            self?.timeBlock?(self?.timeLabel.text ?? "")
+        }).disposed(by: disposeBag)
+        
     }
     
     required init?(coder: NSCoder) {

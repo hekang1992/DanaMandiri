@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		731C92EF2EA12DC500553408 /* PopSelectTimeInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731C92EE2EA12DB900553408 /* PopSelectTimeInfoView.swift */; };
 		73204E402EA092C20040FE1E /* AddressPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73204E3F2EA092C00040FE1E /* AddressPickerView.swift */; };
 		73204E422EA09CB70040FE1E /* PopSelectCityInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73204E412EA09CB70040FE1E /* PopSelectCityInfoView.swift */; };
 		73204E452EA0BF630040FE1E /* CommonBpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73204E442EA0BF630040FE1E /* CommonBpViewController.swift */; };
@@ -86,6 +87,7 @@
 /* Begin PBXFileReference section */
 		14B04719A34419DAC2CE3439 /* Pods_DanaMandiri.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DanaMandiri.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		471AFA02D171BDEEB46A6C25 /* Pods-DanaMandiri.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DanaMandiri.release.xcconfig"; path = "Target Support Files/Pods-DanaMandiri/Pods-DanaMandiri.release.xcconfig"; sourceTree = "<group>"; };
+		731C92EE2EA12DB900553408 /* PopSelectTimeInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopSelectTimeInfoView.swift; sourceTree = "<group>"; };
 		73204E3F2EA092C00040FE1E /* AddressPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressPickerView.swift; sourceTree = "<group>"; };
 		73204E412EA09CB70040FE1E /* PopSelectCityInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopSelectCityInfoView.swift; sourceTree = "<group>"; };
 		73204E442EA0BF630040FE1E /* CommonBpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonBpViewController.swift; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 		73FD44182E9DF0840075D082 /* Two */ = {
 			isa = PBXGroup;
 			children = (
+				731C92EE2EA12DB900553408 /* PopSelectTimeInfoView.swift */,
 				73FD441F2E9E03010075D082 /* CameraManager.swift */,
 				73FD441B2E9DF0B60075D082 /* PersonalImageView.swift */,
 				73FD441D2E9DF0CB0075D082 /* PersonalImageViewModel.swift */,
@@ -549,6 +552,7 @@
 				73AF985D2E97A8D8006BFCCA /* LoginViewController.swift in Sources */,
 				73FD442C2E9E2DAD0075D082 /* BothComleteView.swift in Sources */,
 				73FD44262E9E28C30075D082 /* FaceView.swift in Sources */,
+				731C92EF2EA12DC500553408 /* PopSelectTimeInfoView.swift in Sources */,
 				73B1AD882E9D4442001590B8 /* ProductCollectionViewCell.swift in Sources */,
 				732C1C982E98FCE70005A18F /* HomeViewModel.swift in Sources */,
 				73D9D3052E9A555B00E223C0 /* SchemeManager.swift in Sources */,
@@ -663,8 +667,8 @@
 				INFOPLIST_KEY_NSContactsUsageDescription = "需要通讯录📇";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -711,8 +715,8 @@
 				INFOPLIST_KEY_NSContactsUsageDescription = "需要通讯录📇";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
