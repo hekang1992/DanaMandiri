@@ -76,6 +76,14 @@ extension OrderViewController {
             if ["0", "00"].contains(model.aboutation) {
                 self.listView.modelArray = model.salin?.sipirangeular ?? []
                 self.listView.tableView.reloadData()
+            }else {
+                ToastProgressHUD.showToastText(message: model.filmably ?? "")
+                if model.aboutation == "-2" {
+                    AuthLoginManager.shared.removeLoginInfo()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                        NotificationCenter.default.post(name: Notification.Name("switchRootVc"), object: nil)
+                    }
+                }
             }
         }
     }

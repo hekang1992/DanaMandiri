@@ -192,6 +192,14 @@ extension HomeViewController {
             self?.homeView.scrollView.mj_header?.endRefreshing()
             if ["0", "00"].contains(model.aboutation) {
                 self?.homeModel.accept(model)
+            }else {
+                ToastProgressHUD.showToastText(message: model.filmably ?? "")
+                if model.aboutation == "-2" {
+                    AuthLoginManager.shared.removeLoginInfo()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                        NotificationCenter.default.post(name: Notification.Name("switchRootVc"), object: nil)
+                    }
+                }
             }
         }
     }
@@ -233,6 +241,12 @@ extension HomeViewController {
                     self?.navigationController?.pushViewController(webVc, animated: true)
                 }
             }else {
+                if model.aboutation == "-2" {
+                    AuthLoginManager.shared.removeLoginInfo()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                        NotificationCenter.default.post(name: Notification.Name("switchRootVc"), object: nil)
+                    }
+                }
                 ToastProgressHUD.showToastText(message: model.filmably ?? "")
             }
         }
