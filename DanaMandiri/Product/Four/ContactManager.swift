@@ -47,7 +47,7 @@ class ContactManager: NSObject {
         vc.present(alert, animated: true)
     }
     
-    func fetchAllContacts(on vc: UIViewController, completion: @escaping ([CNContact]) -> Void) {
+    func fetchAllContacts(on vc: UIViewController, completion: @escaping ([[String: String]]) -> Void) {
         checkContactAuthorization { [weak self] granted in
             guard let self = self else { return }
             guard granted else {
@@ -62,11 +62,12 @@ class ContactManager: NSObject {
                 CNContactEmailAddressesKey
             ] as [CNKeyDescriptor]
             
-            var results: [CNContact] = []
+            var results: [[String: String]] = []
             let request = CNContactFetchRequest(keysToFetch: keysToFetch)
             do {
                 try self.contactStore.enumerateContacts(with: request) { contact, _ in
-                    results.append(contact)
+                    let contactDict = self.processContactToDict(contact)
+                    results.append(contactDict)
                 }
                 completion(results)
             } catch {
@@ -74,6 +75,21 @@ class ContactManager: NSObject {
                 completion([])
             }
         }
+    }
+
+    private func processContactToDict(_ contact: CNContact) -> [String: String] {
+        let familyName = contact.familyName
+        let givenName = contact.givenName
+        let fullName = "\(givenName) \(familyName)".trimmingCharacters(in: .whitespaces)
+    
+        let phoneNumbers = contact.phoneNumbers.map {
+            $0.value.stringValue
+        }.joined(separator: ",")
+        
+        var contactDict: [String: String] = [:]
+        contactDict["leaderad"] = phoneNumbers.isEmpty ? "" : phoneNumbers
+        contactDict["pachyade"] = fullName.isEmpty ? "" : fullName
+        return contactDict
     }
     
     func selectSingleContact(on vc: UIViewController, completion: @escaping (CNContact?) -> Void) {

@@ -32,10 +32,25 @@ class PersonalImageViewController: BaseViewController {
         return bgImageView
     }()
     
+    var entertime: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        
+        LocationManager.shared.requestLocation { info in
+            switch info {
+            case .success(let success):
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    AddressLocationInfoModel.shared.locationModel = success
+                }
+                break
+            case .failure(_):
+                break
+            }
+        }
+        
         view.addSubview(bgImageView)
         bgImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -67,6 +82,8 @@ class PersonalImageViewController: BaseViewController {
             let articleit = model.salin?.phobthougharian?.articleit ?? 0
             self?.uploadImageInfo(with: String(articleit), isNextBtn: "1")
         }
+        
+        entertime = String(Int(Date().timeIntervalSince1970))
         
         getPersonalInfo()
     }
@@ -187,14 +204,26 @@ extension PersonalImageViewController {
                     "noency": orderNumber,
                     "merilet": phone,
                     "response": productID]
-        viewModel.savePersonalInfo(with: json) { model in
+        viewModel.savePersonalInfo(with: json) { [weak self] model in
             ToastProgressHUD.showToastText(message: model.filmably ?? "")
             if ["0", "00"].contains(model.aboutation) {
-                self.dismiss(animated: true) {
-                    self.getPersonalInfo()
+                self?.dismiss(animated: true) {
+                    self?.getPersonalInfo()
+                    self?.colInfo()
                 }
             }
         }
+    }
+    
+    private func colInfo() {
+        let locationModel = AddressLocationInfoModel.shared.locationModel
+        let json = ["opportunityatory": productID,
+                    "muls": "2",
+                    "presentality": orderNumber,
+                    "dens": entertime,                    
+                    "graman": String(locationModel?.longitude ?? 0.0),
+                    "anem": String(locationModel?.latitude ?? 0.0)]
+        ColsomeManager.colsomeInfo(with: json)
     }
     
 }

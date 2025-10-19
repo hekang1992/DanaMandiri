@@ -10,6 +10,7 @@ import WebKit
 import SnapKit
 import RxSwift
 import RxCocoa
+import StoreKit
 
 class UnieerLifeViewController: BaseViewController {
     
@@ -18,6 +19,8 @@ class UnieerLifeViewController: BaseViewController {
     let disposeBag = DisposeBag()
     
     var productID: String = ""
+    
+    var entertime: String = ""
     
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
@@ -49,6 +52,20 @@ class UnieerLifeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        LocationManager.shared.requestLocation { info in
+            switch info {
+            case .success(let success):
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    AddressLocationInfoModel.shared.locationModel = success
+                }
+                break
+            case .failure(_):
+                break
+            }
+        }
+        
+        entertime = String(Int(Date().timeIntervalSince1970))
+        
         view.addSubview(bgImageView)
         bgImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -79,7 +96,7 @@ class UnieerLifeViewController: BaseViewController {
             if self.webView.canGoBack {
                 self.webView.goBack()
             }else {
-                self.popToDetailViewController()
+                self.navigationController?.popToRootViewController(animated: true)
             }
         }).disposed(by: disposeBag)
         
@@ -134,8 +151,57 @@ extension UnieerLifeViewController {
 extension UnieerLifeViewController: WKNavigationDelegate, WKScriptMessageHandler {
     
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        
+        print("name========\(message.name)")
+        print("body========\(message.body)")
+        switch message.name {
+        case "picish":
+            self.navigationController?.popToRootViewController(animated: true)
+            break
+        case "tardature":
+            changeVc()
+            break
+        case "bront":
+            toAppStore()
+            break
+        case "vigenveryature":
+            let body = message.body as? [String]
+            colInfo(with: body?.last ?? "", productID: body?.first ?? "")
+            break
+        case "chlorid":
+            break
+        case "thrixacious":
+            break
+        default:
+            break
+        }
     }
     
+    
+}
+
+extension UnieerLifeViewController {
+    
+    private func changeVc() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            NotificationCenter.default.post(name: Notification.Name("switchRootVc"), object: nil)
+        }
+    }
+    
+    private func toAppStore() {
+        if #available(iOS 14.0, *), let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            SKStoreReviewController.requestReview(in: windowScene)
+        }
+    }
+    
+    private func colInfo(with orderNumber: String, productID: String) {
+        let locationModel = AddressLocationInfoModel.shared.locationModel
+        let json = ["opportunityatory": productID,
+                    "muls": "9",
+                    "presentality": orderNumber,
+                    "dens": entertime,
+                    "graman": String(locationModel?.longitude ?? 0.0),
+                    "anem": String(locationModel?.latitude ?? 0.0)]
+        ColsomeManager.colsomeInfo(with: json)
+    }
     
 }

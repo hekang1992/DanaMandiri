@@ -8,8 +8,15 @@
 import UIKit
 import SnapKit
 import Kingfisher
+import RxSwift
+import RxCocoa
+import RxGesture
 
 class SmallTwoViewCell: UITableViewCell {
+    
+    let disposeBag = DisposeBag()
+    
+    var tapClickBlock: ((String) -> Void)?
     
     var smallModel: socialModel? {
         didSet {
@@ -46,6 +53,7 @@ class SmallTwoViewCell: UITableViewCell {
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
         bgImageView.image = UIImage(named: "sm_little_image")
+        bgImageView.isUserInteractionEnabled = true
         return bgImageView
     }()
     
@@ -193,6 +201,12 @@ class SmallTwoViewCell: UITableViewCell {
             make.height.equalTo(50)
             make.bottom.equalToSuperview().offset(-16)
         }
+        
+        bgImageView.rx.tapGesture().when(.recognized).subscribe(onNext: { [weak self] _ in
+            if let self = self, let smallModel = smallModel {
+                self.tapClickBlock?(String(smallModel.testnature ?? 0))
+            }
+        }).disposed(by: disposeBag)
     }
     
     required init?(coder: NSCoder) {

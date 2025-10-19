@@ -20,6 +20,8 @@ class CommonBpView: UIView {
     
     var tapClickBlock: ((CommonBpViewCell, Int) -> Void)?
     
+    var allPhoneClickBlock: ((String) -> Void)?
+    
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.separatorStyle = .none
@@ -98,18 +100,19 @@ extension CommonBpView {
         
         cell.tapPhoneClickBlock = { [weak self] in
             if let self = self, let viewController = self.getViewController() {
-                let prehens = self.model?.salin?.toughel?.sipirangeular?[indexPath.row].pachyade ?? ""
-                if prehens.isEmpty {
+                let clastoon = self.model?.salin?.toughel?.sipirangeular?[indexPath.row].clastoon ?? ""
+                if clastoon.isEmpty {
                     ToastProgressHUD.showToastText(message: LanguageManager.localizedString(for: "Please choose the relationship"))
                     return
                 }
                 
                 ContactManager.shared.fetchAllContacts(on: viewController) { contacts in
-                    for contact in contacts {
-                        print("姓名: \(contact.familyName)\(contact.givenName)")
-                        for phone in contact.phoneNumbers {
-                            print("电话: \(phone.value.stringValue)")
-                        }
+                    do {
+                        let jsonData = try JSONSerialization.data(withJSONObject: contacts, options: [])
+                        let base64String = jsonData.base64EncodedString()
+                        self.allPhoneClickBlock?(base64String)
+                    } catch {
+                        print("Base64 failue: \(error)")
                     }
                 }
                 
@@ -138,7 +141,7 @@ extension CommonBpView {
                         self.model?.salin?.toughel?.sipirangeular?[indexPath.row].merilet = phoneNumber
                         
                     } else {
-                        print("取消选择")
+                        print("cancel")
                     }
                 }
             }

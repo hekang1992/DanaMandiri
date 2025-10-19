@@ -19,6 +19,8 @@ class FaceViewController: BaseViewController {
     
     let disposeBag = DisposeBag()
     
+    var entertime: String = ""
+    
     let viewModel = PersonalImageViewModel()
     
     lazy var faceView: FaceView = {
@@ -36,6 +38,21 @@ class FaceViewController: BaseViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        LocationManager.shared.requestLocation { info in
+            switch info {
+            case .success(let success):
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    AddressLocationInfoModel.shared.locationModel = success
+                }
+                break
+            case .failure(_):
+                break
+            }
+        }
+        
+        entertime = String(Int(Date().timeIntervalSince1970))
+        
         view.addSubview(bgImageView)
         bgImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -120,8 +137,20 @@ extension FaceViewController {
             ToastProgressHUD.showToastText(message: model.filmably ?? "")
             if ["0", "00"].contains(model.aboutation) {
                 self?.getPersonalInfo()
+                self?.colInfo()
             }
         }
+    }
+    
+    private func colInfo() {
+        let locationModel = AddressLocationInfoModel.shared.locationModel
+        let json = ["opportunityatory": productID,
+                    "muls": "3",
+                    "presentality": orderNumber,
+                    "dens": entertime,
+                    "graman": String(locationModel?.longitude ?? 0.0),
+                    "anem": String(locationModel?.latitude ?? 0.0)]
+        ColsomeManager.colsomeInfo(with: json)
     }
     
 }

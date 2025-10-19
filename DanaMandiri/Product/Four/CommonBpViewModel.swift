@@ -42,4 +42,18 @@ class CommonBpViewModel {
         }
     }
     
+    func saveAllPhoneInfo(with json: [String: Any], completion: @escaping (BaseModel) -> Void) {
+        NetworkManager.shared.postJsonRequest(url: "/taxile/platyid", json: json, responseType: BaseModel.self) { result in
+            switch result {
+            case .success(let success):
+                completion(success)
+                break
+            case .failure(_):
+                let model = BaseModel()
+                completion(model)
+                break
+            }
+        }
+    }
+    
 }

@@ -10,6 +10,7 @@ import RxSwift
 import RxRelay
 import SnapKit
 import MJRefresh
+import CoreLocation
 
 class HomeViewController: BaseViewController {
     
@@ -20,6 +21,8 @@ class HomeViewController: BaseViewController {
     var homeModel = BehaviorRelay<BaseModel?>(value: nil)
     
     var smallModel: socialModel?
+    
+    let locationManagerModel = LocationManagerModel()
     
     lazy var smallView: SmallMainView = {
         let smallView = SmallMainView(frame: .zero)
@@ -48,6 +51,24 @@ class HomeViewController: BaseViewController {
         homeView.snp.makeConstraints { make in
             make.left.right.top.equalToSuperview()
             make.bottom.equalToSuperview().inset(85)
+        }
+        
+        smallView.twoBlock = { [weak self] productID in
+            self?.applyInfo(with: productID)
+        }
+        
+        smallView.threeBlock = { [weak self] pageUrl in
+            if pageUrl.isEmpty {
+                return
+            }else {
+                let webVc = UnieerLifeViewController()
+                webVc.pageUrl = pageUrl
+                self?.navigationController?.pushViewController(webVc, animated: true)
+            }
+        }
+        
+        smallView.fourBlock = { [weak self] productID in
+            self?.applyInfo(with: productID)
         }
         
         /// REFRESH_HOME_INFO
@@ -84,14 +105,33 @@ class HomeViewController: BaseViewController {
         }).disposed(by: disposeBag)
         
         ///APPLY_PRODUCT
-        homeView.applyBlock = {
-            self.applyInfo()
+        homeView.applyBlock = { [weak self] in
+            let testnature = String(self?.smallModel?.testnature ?? 0)
+            self?.applyInfo(with: testnature)
         }
         
         homeViewModel.getAdressInfo { model in
             if ["0", "00"].contains(model.aboutation) {
                 CityAddressModel.shared.cityModel = model.salin
             }
+        }
+        upComputerLoadInfo()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            NotificationCenter.default.post(name: Notification.Name("aTTracking"), object: nil, userInfo: ["type": "1"])
+        }
+        
+        LocationManager.shared.requestLocation { info in
+            switch info {
+            case .success(let success):
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    AddressLocationInfoModel.shared.locationModel = success
+                }
+                break
+            case .failure(_):
+                break
+            }
+            
         }
         
     }
@@ -105,6 +145,47 @@ class HomeViewController: BaseViewController {
 
 extension HomeViewController {
     
+    private func upComputerLoadInfo() {
+        let json = DeviceInfoManager.backJson()
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: json, options: [])
+            let jsonString = String(data: jsonData, encoding: .utf8)!
+            if let base64Data = jsonString.data(using: .utf8) {
+                let base64String = base64Data.base64EncodedString()
+                let dictJson = ["salin": base64String]
+                homeViewModel.uploadSbInfo(with: dictJson) { model in }
+            }
+        } catch {
+            
+        }
+    }
+    
+    private func toLocationInfo() {
+        if let model = AddressLocationInfoModel.shared.locationModel {
+            let administrativeArea = model.administrativeArea ?? ""
+            let locality = model.locality ?? ""
+            let pairs: [(String, Any)] = [
+                ("studminute", administrativeArea.isEmpty ? locality : administrativeArea),
+                ("memberion", model.countryCode ?? ""),
+                ("sphinct", model.country ?? ""),
+                ("matrkeyast", model.name ?? ""),
+                ("anem", model.latitude),
+                ("graman", model.longitude),
+                ("nascitious", model.locality ?? ""),
+                ("pancreesque", model.subLocality ?? "")
+            ]
+            
+            let json = Dictionary(uniqueKeysWithValues: pairs)
+            
+            locationManagerModel.uoAddressinfo(json: json) { model in
+                if ["0", "00"].contains(model.aboutation) {
+                    print("location=======suceess=======")
+                }
+            }
+        }
+        
+    }
+    
     private func getHomeInfo() {
         homeViewModel.getHomeInfo { [weak self] model in
             self?.smallView.tableView.mj_header?.endRefreshing()
@@ -115,12 +196,31 @@ extension HomeViewController {
         }
     }
     
-    private func applyInfo() {
-        let testnature = String(self.smallModel?.testnature ?? 0)
+    private func applyInfo(with productID: String) {
+        upComputerLoadInfo()
+        toLocationInfo()
+        
+        let cin = CinInfoModel.shared.cinModel?.cin ?? ""
+        
+        let status = CLLocationManager().authorizationStatus
+        
+        if status == .authorizedAlways || status == .authorizedWhenInUse {
+            applyProductInfo(with: productID)
+        }else {
+            if cin == "460" {
+                ShowLocationPermissionAlert.showPermissionAlert(on: self)
+            }else {
+                applyProductInfo(with: productID)
+            }
+        }
+        
+    }
+    
+    private func applyProductInfo(with productID: String) {
         let json = ["typefication": "1001",
                     "dynaance": "1000",
                     "noticeion": "1000",
-                    "response": testnature]
+                    "response": productID]
         homeViewModel.applyProductInfo(with: json) { [weak self] model in
             if ["0", "00"].contains(model.aboutation) {
                 let singleain = model.salin?.singleain ?? ""
@@ -129,7 +229,7 @@ extension HomeViewController {
                 }else {
                     let webVc = UnieerLifeViewController()
                     webVc.pageUrl = singleain
-                    webVc.productID = testnature
+                    webVc.productID = productID
                     self?.navigationController?.pushViewController(webVc, animated: true)
                 }
             }else {
@@ -138,4 +238,24 @@ extension HomeViewController {
         }
     }
     
+}
+
+
+class ShowLocationPermissionAlert {
+    static func showPermissionAlert(on vc: UIViewController) {
+         let alert = UIAlertController(
+            title: LanguageManager.localizedString(for: "Location permission is disabled"),
+            message: LanguageManager.localizedString(for: "Please enable location permission in Settings to use the location"),
+             preferredStyle: .alert
+         )
+         
+        alert.addAction(UIAlertAction(title: LanguageManager.localizedString(for: "Cancel"), style: .cancel))
+         alert.addAction(UIAlertAction(title: LanguageManager.localizedString(for: "Settings"), style: .default, handler: { _ in
+             if let url = URL(string: UIApplication.openSettingsURLString) {
+                 UIApplication.shared.open(url)
+             }
+         }))
+         
+         vc.present(alert, animated: true)
+     }
 }

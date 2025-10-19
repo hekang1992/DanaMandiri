@@ -31,6 +31,7 @@ class StartViewController: BaseViewController {
         againBtn.layer.cornerRadius = 24
         againBtn.layer.borderWidth = 1
         againBtn.layer.borderColor = UIColor.white.cgColor
+        againBtn.isHidden = true
         return againBtn
     }()
     
@@ -38,6 +39,15 @@ class StartViewController: BaseViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        
+        NetworkStatusManager.shared.startListening { [weak self] type in
+            print("type=========\(type)")
+            if type == "WIFI" || type == "5G" {
+                NetworkStatusManager.shared.stopListening()
+                self?.startInfo()
+            }
+        }
+        
         view.addSubview(bgImageView)
         bgImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -54,7 +64,6 @@ class StartViewController: BaseViewController {
             self?.startInfo()
         }).disposed(by: disposeBag)
         
-        startInfo()
     }
     
 }
@@ -68,36 +77,55 @@ extension StartViewController {
                     "taenisouthernition": Locale.preferredLanguages.first ?? ""]
         NetworkManager.shared.postJsonRequest(url: "/taxile/pubertible",
                                               json: json,
-                                              responseType: BaseModel.self) { result in
+                                              responseType: BaseModel.self) { [weak self] result in
             switch result {
             case .success(let success):
                 if ["0", "00"].contains(success.aboutation) {
+                    self?.againBtn.isHidden = true
                     if let model = success.salin {
                         CinInfoModel.shared.cinModel = model
                         let cin = model.cin ?? ""
                         if let lang = AppLanguage(rawValue: cin) {
                             LanguageManager.setLanguage(lang)
                         }
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-                            NotificationCenter.default.post(name: Notification.Name("switchRootVc"), object: nil)
-                        }
+                        self?.getIcacInfo()
                     }
                 }else {
+                    self?.againBtn.isHidden = false
                     ToastProgressHUD.showToastText(message: success.filmably ?? "")
                 }
                 LoadingHUD.hide()
                 break
             case .failure(_):
+                self?.againBtn.isHidden = false
                 LoadingHUD.hide()
                 break
             }
         }
     }
     
+    private func getIcacInfo() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            NotificationCenter.default.post(name: Notification.Name("aTTracking"), object: nil, userInfo: ["type": "0"])
+        }
+    }
+    
 }
 
-class CinInfoModel{
+class CinInfoModel {
     static let shared = CinInfoModel()
     private init() {}
     var cinModel: salinModel?
+}
+
+class AddressLocationInfoModel {
+    static let shared = AddressLocationInfoModel()
+    private init() {}
+    var locationModel: LocationInfo?
+}
+
+class LoginTimeManager {
+    static let shared = LoginTimeManager()
+    private init() {}
+    var leavetime: String?
 }

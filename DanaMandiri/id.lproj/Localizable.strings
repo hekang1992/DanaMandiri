@@ -66,3 +66,6 @@
 "The name is incorrect, please select again" = "Namanya salah, silakan pilih lagi";
 "Version" = "Versi";
 "Select Date" = "Pilih Tanggal";
+"Check" = "Memeriksa";
+"Location permission is disabled" = "Izin lokasi dinonaktifkan";
+"Please enable location permission in Settings to use the location" = "Harap aktifkan izin lokasi di Pengaturan untuk menggunakan lokasi";

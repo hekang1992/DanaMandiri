@@ -13,6 +13,11 @@ class SmallMainView: UIView {
     
     var smallModelArray: [sipirangeularModel]?
     
+    var oneBlock: ((String) -> Void)?
+    var twoBlock: ((String) -> Void)?
+    var threeBlock: ((String) -> Void)?
+    var fourBlock: ((String) -> Void)?
+    
     var smallModel: socialModel? {
         didSet {
             guard let smallModel = smallModel else { return }
@@ -148,18 +153,27 @@ extension SmallMainView: UITableViewDelegate, UITableViewDataSource {
             cell.backgroundColor = .clear
             cell.selectionStyle = .none
             cell.smallModel = model?.social?[indexPath.row]
+            cell.tapClickBlock = { [weak self] productID in
+                self?.twoBlock?(productID)
+            }
             return cell
         }else if skillette == "staracy" {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SmallThreeViewCell", for: indexPath) as! SmallThreeViewCell
             cell.backgroundColor = .clear
             cell.selectionStyle = .none
             cell.smallModel = model?.social ?? []
+            cell.tapClick = { [weak self] pageUrl in
+                self?.threeBlock?(pageUrl)
+            }
             return cell
         }else if skillette == "lessast" {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SmallFourViewCell", for: indexPath) as! SmallFourViewCell
             cell.backgroundColor = .clear
             cell.selectionStyle = .none
             cell.smallModel = model?.social?[indexPath.row]
+            cell.cellTapClick = { [weak self] productID in
+                self?.fourBlock?(productID)
+            }
             return cell
         }
         return UITableViewCell()

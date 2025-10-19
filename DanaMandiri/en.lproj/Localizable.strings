@@ -66,3 +66,6 @@
 "The name is incorrect, please select again" = "The name is incorrect, please select again";
 "Version" = "Version";
 "Select Date" = "Select Date";
+"Check" = "Check";
+"Location permission is disabled" = "Location permission is disabled";
+"Please enable location permission in Settings to use the location" = "Please enable location permission in Settings to use the location";

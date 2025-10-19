@@ -155,7 +155,11 @@ class PopSelectTimeInfoView: UIView {
         formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.calendar = Calendar(identifier: .gregorian)
         
-        let dateStr = (defaultDateString?.isEmpty == false || defaultDateString != "//") ? defaultDateString! : "25/12/1970"
+        if defaultDateString == "//" {
+            defaultDateString = "25/12/1970"
+        }
+        
+        let dateStr = (defaultDateString?.isEmpty == false) ? defaultDateString! : "25/12/1970"
         if let date = formatter.date(from: dateStr) {
             pickerView.setDate(date, animated: false)
             selectLabel.text = formatter.string(from: date)

@@ -12,6 +12,8 @@ import Kingfisher
 
 class SmallThreeViewCell: UITableViewCell {
     
+    var tapClick: ((String) -> Void)?
+    
     var smallModel: [socialModel]? {
         didSet {
             guard let smallModel = smallModel else { return }
@@ -72,6 +74,7 @@ extension SmallThreeViewCell: FSPagerViewDelegate, FSPagerViewDataSource {
         let model = smallModel?[index]
         let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "SmallThreeCollectionViewCell", at: index) as! SmallThreeCollectionViewCell
         cell.contentView.layer.shadowRadius = 0
+        cell.model = model
         return cell
     }
     
@@ -80,7 +83,9 @@ extension SmallThreeViewCell: FSPagerViewDelegate, FSPagerViewDataSource {
     }
     
     func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
-        ToastProgressHUD.showToastText(message: String(index))
+        if let model = smallModel?[index] {
+            self.tapClick?(model.singleain ?? "")
+        }
     }
     
 }

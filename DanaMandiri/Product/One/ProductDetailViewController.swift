@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import RxSwift
 import RxCocoa
+import MJRefresh
 
 class ProductDetailViewController: BaseViewController {
     
@@ -21,6 +22,8 @@ class ProductDetailViewController: BaseViewController {
     var shakeModel: shakeModel?
     
     var model: BaseModel?
+    
+    var entertime: String = ""
     
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
@@ -37,6 +40,21 @@ class ProductDetailViewController: BaseViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        
+        LocationManager.shared.requestLocation { info in
+            switch info {
+            case .success(let success):
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    AddressLocationInfoModel.shared.locationModel = success
+                }
+                break
+            case .failure(_):
+                break
+            }
+        }
+        
+        entertime = String(Int(Date().timeIntervalSince1970))
+        
         view.addSubview(bgImageView)
         bgImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -75,6 +93,10 @@ class ProductDetailViewController: BaseViewController {
             }
         }).disposed(by: disposeBag)
         
+        productView.scrollView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
+            self?.getDetailInfo()
+        })
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,11 +110,12 @@ extension ProductDetailViewController {
     
     private func getDetailInfo() {
         let json = ["response": productID, "spatitenics": "101"]
-        viewModel.getProductDetailInfo(with: json) { model in
+        viewModel.getProductDetailInfo(with: json) { [weak self] model in
+            self?.productView.scrollView.mj_header?.endRefreshing()
             if ["0", "00"].contains(model.aboutation) {
-                self.productView.model = model
-                self.model = model
-                self.shakeModel = model.salin?.shake
+                self?.productView.model = model
+                self?.model = model
+                self?.shakeModel = model.salin?.shake
             }
         }
     }
@@ -109,6 +132,7 @@ extension ProductDetailViewController {
     }
     
     private func goPageWithType(type: String) {
+        let orderNumber = self.model?.salin?.etharium?.presentality ?? ""
         switch type {
         case "cunely":
             let viewModel = PersonalImageViewModel()
@@ -123,12 +147,12 @@ extension ProductDetailViewController {
                     if faceNum == 1 {
                         let bothVc = BothCompleteViewController()
                         bothVc.productID = productID
-                        bothVc.orderNumber = self.model?.salin?.etharium?.presentality ?? ""
+                        bothVc.orderNumber = orderNumber
                         self.navigationController?.pushViewController(bothVc, animated: true)
                     }else {
                         let faceVc = FaceViewController()
                         faceVc.productID = productID
-                        faceVc.orderNumber = self.model?.salin?.etharium?.presentality ?? ""
+                        faceVc.orderNumber = orderNumber
                         self.navigationController?.pushViewController(faceVc, animated: true)
                     }
                 }else {
@@ -142,16 +166,19 @@ extension ProductDetailViewController {
         case "caedular":
             let basicVc = BasicViewController()
             basicVc.productID = productID
+            basicVc.orderNumber = orderNumber
             self.navigationController?.pushViewController(basicVc, animated: true)
             break
         case "consumer":
             let cnpVc = CommonBpViewController()
             cnpVc.productID = productID
+            cnpVc.orderNumber = orderNumber
             self.navigationController?.pushViewController(cnpVc, animated: true)
             break
         case "anderdom":
             let youngVc = ChangeYoungViewController()
             youngVc.productID = productID
+            youngVc.orderNumber = orderNumber
             self.navigationController?.pushViewController(youngVc, animated: true)
             break
         default:
@@ -171,6 +198,7 @@ extension ProductDetailViewController {
                     "tentsure": tentsure]
         viewModel.orderInfo(with: json) { [weak self] model in
             if ["0", "00"].contains(model.aboutation) {
+                self?.colInfo()
                 let singleain = model.salin?.singleain ?? ""
                 let webVc = UnieerLifeViewController()
                 webVc.pageUrl = singleain
@@ -180,6 +208,17 @@ extension ProductDetailViewController {
                 ToastProgressHUD.showToastText(message: model.filmably ?? "")
             }
         }
+    }
+    
+    private func colInfo() {
+        let locationModel = AddressLocationInfoModel.shared.locationModel
+        let json = ["opportunityatory": productID,
+                    "muls": "8",
+                    "presentality": self.model?.salin?.etharium?.presentality ?? "",
+                    "dens": entertime,
+                    "graman": String(locationModel?.longitude ?? 0.0),
+                    "anem": String(locationModel?.latitude ?? 0.0)]
+        ColsomeManager.colsomeInfo(with: json)
     }
     
 }

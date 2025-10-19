@@ -7,8 +7,15 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
+import RxGesture
 
 class SmallFourViewCell: UITableViewCell {
+    
+    let disposeBag = DisposeBag()
+    
+    var cellTapClick: ((String) -> Void)?
     
     var smallModel: socialModel? {
         didSet {
@@ -139,6 +146,15 @@ class SmallFourViewCell: UITableViewCell {
             make.right.equalToSuperview().offset(-15)
             make.height.equalTo(38)
         }
+        
+        bgView.rx
+            .tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { [weak self] _ in
+            if let self = self, let smallModel = smallModel {
+                self.cellTapClick?(String(smallModel.testnature ?? 0))
+            }
+        }).disposed(by: disposeBag)
     }
     
     required init?(coder: NSCoder) {

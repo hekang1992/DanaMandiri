@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import CoreLocation
 
 class CustomTabBarController: UIViewController, CustomTabBarControllerDelegate {
     
@@ -84,7 +85,17 @@ class CustomTabBarController: UIViewController, CustomTabBarControllerDelegate {
     }
     
     @objc private func onTap(_ sender: UIButton) {
-        select(index: sender.tag)
+        let status = CLLocationManager().authorizationStatus
+        let cin = CinInfoModel.shared.cinModel?.cin ?? ""
+        if status == .authorizedAlways || status == .authorizedWhenInUse {
+            select(index: sender.tag)
+        }else {
+            if cin == "460" {
+                ShowLocationPermissionAlert.showPermissionAlert(on: self)
+            }else {
+                select(index: sender.tag)
+            }
+        }
     }
     
     func select(index: Int) {

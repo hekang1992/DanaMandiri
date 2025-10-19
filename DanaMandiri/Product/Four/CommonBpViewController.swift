@@ -15,6 +15,10 @@ class CommonBpViewController: BaseViewController {
     
     var productID: String = ""
     
+    var orderNumber: String = ""
+    
+    var entertime: String = ""
+    
     let disposeBag = DisposeBag()
     
     let viewModel = CommonBpViewModel()
@@ -63,6 +67,21 @@ class CommonBpViewController: BaseViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        LocationManager.shared.requestLocation { info in
+            switch info {
+            case .success(let success):
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    AddressLocationInfoModel.shared.locationModel = success
+                }
+                break
+            case .failure(_):
+                break
+            }
+        }
+        
+        entertime = String(Int(Date().timeIntervalSince1970))
+        
         view.addSubview(bgImageView)
         bgImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -134,11 +153,20 @@ class CommonBpViewController: BaseViewController {
             }
         }).disposed(by: disposeBag)
         
+        bpView.allPhoneClickBlock = { [weak self] jsonStr in
+            self?.getAllPhone(to: jsonStr)
+        }
+        
     }
 
 }
 
 extension CommonBpViewController {
+    
+    private func getAllPhone(to jsonStr: String) {
+        let json = ["skillette": "3", "salin": jsonStr]
+        viewModel.saveAllPhoneInfo(with: json) { model in }
+    }
     
     private func sagePbInfo(with dictArray: [[String: String]]) {
         var jsonSring: String = ""
@@ -157,8 +185,20 @@ extension CommonBpViewController {
             ToastProgressHUD.showToastText(message: model.filmably ?? "")
             if ["0", "00"].contains(model.aboutation) {
                 self?.popToDetailViewController()
+                self?.colInfo()
             }
         }
+    }
+    
+    private func colInfo() {
+        let locationModel = AddressLocationInfoModel.shared.locationModel
+        let json = ["opportunityatory": productID,
+                    "muls": "6",
+                    "presentality": orderNumber,
+                    "dens": entertime,
+                    "graman": String(locationModel?.longitude ?? 0.0),
+                    "anem": String(locationModel?.latitude ?? 0.0)]
+        ColsomeManager.colsomeInfo(with: json)
     }
     
 }

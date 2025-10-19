@@ -65,6 +65,9 @@ class NetworkManager {
             
             let apiUrl = URLQueryBuilder.appendingQueryParameters(to: apiNormalUrl, parameters: para) ?? ""
             
+            print("apiUrl======\(apiUrl)")
+            print("json======\(json ?? [:])")
+            
             session.upload(multipartFormData: { multipartFormData in
                 if let params = json {
                     for (key, value) in params {

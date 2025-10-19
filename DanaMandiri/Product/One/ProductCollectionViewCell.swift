@@ -57,7 +57,6 @@ class ProductCollectionViewCell: UICollectionViewCell {
     lazy var logoImageView: UIImageView = {
         let logoImageView = UIImageView()
         logoImageView.contentMode = .scaleAspectFit
-        logoImageView.backgroundColor = .systemBlue
         return logoImageView
     }()
     
@@ -83,10 +82,10 @@ class ProductCollectionViewCell: UICollectionViewCell {
             make.height.equalTo(44)
         }
         logoImageView.snp.makeConstraints { make in
-            make.top.equalTo(typeLabel.snp.bottom)
-            make.bottom.equalTo(completeLabel.snp.top)
+            make.top.equalTo(typeLabel.snp.bottom).offset(5)
+            make.bottom.equalTo(completeLabel.snp.top).offset(-5)
             make.centerX.equalToSuperview()
-            make.width.equalTo(100)
+            make.width.equalTo(90)
         }
     }
     

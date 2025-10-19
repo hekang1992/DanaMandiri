@@ -24,7 +24,7 @@ class PersonalImageView: UIView {
             guard let model = model else { return }
             let idArticleit = model.salin?.phobthougharian?.articleit ?? 0
             if idArticleit == 1 {
-                listLabel.text = "✓" + " " + "\(LanguageManager.localizedString(for: "Upload"))"
+                listLabel.text = "✓" + " " + "\(LanguageManager.localizedString(for: "Uploaded"))"
             }else {
                 listLabel.text = LanguageManager.localizedString(for: "Click to upload")
             }

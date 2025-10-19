@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (5.10.2)
+  - DeviceKit (5.7.0)
   - FBAEMKit (18.0.1):
     - FBSDKCoreKit_Basics (= 18.0.1)
   - FBSDKCoreKit (18.0.1):
@@ -28,6 +29,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - DeviceKit
   - FBSDKCoreKit
   - FSPagerView
   - IQKeyboardManagerSwift (~> 6.5.16)
@@ -44,6 +46,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - DeviceKit
     - FBAEMKit
     - FBSDKCoreKit
     - FBSDKCoreKit_Basics
@@ -63,6 +66,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 7193b3b92c74a07f85569e1a6c4f4237291e7496
+  DeviceKit: d1a956e25b957efb60a87bfe70be4e00ef36846d
   FBAEMKit: b2ed182002dbcb65d5a60059c9693d322186cd00
   FBSDKCoreKit: 7f96852f2539bdb88ba8d47e5ab4ae70a6f8d691
   FBSDKCoreKit_Basics: 22d4c1a509ded4e45116f3bb167a14907550f62e
@@ -80,6 +84,6 @@ SPEC CHECKSUMS:
   SnapKit: d612e99e678a2d3b95bf60b0705ed0a35c03484a
   TYAlertController: c121090edb0bea7426f987da94cdddd81eef4231
 
-PODFILE CHECKSUM: d8ffed660828433b81c46f9d7befa9f0aade0461
+PODFILE CHECKSUM: 938d9c2fe875940657e64470bce94e877c1d7880
 
 COCOAPODS: 1.16.2

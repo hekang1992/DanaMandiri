@@ -31,6 +31,11 @@
 		732C1C962E98FCDC0005A18F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732C1C952E98FCDC0005A18F /* HomeView.swift */; };
 		732C1C982E98FCE70005A18F /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732C1C972E98FCE10005A18F /* HomeViewModel.swift */; };
 		732C1C9A2E9904200005A18F /* SmallMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732C1C992E9904080005A18F /* SmallMainView.swift */; };
+		732FB1A62EA3DCAE0091D35F /* DeviceInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732FB1A52EA3DCA60091D35F /* DeviceInfoManager.swift */; };
+		732FB1A82EA3E1C60091D35F /* Untitleds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732FB1A72EA3E1C50091D35F /* Untitleds.swift */; };
+		732FB1AA2EA3E9E00091D35F /* SmallInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732FB1A92EA3E9DA0091D35F /* SmallInfo.swift */; };
+		735159B42EA1EF010007347F /* NetworkStatusManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735159B32EA1EEFB0007347F /* NetworkStatusManager.swift */; };
+		735159B62EA20C420007347F /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735159B52EA20C410007347F /* LocationManager.swift */; };
 		7376564E2E9C9E990018258E /* CommonHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7376564D2E9C9E990018258E /* CommonHeadView.swift */; };
 		737656502E9CABF80018258E /* LogOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7376564F2E9CABF80018258E /* LogOutView.swift */; };
 		737656522E9CC5870018258E /* DeleteAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737656512E9CC5870018258E /* DeleteAccountView.swift */; };
@@ -59,6 +64,7 @@
 		73D9D3032E9A420700E223C0 /* CenterListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D9D3022E9A420700E223C0 /* CenterListViewCell.swift */; };
 		73D9D3052E9A555B00E223C0 /* SchemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D9D3042E9A554800E223C0 /* SchemeManager.swift */; };
 		73D9D3072E9A606500E223C0 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D9D3062E9A606500E223C0 /* SettingViewController.swift */; };
+		73E518C92EA237C800A7C478 /* ColsomeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E518C82EA237BB00A7C478 /* ColsomeManager.swift */; };
 		73F71AA12E99E9E300BB6091 /* SmallTwoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F71AA02E99E9E300BB6091 /* SmallTwoViewCell.swift */; };
 		73F71AA32E99EF6A00BB6091 /* SmallOneViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F71AA22E99EF6A00BB6091 /* SmallOneViewCell.swift */; };
 		73F71AA52E99F47D00BB6091 /* SmallThreeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F71AA42E99F47D00BB6091 /* SmallThreeViewCell.swift */; };
@@ -111,6 +117,11 @@
 		732C1C952E98FCDC0005A18F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		732C1C972E98FCE10005A18F /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		732C1C992E9904080005A18F /* SmallMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallMainView.swift; sourceTree = "<group>"; };
+		732FB1A52EA3DCA60091D35F /* DeviceInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoManager.swift; sourceTree = "<group>"; };
+		732FB1A72EA3E1C50091D35F /* Untitleds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Untitleds.swift; sourceTree = "<group>"; };
+		732FB1A92EA3E9DA0091D35F /* SmallInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallInfo.swift; sourceTree = "<group>"; };
+		735159B32EA1EEFB0007347F /* NetworkStatusManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatusManager.swift; sourceTree = "<group>"; };
+		735159B52EA20C410007347F /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		7376564D2E9C9E990018258E /* CommonHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonHeadView.swift; sourceTree = "<group>"; };
 		7376564F2E9CABF80018258E /* LogOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutView.swift; sourceTree = "<group>"; };
 		737656512E9CC5870018258E /* DeleteAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountView.swift; sourceTree = "<group>"; };
@@ -144,6 +155,7 @@
 		73D9D3022E9A420700E223C0 /* CenterListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterListViewCell.swift; sourceTree = "<group>"; };
 		73D9D3042E9A554800E223C0 /* SchemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemeManager.swift; sourceTree = "<group>"; };
 		73D9D3062E9A606500E223C0 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		73E518C82EA237BB00A7C478 /* ColsomeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColsomeManager.swift; sourceTree = "<group>"; };
 		73F71AA02E99E9E300BB6091 /* SmallTwoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallTwoViewCell.swift; sourceTree = "<group>"; };
 		73F71AA22E99EF6A00BB6091 /* SmallOneViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallOneViewCell.swift; sourceTree = "<group>"; };
 		73F71AA42E99F47D00BB6091 /* SmallThreeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallThreeViewCell.swift; sourceTree = "<group>"; };
@@ -181,6 +193,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		735159B22EA1EEE90007347F /* Https */ = {
+			isa = PBXGroup;
+			children = (
+				732FB1A92EA3E9DA0091D35F /* SmallInfo.swift */,
+				732FB1A72EA3E1C50091D35F /* Untitleds.swift */,
+				732FB1A52EA3DCA60091D35F /* DeviceInfoManager.swift */,
+				73E518C82EA237BB00A7C478 /* ColsomeManager.swift */,
+				735159B52EA20C410007347F /* LocationManager.swift */,
+				735159B32EA1EEFB0007347F /* NetworkStatusManager.swift */,
+			);
+			path = Https;
+			sourceTree = "<group>";
+		};
 		73AF980E2E979B47006BFCCA = {
 			isa = PBXGroup;
 			children = (
@@ -209,10 +234,10 @@
 				73AF982F2E979B4F006BFCCA /* AppDelegate.swift */,
 				73AF98332E979B4F006BFCCA /* LaunchScreen.storyboard */,
 				73AF98562E97A72C006BFCCA /* Utilities */,
+				735159B22EA1EEE90007347F /* Https */,
 				73AF98592E97A814006BFCCA /* Networking */,
 				73B1AD802E9D2977001590B8 /* Product */,
 				73AF98462E97A119006BFCCA /* Login */,
-				73AF98452E979E24006BFCCA /* Auth */,
 				73AF98442E979E1D006BFCCA /* Order */,
 				73AF98432E979E14006BFCCA /* Home */,
 				73AF98422E979E11006BFCCA /* Center */,
@@ -269,13 +294,6 @@
 				732C1C8F2E98F57B0005A18F /* OrderViewController.swift */,
 			);
 			path = Order;
-			sourceTree = "<group>";
-		};
-		73AF98452E979E24006BFCCA /* Auth */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Auth;
 			sourceTree = "<group>";
 		};
 		73AF98462E97A119006BFCCA /* Login */ = {
@@ -528,13 +546,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-DanaMandiri/Pods-DanaMandiri-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-DanaMandiri/Pods-DanaMandiri-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -555,6 +569,7 @@
 				731C92EF2EA12DC500553408 /* PopSelectTimeInfoView.swift in Sources */,
 				73B1AD882E9D4442001590B8 /* ProductCollectionViewCell.swift in Sources */,
 				732C1C982E98FCE70005A18F /* HomeViewModel.swift in Sources */,
+				732FB1A62EA3DCAE0091D35F /* DeviceInfoManager.swift in Sources */,
 				73D9D3052E9A555B00E223C0 /* SchemeManager.swift in Sources */,
 				73F71AAB2E9A030900BB6091 /* OrderListView.swift in Sources */,
 				73D9D3072E9A606500E223C0 /* SettingViewController.swift in Sources */,
@@ -562,6 +577,7 @@
 				73FD44392E9E3EF00075D082 /* EnterInputViewCell.swift in Sources */,
 				73204E4D2EA0D75A0040FE1E /* PopSelectGqView.swift in Sources */,
 				73AF98512E97A5FA006BFCCA /* BaseViewController.swift in Sources */,
+				735159B42EA1EF010007347F /* NetworkStatusManager.swift in Sources */,
 				73F71AA52E99F47D00BB6091 /* SmallThreeViewCell.swift in Sources */,
 				73204E4F2EA0E9020040FE1E /* ContactManager.swift in Sources */,
 				732C1C922E98F5850005A18F /* HomeViewController.swift in Sources */,
@@ -572,6 +588,7 @@
 				732C1C7C2E9895830005A18F /* LoadingHUD.swift in Sources */,
 				73D9D3032E9A420700E223C0 /* CenterListViewCell.swift in Sources */,
 				73B1AD842E9D3250001590B8 /* ProductViewModel.swift in Sources */,
+				732FB1A82EA3E1C60091D35F /* Untitleds.swift in Sources */,
 				73F71AA32E99EF6A00BB6091 /* SmallOneViewCell.swift in Sources */,
 				73B1AD862E9D325C001590B8 /* ProductView.swift in Sources */,
 				737656542E9CE0340018258E /* OrderListViewModel.swift in Sources */,
@@ -593,6 +610,7 @@
 				73AF98582E97A73A006BFCCA /* Color.swift in Sources */,
 				732C1C962E98FCDC0005A18F /* HomeView.swift in Sources */,
 				73AF98392E979B4F006BFCCA /* AppDelegate.swift in Sources */,
+				735159B62EA20C420007347F /* LocationManager.swift in Sources */,
 				73204E452EA0BF630040FE1E /* CommonBpViewController.swift in Sources */,
 				73FD44332E9E3E200075D082 /* BasicView.swift in Sources */,
 				73FD44312E9E34160075D082 /* BasicViewController.swift in Sources */,
@@ -614,9 +632,11 @@
 				73204E512EA0F6DB0040FE1E /* ChangeYoungViewController.swift in Sources */,
 				732C1C902E98F57B0005A18F /* OrderViewController.swift in Sources */,
 				737656582E9CFBCE0018258E /* EmptyView.swift in Sources */,
+				73E518C92EA237C800A7C478 /* ColsomeManager.swift in Sources */,
 				7387D9982E9F3D3F005A5777 /* PopSelectInfoView.swift in Sources */,
 				7387D99A2E9F4C53005A5777 /* PopSelectInfoViewCell.swift in Sources */,
 				737656562E9CE42D0018258E /* OrderListViewCell.swift in Sources */,
+				732FB1AA2EA3E9E00091D35F /* SmallInfo.swift in Sources */,
 				73F71AA12E99E9E300BB6091 /* SmallTwoViewCell.swift in Sources */,
 				73F71AAD2E9A1CD600BB6091 /* CenterListView.swift in Sources */,
 			);
@@ -654,17 +674,17 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DanaMandiri/DanaMandiri.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 8K9YQ3M42C;
+				DEVELOPMENT_TEAM = XS8842FK7N;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DanaMandiri/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Dana Mandiri";
-				INFOPLIST_KEY_NSCameraUsageDescription = "需要相机📷";
-				INFOPLIST_KEY_NSContactsUsageDescription = "需要通讯录📇";
+				INFOPLIST_KEY_NSCameraUsageDescription = "需要相机";
+				INFOPLIST_KEY_NSContactsUsageDescription = "需要通讯录";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "需要你的定位";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "想要idfa";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -676,10 +696,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hkdev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wentao.ald;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = hkdevpro;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -702,17 +721,17 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DanaMandiri/DanaMandiri.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 8K9YQ3M42C;
+				DEVELOPMENT_TEAM = XS8842FK7N;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DanaMandiri/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Dana Mandiri";
-				INFOPLIST_KEY_NSCameraUsageDescription = "需要相机📷";
-				INFOPLIST_KEY_NSContactsUsageDescription = "需要通讯录📇";
+				INFOPLIST_KEY_NSCameraUsageDescription = "需要相机";
+				INFOPLIST_KEY_NSContactsUsageDescription = "需要通讯录";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "需要你的定位";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "想要idfa";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -724,10 +743,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hkdev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wentao.ald;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = hkdevpro;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

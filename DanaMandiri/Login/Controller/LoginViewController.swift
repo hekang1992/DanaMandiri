@@ -9,6 +9,8 @@ import UIKit
 import SnapKit
 import RxSwift
 import RxCocoa
+import FBSDKCoreKit
+import AppTrackingTransparency
 
 class LoginViewController: BaseViewController {
     
@@ -25,6 +27,12 @@ class LoginViewController: BaseViewController {
     
     private var remainingSeconds: Int = 60
     
+    var entertime: String = ""
+    
+    var leavetime: String = ""
+    
+    let locationManagerModel = LocationManagerModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,6 +42,7 @@ class LoginViewController: BaseViewController {
             make.edges.equalToSuperview()
         }
         
+        entertime = String(Int(Date().timeIntervalSince1970))
         
         loginView.phoneCodeView.againBtn.rx.tap.subscribe(onNext: { [weak self] in
             self?.toCodeInfo()
@@ -43,6 +52,20 @@ class LoginViewController: BaseViewController {
             self?.toLoginInfo()
         }).disposed(by: disposeBag)
         
+        /// LOCATION_PERSMISSON_INFO
+        LocationManager.shared.requestLocation { [weak self] info in
+            switch info {
+            case .success(let success):
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    print("info====location------\(info)")
+                    AddressLocationInfoModel.shared.locationModel = success
+                    self?.toLocationInfo(with: success)
+                }
+                break
+            case .failure(_):
+                break
+            }
+        }
     }
     
 }
@@ -50,6 +73,7 @@ class LoginViewController: BaseViewController {
 extension LoginViewController {
     
     private func toLoginInfo() {
+        LoginTimeManager.shared.leavetime = String(Date().timeIntervalSince1970)
         let phone = self.loginView.phoneListView.phoneTx.text ?? ""
         let code = self.loginView.phoneCodeView.phoneTx.text ?? ""
         if phone.isEmpty {
@@ -69,7 +93,7 @@ extension LoginViewController {
                     "sophoency": code,
                     "himselfform": "tologin",
                     "determine": "1"]
-        loginViewModel.toLogin(json: json) { model in
+        loginViewModel.toLogin(json: json) { [weak self] model in
             if ["0", "00"].contains(model.aboutation) {
                 let phone = model.salin?.thatise ?? ""
                 let token = model.salin?.cast ?? ""
@@ -77,6 +101,14 @@ extension LoginViewController {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
                     NotificationCenter.default.post(name: Notification.Name("switchRootVc"), object: nil)
                 }
+                let locationModel = AddressLocationInfoModel.shared.locationModel
+                let colJson = ["opportunityatory": "",
+                               "muls": "1",
+                               "presentality": "",
+                               "dens": self?.entertime ?? "",
+                               "graman": String(locationModel?.longitude ?? 0.0),
+                               "anem": String(locationModel?.latitude ?? 0.0)]
+                ColsomeManager.colsomeInfo(with: colJson)
             }else {
                 AuthLoginManager.shared.removeLoginInfo()
             }
@@ -128,4 +160,30 @@ extension LoginViewController {
         remainingSeconds = 60
     }
     
+}
+
+extension LoginViewController {
+    
+    private func toLocationInfo(with model: LocationInfo) {
+        let administrativeArea = model.administrativeArea ?? ""
+        let locality = model.locality ?? ""
+        let pairs: [(String, Any)] = [
+            ("studminute", administrativeArea.isEmpty ? locality : administrativeArea),
+            ("memberion", model.countryCode ?? ""),
+            ("sphinct", model.country ?? ""),
+            ("matrkeyast", model.name ?? ""),
+            ("anem", model.latitude),
+            ("graman", model.longitude),
+            ("nascitious", model.locality ?? ""),
+            ("pancreesque", model.subLocality ?? "")
+        ]
+        
+        let json = Dictionary(uniqueKeysWithValues: pairs)
+        
+        locationManagerModel.uoAddressinfo(json: json) { model in
+            if ["0", "00"].contains(model.aboutation) {
+                print("location=======suceess=======")
+            }
+        }
+    }
 }

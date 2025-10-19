@@ -50,7 +50,21 @@ class HomeViewModel {
             case .success(let success):
                 completion(success)
                 break
-            case .failure(let failure):
+            case .failure(_):
+                let model = BaseModel()
+                completion(model)
+                break
+            }
+        }
+    }
+    
+    func uploadSbInfo(with json: [String: Any], completion: @escaping (BaseModel) -> Void) {
+        NetworkManager.shared.postJsonRequest(url: "/taxile/vertindustryent", json: json, responseType: BaseModel.self) { result in
+            switch result {
+            case .success(let success):
+                completion(success)
+                break
+            case .failure(_):
                 let model = BaseModel()
                 completion(model)
                 break

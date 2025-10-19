@@ -75,7 +75,7 @@ extension SmallOneViewCell: FSPagerViewDelegate, FSPagerViewDataSource {
         cell.imageView?.contentMode = .scaleAspectFill
         cell.imageView?.clipsToBounds = true
         cell.contentView.layer.shadowRadius = 0
-        cell.contentView.backgroundColor = .systemBlue
+        cell.imageView?.kf.setImage(with: URL(string: model?.scolieer ?? ""))
         return cell
     }
     
