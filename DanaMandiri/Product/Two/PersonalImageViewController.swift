@@ -70,7 +70,18 @@ class PersonalImageViewController: BaseViewController {
         }
         
         headView.againBtn.rx.tap.subscribe(onNext: { [weak self] in
-            self?.popToDetailViewController()
+            guard let self = self else { return }
+            let leaveView = PopLeaveDownView(frame: self.view.bounds)
+            let alertVc = TYAlertController(alert: leaveView, preferredStyle: .alert)!
+            self.present(alertVc, animated: true)
+            leaveView.cancelBlock = {
+                self.dismiss(animated: true) {
+                    self.popToDetailViewController()
+                }
+            }
+            leaveView.leaveBlock = {
+                self.dismiss(animated: true)
+            }
         }).disposed(by: disposeBag)
         
         personalView.uploadBlock = { [weak self] model in
@@ -165,6 +176,7 @@ extension PersonalImageViewController {
             popTimeView.defaultDateString = time
             popTimeView.confirmBlock = { dateStr in
                 popView.timeLabel.text = dateStr
+                popView.timeLabel.textColor = UIColor.init(hexString: "#0E0F0F")
                 popTimeView.removeFromSuperview()
             }
             
@@ -197,6 +209,18 @@ extension PersonalImageViewController {
         let name = popView.nameTx.text ?? ""
         let idnum = popView.idNumberTx.text ?? ""
         let time = popView.timeLabel.text ?? ""
+        if name.isEmpty {
+            ToastProgressHUD.showToastText(message: LanguageManager.localizedString(for: "Real Name"))
+            return
+        }
+        if idnum.isEmpty {
+            ToastProgressHUD.showToastText(message: LanguageManager.localizedString(for: "ID Number"))
+            return
+        }
+        if time.isEmpty {
+            ToastProgressHUD.showToastText(message: LanguageManager.localizedString(for: "Birthday"))
+            return
+        }
         let phone = AuthLoginManager.shared.getPhoneNumber() ?? ""
         let json = ["playty": "1",
                     "polyward": time,

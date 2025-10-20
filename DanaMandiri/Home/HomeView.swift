@@ -198,7 +198,7 @@ class HomeView: UIView {
     lazy var fiveImageView: UIImageView = {
         let fiveImageView = UIImageView()
         let cin = CinInfoModel.shared.cinModel?.cin ?? ""
-        fiveImageView.image = cin == "460" ? UIImage(named: "foot_id_home_image") : UIImage(named: "foot_b_bg")
+        fiveImageView.image = cin == "460" ? UIImage(named: "foot_b_id_bg") : UIImage(named: "foot_b_bg")
         return fiveImageView
     }()
 

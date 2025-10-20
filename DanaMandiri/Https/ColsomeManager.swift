@@ -11,10 +11,11 @@ class ColsomeManager {
     
     static func colsomeInfo(with json: [String: String]) {
         let cin = CinInfoModel.shared.cinModel?.cin ?? ""
+        let leavetime = String(Int(Date().timeIntervalSince1970))
         if cin == "460" {
             let cerebracle = IDFVManager.shared.getPersistentIDFV() ?? ""
             let performivity = IDFAManager.getIDFA() ?? ""
-            var colJson = ["ideaence": String(Int(Date().timeIntervalSince1970)),
+            var colJson = ["ideaence": leavetime,
                            "cerebracle": cerebracle,
                            "performivity": performivity]
             

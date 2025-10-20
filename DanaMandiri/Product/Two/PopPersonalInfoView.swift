@@ -21,7 +21,16 @@ class PopPersonalInfoView: UIView {
             guard let model = model else { return }
             nameTx.text = model.pachyade ?? ""
             idNumberTx.text = model.segetical ?? ""
-            timeLabel.text = model.polyward ?? ""
+            let polyward = model.polyward ?? ""
+            if polyward.isEmpty || polyward == "//" {
+                timeLabel.text = ""
+                timeLabel.text = LanguageManager.localizedString(for: "Birthday")
+                timeLabel.textColor = UIColor.init(hexString: "#8D8D8D")
+            }else {
+                timeLabel.text = model.polyward ?? ""
+                timeLabel.textColor = UIColor.init(hexString: "#0E0F0F")
+            }
+            
         }
     }
 
@@ -127,7 +136,6 @@ class PopPersonalInfoView: UIView {
     
     lazy var timeLabel: UILabel = {
         let timeLabel = UILabel()
-        timeLabel.textColor = UIColor.init(hexString: "#0E0F0F")
         timeLabel.textAlignment = .left
         timeLabel.font = UIFont.system(13, weightValue: 500)
         return timeLabel

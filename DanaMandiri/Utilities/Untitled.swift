@@ -122,6 +122,9 @@ class AuthLoginManager {
     
     func removeLoginInfo() {
         removeAuthToken()
+        UserDefaults.standard.set("", forKey: "entertime")
+        UserDefaults.standard.set("", forKey: "leavetime")
+        UserDefaults.standard.synchronize()
     }
     
     func getPhoneNumber() -> String? {

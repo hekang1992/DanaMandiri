@@ -44,7 +44,8 @@ class LoginViewController: BaseViewController {
         
         entertime = String(Int(Date().timeIntervalSince1970))
         
-        LoginTimeManager.shared.leavetime = entertime
+        UserDefaults.standard.set(entertime, forKey: "entertime")
+        UserDefaults.standard.synchronize()
         
         loginView.phoneCodeView.againBtn.rx.tap.subscribe(onNext: { [weak self] in
             self?.toCodeInfo()
@@ -70,7 +71,9 @@ class LoginViewController: BaseViewController {
 extension LoginViewController {
     
     private func toLoginInfo() {
-        LoginTimeManager.shared.leavetime = String(Date().timeIntervalSince1970)
+        UserDefaults.standard.set(leavetime, forKey: "leavetime")
+        UserDefaults.standard.synchronize()
+        
         let phone = self.loginView.phoneListView.phoneTx.text ?? ""
         let code = self.loginView.phoneCodeView.phoneTx.text ?? ""
         if phone.isEmpty {

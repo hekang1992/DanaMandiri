@@ -120,9 +120,3 @@ class AddressLocationInfoModel {
     private init() {}
     var locationModel: LocationInfo?
 }
-
-class LoginTimeManager {
-    static let shared = LoginTimeManager()
-    private init() {}
-    var leavetime: String?
-}

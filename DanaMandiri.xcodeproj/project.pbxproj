@@ -31,6 +31,7 @@
 		732C1C962E98FCDC0005A18F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732C1C952E98FCDC0005A18F /* HomeView.swift */; };
 		732C1C982E98FCE70005A18F /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732C1C972E98FCE10005A18F /* HomeViewModel.swift */; };
 		732C1C9A2E9904200005A18F /* SmallMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732C1C992E9904080005A18F /* SmallMainView.swift */; };
+		732CCE6A2EA61A78004C325D /* PopLeaveDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732CCE692EA61A65004C325D /* PopLeaveDownView.swift */; };
 		732FB1A62EA3DCAE0091D35F /* DeviceInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732FB1A52EA3DCA60091D35F /* DeviceInfoManager.swift */; };
 		732FB1A82EA3E1C60091D35F /* Untitleds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732FB1A72EA3E1C50091D35F /* Untitleds.swift */; };
 		732FB1AA2EA3E9E00091D35F /* SmallInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732FB1A92EA3E9DA0091D35F /* SmallInfo.swift */; };
@@ -117,6 +118,7 @@
 		732C1C952E98FCDC0005A18F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		732C1C972E98FCE10005A18F /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		732C1C992E9904080005A18F /* SmallMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallMainView.swift; sourceTree = "<group>"; };
+		732CCE692EA61A65004C325D /* PopLeaveDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopLeaveDownView.swift; sourceTree = "<group>"; };
 		732FB1A52EA3DCA60091D35F /* DeviceInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoManager.swift; sourceTree = "<group>"; };
 		732FB1A72EA3E1C50091D35F /* Untitleds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Untitleds.swift; sourceTree = "<group>"; };
 		732FB1A92EA3E9DA0091D35F /* SmallInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallInfo.swift; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 		73AF98562E97A72C006BFCCA /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				732CCE692EA61A65004C325D /* PopLeaveDownView.swift */,
 				73D9D3042E9A554800E223C0 /* SchemeManager.swift */,
 				732C1C872E98D6170005A18F /* LanguageManager.swift */,
 				732C1C7F2E98AEEA0005A18F /* Untitled.swift */,
@@ -610,6 +613,7 @@
 				73FD44242E9E26830075D082 /* FaceViewController.swift in Sources */,
 				732C1C8C2E98EB460005A18F /* CustomTabBarController.swift in Sources */,
 				73F71AA92E99F67100BB6091 /* SmallThreeCollectionViewCell.swift in Sources */,
+				732CCE6A2EA61A78004C325D /* PopLeaveDownView.swift in Sources */,
 				732C1C862E98CFAC0005A18F /* PhoneListView.swift in Sources */,
 				73AF98582E97A73A006BFCCA /* Color.swift in Sources */,
 				732C1C962E98FCDC0005A18F /* HomeView.swift in Sources */,
@@ -678,11 +682,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DanaMandiri/DanaMandiri.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 8K9YQ3M42C;
+				DEVELOPMENT_TEAM = XS8842FK7N;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DanaMandiri/Info.plist;
@@ -702,10 +704,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hkdev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wentao.ald;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = hkdevpro;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -728,11 +729,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DanaMandiri/DanaMandiri.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 8K9YQ3M42C;
+				DEVELOPMENT_TEAM = XS8842FK7N;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DanaMandiri/Info.plist;
@@ -752,10 +751,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hkdev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wentao.ald;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = hkdevpro;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

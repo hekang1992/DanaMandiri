@@ -139,8 +139,6 @@ extension UnieerLifeViewController {
 extension UnieerLifeViewController: WKNavigationDelegate, WKScriptMessageHandler {
     
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        print("name========\(message.name)")
-        print("body========\(message.body)")
         switch message.name {
         case "picish":
             self.navigationController?.popToRootViewController(animated: true)
@@ -158,6 +156,8 @@ extension UnieerLifeViewController: WKNavigationDelegate, WKScriptMessageHandler
         case "chlorid":
             break
         case "thrixacious":
+            let body = message.body as? String ?? ""
+            goSendInfo(with: body)
             break
         default:
             break
@@ -190,6 +190,16 @@ extension UnieerLifeViewController {
                     "graman": String(locationModel?.longitude ?? 0.0),
                     "anem": String(locationModel?.latitude ?? 0.0)]
         ColsomeManager.colsomeInfo(with: json)
+    }
+    
+    private func goSendInfo(with email: String) {
+        let phone = AuthLoginManager.shared.getPhoneNumber()
+        let phoneStr = "Dana Mandiri: \(phone ?? "")"
+        if let emailURL = URL(string: "mailto:\(email)?body=\(phoneStr)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) {
+            if UIApplication.shared.canOpenURL(emailURL) {
+                UIApplication.shared.open(emailURL, options: [:], completionHandler: nil)
+            }
+        }
     }
     
 }

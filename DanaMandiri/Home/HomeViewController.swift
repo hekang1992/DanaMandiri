@@ -184,11 +184,12 @@ extension HomeViewController {
     }
     
     private func buOneInfo() {
+        let entertime = UserDefaults.standard.object(forKey: "entertime") as? String ?? ""
         let locationModel = AddressLocationInfoModel.shared.locationModel
         let colJson = ["opportunityatory": "",
                        "muls": "1",
                        "presentality": "",
-                       "dens": LoginTimeManager.shared.leavetime ?? "",
+                       "dens": entertime,
                        "graman": String(locationModel?.longitude ?? 0.0),
                        "anem": String(locationModel?.latitude ?? 0.0)]
         ColsomeManager.colsomeInfo(with: colJson)
