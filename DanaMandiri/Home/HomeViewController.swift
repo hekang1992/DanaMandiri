@@ -120,15 +120,8 @@ class HomeViewController: BaseViewController {
             NotificationCenter.default.post(name: Notification.Name("aTTracking"), object: nil, userInfo: ["type": "1"])
         }
         
-        LocationManager.shared.requestLocation { info in
-            switch info {
-            case .success(let success):
-                AddressLocationInfoModel.shared.locationModel = success
-                break
-            case .failure(_):
-                break
-            }
-            
+        LocationManager.shared.requestLocation { model in
+            AddressLocationInfoModel.shared.locationModel = model
         }
         
     }
@@ -184,15 +177,17 @@ extension HomeViewController {
     }
     
     private func buOneInfo() {
-        let entertime = UserDefaults.standard.object(forKey: "entertime") as? String ?? ""
-        let locationModel = AddressLocationInfoModel.shared.locationModel
-        let colJson = ["opportunityatory": "",
-                       "muls": "1",
-                       "presentality": "",
-                       "dens": entertime,
-                       "graman": String(locationModel?.longitude ?? 0.0),
-                       "anem": String(locationModel?.latitude ?? 0.0)]
-        ColsomeManager.colsomeInfo(with: colJson)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            let entertime = UserDefaults.standard.object(forKey: "entertime") as? String ?? ""
+            let locationModel = AddressLocationInfoModel.shared.locationModel
+            let colJson = ["opportunityatory": "",
+                           "muls": "1",
+                           "presentality": "",
+                           "dens": entertime,
+                           "graman": String(locationModel?.longitude ?? 0.0),
+                           "anem": String(locationModel?.latitude ?? 0.0)]
+            ColsomeManager.colsomeInfo(with: colJson)
+        }
     }
     
     private func getHomeInfo() {

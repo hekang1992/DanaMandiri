@@ -118,5 +118,5 @@ class CinInfoModel {
 class AddressLocationInfoModel {
     static let shared = AddressLocationInfoModel()
     private init() {}
-    var locationModel: LocationInfo?
+    var locationModel: LocationInfoModel?
 }

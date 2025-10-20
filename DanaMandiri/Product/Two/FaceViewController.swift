@@ -39,16 +39,8 @@ class FaceViewController: BaseViewController {
 
         // Do any additional setup after loading the view.
         
-        LocationManager.shared.requestLocation { info in
-            switch info {
-            case .success(let success):
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                    AddressLocationInfoModel.shared.locationModel = success
-                }
-                break
-            case .failure(_):
-                break
-            }
+        LocationManager.shared.requestLocation { model in
+            AddressLocationInfoModel.shared.locationModel = model
         }
         
         entertime = String(Int(Date().timeIntervalSince1970))
@@ -143,14 +135,16 @@ extension FaceViewController {
     }
     
     private func colInfo() {
-        let locationModel = AddressLocationInfoModel.shared.locationModel
-        let json = ["opportunityatory": productID,
-                    "muls": "3",
-                    "presentality": orderNumber,
-                    "dens": entertime,
-                    "graman": String(locationModel?.longitude ?? 0.0),
-                    "anem": String(locationModel?.latitude ?? 0.0)]
-        ColsomeManager.colsomeInfo(with: json)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { [self] in
+            let locationModel = AddressLocationInfoModel.shared.locationModel
+            let json = ["opportunityatory": productID,
+                        "muls": "3",
+                        "presentality": orderNumber,
+                        "dens": entertime,
+                        "graman": String(locationModel?.longitude ?? 0.0),
+                        "anem": String(locationModel?.latitude ?? 0.0)]
+            ColsomeManager.colsomeInfo(with: json)
+        }
     }
     
 }

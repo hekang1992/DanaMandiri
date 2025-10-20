@@ -8,15 +8,15 @@
 import Foundation
 import CoreLocation
 
-struct LocationInfo {
-    let latitude: Double
-    let longitude: Double
-    let country: String?
-    let countryCode: String?
-    let administrativeArea: String?
-    let locality: String?
-    let subLocality: String?
-    let name: String?
+class LocationInfoModel {
+    var latitude: Double = 0.0
+    var longitude: Double = 0.0
+    var country: String?
+    var countryCode: String?
+    var administrativeArea: String?
+    var locality: String?
+    var subLocality: String?
+    var name: String?
 }
 
 final class LocationManager: NSObject {
@@ -24,7 +24,7 @@ final class LocationManager: NSObject {
     static let shared = LocationManager()
     
     private let manager = CLLocationManager()
-    private var completion: ((Result<LocationInfo, Error>) -> Void)?
+    private var completion: ((LocationInfoModel) -> Void)?
     
     private override init() {
         super.init()
@@ -32,14 +32,15 @@ final class LocationManager: NSObject {
         manager.desiredAccuracy = kCLLocationAccuracyBest
     }
     
-    func requestLocation(completion: @escaping (Result<LocationInfo, Error>) -> Void) {
+    func requestLocation(completion: @escaping (LocationInfoModel) -> Void) {
         self.completion = completion
         
         let status = manager.authorizationStatus
         if status == .notDetermined {
             manager.requestWhenInUseAuthorization()
         } else if status == .denied || status == .restricted {
-            completion(.failure(LocationError.permissionDenied))
+            let locationModel = LocationInfoModel()
+            completion(locationModel)
         } else {
             manager.startUpdatingLocation()
         }
@@ -53,8 +54,8 @@ extension LocationManager: CLLocationManagerDelegate {
             manager.authorizationStatus == .authorizedAlways {
             manager.startUpdatingLocation()
         } else if manager.authorizationStatus == .denied {
-            completion?(.failure(LocationError.permissionDenied))
-            completion = nil
+            let locationModel = LocationInfoModel()
+            completion?(locationModel)
         }
     }
     
@@ -67,36 +68,35 @@ extension LocationManager: CLLocationManagerDelegate {
             
             if let error {
                 print("error========\(error.localizedDescription)")
-                self.completion?(.failure(error))
-                self.completion = nil
+                let locationModel = LocationInfoModel()
+                completion?(locationModel)
                 return
             }
             
             guard let placemark = placemarks?.first else {
-                self.completion?(.failure(LocationError.noPlacemark))
-                self.completion = nil
+                let locationModel = LocationInfoModel()
+                completion?(locationModel)
                 return
             }
             
-            let info = LocationInfo(
-                latitude: location.coordinate.latitude,
-                longitude: location.coordinate.longitude,
-                country: placemark.country,
-                countryCode: placemark.isoCountryCode,
-                administrativeArea: placemark.administrativeArea,
-                locality: placemark.locality,
-                subLocality: placemark.subLocality,
-                name: placemark.name
-            )
+            let model = LocationInfoModel()
             
-            self.completion?(.success(info))
-            self.completion = nil
+            model.latitude = location.coordinate.latitude
+            model.longitude = location.coordinate.longitude
+            model.country = placemark.country
+            model.countryCode = placemark.isoCountryCode
+            model.administrativeArea = placemark.administrativeArea
+            model.locality = placemark.locality
+            model.subLocality = placemark.subLocality
+            model.name = placemark.name
+            
+            self.completion?(model)
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        completion?(.failure(error))
-        completion = nil
+        let locationModel = LocationInfoModel()
+        completion?(locationModel)
     }
 }
 
