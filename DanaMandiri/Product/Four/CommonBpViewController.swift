@@ -2,7 +2,7 @@
 //  CommonBpViewController.swift
 //  DanaMandiri
 //
-//  Created by hekang on 2025/10/16.
+//  Created by Ethan Johnson on 2025/10/16.
 //
 
 import UIKit
@@ -182,10 +182,11 @@ extension CommonBpViewController {
         
         let json = ["response": productID, "salin": jsonSring]
         viewModel.saveCommonBpInfo(with: json) { [weak self] model in
-            ToastProgressHUD.showToastText(message: model.filmably ?? "")
             if ["0", "00"].contains(model.aboutation) {
                 self?.popToDetailViewController()
                 self?.colInfo()
+            }else {
+                ToastProgressHUD.showToastText(message: model.filmably ?? "")
             }
         }
     }

@@ -8,6 +8,7 @@
 import Foundation
 import Alamofire
 import UIKit
+import DeviceKit
 
 let H5_URL = "http://8.215.85.208:9003"
 let BASE_URL = "\(H5_URL)/limacit"
@@ -133,9 +134,9 @@ struct APIQueryBuilder {
     struct Parameters {
         let platform: String = "ios"
         let version: String = "1.0.0"
-        let deviceName: String = UIDevice.current.name
+        let deviceName: String = UIDevice.current.description
         let idfv: String = IDFVManager.shared.getPersistentIDFV() ?? ""
-        let systemVersion: String = UIDevice.current.systemVersion
+        let systemVersion: String = Device.current.description
         let appID: String = "dana" + "-" + "mandiri"
         let authToken: String = AuthLoginManager.shared.getAuthToken() ?? ""
         let cin: String = CinInfoModel.shared.cinModel?.cin ?? ""

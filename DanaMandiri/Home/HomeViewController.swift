@@ -115,7 +115,6 @@ class HomeViewController: BaseViewController {
                 CityAddressModel.shared.cityModel = model.salin
             }
         }
-        upComputerLoadInfo()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
             NotificationCenter.default.post(name: Notification.Name("aTTracking"), object: nil, userInfo: ["type": "1"])
@@ -124,9 +123,7 @@ class HomeViewController: BaseViewController {
         LocationManager.shared.requestLocation { info in
             switch info {
             case .success(let success):
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                    AddressLocationInfoModel.shared.locationModel = success
-                }
+                AddressLocationInfoModel.shared.locationModel = success
                 break
             case .failure(_):
                 break
@@ -186,6 +183,17 @@ extension HomeViewController {
         
     }
     
+    private func buOneInfo() {
+        let locationModel = AddressLocationInfoModel.shared.locationModel
+        let colJson = ["opportunityatory": "",
+                       "muls": "1",
+                       "presentality": "",
+                       "dens": LoginTimeManager.shared.leavetime ?? "",
+                       "graman": String(locationModel?.longitude ?? 0.0),
+                       "anem": String(locationModel?.latitude ?? 0.0)]
+        ColsomeManager.colsomeInfo(with: colJson)
+    }
+    
     private func getHomeInfo() {
         homeViewModel.getHomeInfo { [weak self] model in
             self?.smallView.tableView.mj_header?.endRefreshing()
@@ -205,6 +213,7 @@ extension HomeViewController {
     }
     
     private func applyInfo(with productID: String) {
+        buOneInfo()
         upComputerLoadInfo()
         toLocationInfo()
         

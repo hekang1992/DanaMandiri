@@ -121,7 +121,6 @@ class AuthLoginManager {
     }
     
     func removeLoginInfo() {
-        UserDefaults.standard.removeObject(forKey: phoneKey)
         removeAuthToken()
     }
     

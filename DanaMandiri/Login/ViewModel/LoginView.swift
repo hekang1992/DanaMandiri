@@ -46,6 +46,8 @@ class LoginView: UIView {
     
     lazy var phoneListView: PhoneListView = {
         let phoneListView = PhoneListView()
+        let phoneNumber = AuthLoginManager.shared.getPhoneNumber()
+        phoneListView.phoneTx.text = phoneNumber
         return phoneListView
     }()
     
@@ -91,6 +93,7 @@ class LoginView: UIView {
         let cycleBtn = UIButton(type: .custom)
         cycleBtn.setImage(UIImage(named: "normal_login_x"), for: .normal)
         cycleBtn.setImage(UIImage(named: "sel_login_x"), for: .selected)
+        cycleBtn.isSelected = true
         return cycleBtn
     }()
     

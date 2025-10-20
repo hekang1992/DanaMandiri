@@ -2,7 +2,7 @@
 //  PopSelectTimeInfoView.swift
 //  DanaMandiri
 //
-//  Created by hekang on 2025/10/16.
+//  Created by Ethan Johnson on 2025/10/16.
 //
 
 import UIKit
@@ -156,15 +156,15 @@ class PopSelectTimeInfoView: UIView {
         formatter.calendar = Calendar(identifier: .gregorian)
         
         if defaultDateString == "//" {
-            defaultDateString = "25/12/1970"
+            defaultDateString = "01/01/1990"
         }
         
-        let dateStr = (defaultDateString?.isEmpty == false) ? defaultDateString! : "25/12/1970"
+        let dateStr = (defaultDateString?.isEmpty == false) ? defaultDateString! : "01/01/1990"
         if let date = formatter.date(from: dateStr) {
             pickerView.setDate(date, animated: false)
             selectLabel.text = formatter.string(from: date)
         } else {
-            let defaultDate = formatter.date(from: "25/12/1970")!
+            let defaultDate = formatter.date(from: "01/01/1990")!
             pickerView.setDate(defaultDate, animated: false)
             selectLabel.text = formatter.string(from: defaultDate)
         }

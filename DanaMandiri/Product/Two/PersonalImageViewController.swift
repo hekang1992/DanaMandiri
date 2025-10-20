@@ -2,7 +2,7 @@
 //  PersonalImageViewController.swift
 //  DanaMandiri
 //
-//  Created by hekang on 2025/10/14.
+//  Created by Ethan Johnson on 2025/10/14.
 //
 
 import UIKit
@@ -134,11 +134,12 @@ extension PersonalImageViewController {
                     "cladal": "1",
                     "archriskage": "en"]
         viewModel.uploadPersonalImageInfo(with: json, image: image) { [weak self] model in
-            ToastProgressHUD.showToastText(message: model.filmably ?? "")
             if ["0", "00"].contains(model.aboutation) {
                 DispatchQueue.main.async {
                     self?.popSueecInfo(with: model)
                 }
+            }else {
+                ToastProgressHUD.showToastText(message: model.filmably ?? "")
             }
         }
     }
@@ -205,12 +206,13 @@ extension PersonalImageViewController {
                     "merilet": phone,
                     "response": productID]
         viewModel.savePersonalInfo(with: json) { [weak self] model in
-            ToastProgressHUD.showToastText(message: model.filmably ?? "")
             if ["0", "00"].contains(model.aboutation) {
                 self?.dismiss(animated: true) {
                     self?.getPersonalInfo()
                     self?.colInfo()
                 }
+            }else {
+                ToastProgressHUD.showToastText(message: model.filmably ?? "")
             }
         }
     }

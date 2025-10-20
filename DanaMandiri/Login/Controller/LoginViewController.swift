@@ -44,6 +44,8 @@ class LoginViewController: BaseViewController {
         
         entertime = String(Int(Date().timeIntervalSince1970))
         
+        LoginTimeManager.shared.leavetime = entertime
+        
         loginView.phoneCodeView.againBtn.rx.tap.subscribe(onNext: { [weak self] in
             self?.toCodeInfo()
         }).disposed(by: disposeBag)
@@ -52,20 +54,15 @@ class LoginViewController: BaseViewController {
             self?.toLoginInfo()
         }).disposed(by: disposeBag)
         
-        /// LOCATION_PERSMISSON_INFO
-        LocationManager.shared.requestLocation { [weak self] info in
-            switch info {
-            case .success(let success):
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                    print("info====location------\(info)")
-                    AddressLocationInfoModel.shared.locationModel = success
-                    self?.toLocationInfo(with: success)
-                }
-                break
-            case .failure(_):
-                break
-            }
-        }
+        loginView.priBtn.rx.tap.subscribe(onNext: { [weak self] in
+            let webVc = UnieerLifeViewController()
+            webVc.pageUrl = H5_URL + "/answerule"
+            self?.navigationController?.pushViewController(webVc, animated: true)
+        }).disposed(by: disposeBag)
+
+        /// GET_IDFA_INFO
+        self.getIcacInfo()
+        
     }
     
 }
@@ -93,22 +90,14 @@ extension LoginViewController {
                     "sophoency": code,
                     "himselfform": "tologin",
                     "determine": "1"]
-        loginViewModel.toLogin(json: json) { [weak self] model in
+        loginViewModel.toLogin(json: json) { model in
             if ["0", "00"].contains(model.aboutation) {
                 let phone = model.salin?.thatise ?? ""
                 let token = model.salin?.cast ?? ""
                 AuthLoginManager.shared.saveLoginInfo(phone: phone, token: token)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
                     NotificationCenter.default.post(name: Notification.Name("switchRootVc"), object: nil)
-                }
-                let locationModel = AddressLocationInfoModel.shared.locationModel
-                let colJson = ["opportunityatory": "",
-                               "muls": "1",
-                               "presentality": "",
-                               "dens": self?.entertime ?? "",
-                               "graman": String(locationModel?.longitude ?? 0.0),
-                               "anem": String(locationModel?.latitude ?? 0.0)]
-                ColsomeManager.colsomeInfo(with: colJson)
+                }                
             }else {
                 AuthLoginManager.shared.removeLoginInfo()
             }
@@ -164,26 +153,9 @@ extension LoginViewController {
 
 extension LoginViewController {
     
-    private func toLocationInfo(with model: LocationInfo) {
-        let administrativeArea = model.administrativeArea ?? ""
-        let locality = model.locality ?? ""
-        let pairs: [(String, Any)] = [
-            ("studminute", administrativeArea.isEmpty ? locality : administrativeArea),
-            ("memberion", model.countryCode ?? ""),
-            ("sphinct", model.country ?? ""),
-            ("matrkeyast", model.name ?? ""),
-            ("anem", model.latitude),
-            ("graman", model.longitude),
-            ("nascitious", model.locality ?? ""),
-            ("pancreesque", model.subLocality ?? "")
-        ]
-        
-        let json = Dictionary(uniqueKeysWithValues: pairs)
-        
-        locationManagerModel.uoAddressinfo(json: json) { model in
-            if ["0", "00"].contains(model.aboutation) {
-                print("location=======suceess=======")
-            }
+    private func getIcacInfo() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            NotificationCenter.default.post(name: Notification.Name("aTTracking"), object: nil, userInfo: ["type": "1"])
         }
     }
 }

@@ -2,7 +2,7 @@
 //  UnieerLifeViewController.swift
 //  DanaMandiri
 //
-//  Created by hekang on 2025/10/16.
+//  Created by Ethan Johnson on 2025/10/16.
 //
 
 import UIKit
@@ -51,18 +51,6 @@ class UnieerLifeViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        LocationManager.shared.requestLocation { info in
-            switch info {
-            case .success(let success):
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                    AddressLocationInfoModel.shared.locationModel = success
-                }
-                break
-            case .failure(_):
-                break
-            }
-        }
         
         entertime = String(Int(Date().timeIntervalSince1970))
         

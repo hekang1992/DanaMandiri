@@ -2,7 +2,7 @@
 //  PersonalImageView.swift
 //  DanaMandiri
 //
-//  Created by hekang on 2025/10/14.
+//  Created by Ethan Johnson on 2025/10/14.
 //
 
 import UIKit

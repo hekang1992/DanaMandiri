@@ -88,7 +88,10 @@ extension StartViewController {
                         if let lang = AppLanguage(rawValue: cin) {
                             LanguageManager.setLanguage(lang)
                         }
-                        self?.getIcacInfo()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                            NotificationCenter.default.post(name: Notification.Name("switchRootVc"), object: nil)
+                        }
+//                        self?.getIcacInfo()
                     }
                 }else {
                     self?.againBtn.isHidden = false
@@ -101,12 +104,6 @@ extension StartViewController {
                 LoadingHUD.hide()
                 break
             }
-        }
-    }
-    
-    private func getIcacInfo() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-            NotificationCenter.default.post(name: Notification.Name("aTTracking"), object: nil, userInfo: ["type": "0"])
         }
     }
     

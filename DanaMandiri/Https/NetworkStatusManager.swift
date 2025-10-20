@@ -2,7 +2,7 @@
 //  NetworkStatusManager.swift
 //  DanaMandiri
 //
-//  Created by hekang on 2025/10/17.
+//  Created by Ethan Johnson on 2025/10/17.
 //
 
 import Alamofire
