@@ -50,7 +50,7 @@ class SmallOneViewCell: UITableViewCell {
         bgView.addSubview(pagerView)
         bgView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.left.equalToSuperview().offset(20)
+            make.width.equalTo(345)
             make.top.equalToSuperview()
             make.height.equalTo(70)
             make.bottom.equalToSuperview()

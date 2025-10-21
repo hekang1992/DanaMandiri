@@ -9,7 +9,7 @@ class CommonBpViewModel {
     
     /// GET_BASIC_INFO
     func getCommonBpInfo(with json: [String: Any], completion: @escaping (BaseModel) -> Void) {
-        LoadingHUD.show(text: "Loading...")
+        LoadingHUD.show()
         NetworkManager.shared.postJsonRequest(url: "/taxile/phone", json: json, responseType: BaseModel.self) { result in
             switch result {
             case .success(let success):
@@ -26,7 +26,7 @@ class CommonBpViewModel {
     }
     
     func saveCommonBpInfo(with json: [String: Any], completion: @escaping (BaseModel) -> Void) {
-        LoadingHUD.show(text: "Loading...")
+        LoadingHUD.show()
         NetworkManager.shared.postJsonRequest(url: "/taxile/senselike", json: json, responseType: BaseModel.self) { result in
             switch result {
             case .success(let success):

@@ -53,8 +53,8 @@ class HomeViewController: BaseViewController {
             make.bottom.equalToSuperview().inset(85)
         }
         
-        smallView.twoBlock = { [weak self] productID in
-            self?.applyInfo(with: productID)
+        smallView.twoBlock = { [weak self] clickBtn, productID in
+            self?.applyInfo(with: productID, clickBtn: clickBtn)
         }
         
         smallView.threeBlock = { [weak self] pageUrl in
@@ -67,8 +67,8 @@ class HomeViewController: BaseViewController {
             }
         }
         
-        smallView.fourBlock = { [weak self] productID in
-            self?.applyInfo(with: productID)
+        smallView.fourBlock = { [weak self] clickBtn, productID in
+            self?.applyInfo(with: productID, clickBtn: clickBtn)
         }
         
         /// REFRESH_HOME_INFO
@@ -105,9 +105,9 @@ class HomeViewController: BaseViewController {
         }).disposed(by: disposeBag)
         
         ///APPLY_PRODUCT
-        homeView.applyBlock = { [weak self] in
+        homeView.applyBlock = { [weak self] clickBtn in
             let testnature = String(self?.smallModel?.testnature ?? 0)
-            self?.applyInfo(with: testnature)
+            self?.applyInfo(with: testnature, clickBtn: clickBtn)
         }
         
         homeViewModel.getAdressInfo { model in
@@ -208,7 +208,7 @@ extension HomeViewController {
         }
     }
     
-    private func applyInfo(with productID: String) {
+    private func applyInfo(with productID: String, clickBtn: UIButton) {
         buOneInfo()
         upComputerLoadInfo()
         toLocationInfo()
@@ -218,23 +218,26 @@ extension HomeViewController {
         let status = CLLocationManager().authorizationStatus
         
         if status == .authorizedAlways || status == .authorizedWhenInUse {
-            applyProductInfo(with: productID)
+            applyProductInfo(with: productID, clickBtn: clickBtn)
         }else {
             if cin == "460" {
                 ShowLocationPermissionAlert.showPermissionAlert(on: self)
             }else {
-                applyProductInfo(with: productID)
+                applyProductInfo(with: productID, clickBtn: clickBtn)
             }
         }
         
     }
-    
-    private func applyProductInfo(with productID: String) {
+    private func applyProductInfo(with productID: String, clickBtn: UIButton) {
+        clickBtn.isEnabled = false
+        LoadingHUD.show()
         let json = ["typefication": "1001",
                     "dynaance": "1000",
                     "noticeion": "1000",
                     "response": productID]
         homeViewModel.applyProductInfo(with: json) { [weak self] model in
+            clickBtn.isEnabled = true
+            LoadingHUD.hide()
             if ["0", "00"].contains(model.aboutation) {
                 let singleain = model.salin?.singleain ?? ""
                 if singleain.contains(SCHEME_URL) {

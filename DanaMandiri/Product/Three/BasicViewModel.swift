@@ -9,7 +9,7 @@ final class BasicViewModel {
     
     /// GET_BASIC_INFO
     func getBasicInfo(with json: [String: Any], completion: @escaping (BaseModel) -> Void) {
-        LoadingHUD.show(text: "Loading...")
+        LoadingHUD.show()
         NetworkManager.shared.postJsonRequest(url: "/taxile/fancmuchion", json: json, responseType: BaseModel.self) { result in
             switch result {
             case .success(let success):
@@ -26,7 +26,7 @@ final class BasicViewModel {
     }
     
     func saveBasicInfo(with json: [String: Any], completion: @escaping (BaseModel) -> Void) {
-        LoadingHUD.show(text: "Loading...")
+        LoadingHUD.show()
         NetworkManager.shared.postJsonRequest(url: "/taxile/nihilics", json: json, responseType: BaseModel.self) { result in
             switch result {
             case .success(let success):
@@ -44,7 +44,7 @@ final class BasicViewModel {
     
     /// GET_BANK_INFO
     func getBankInfo(with json: [String: Any], completion: @escaping (BaseModel) -> Void) {
-        LoadingHUD.show(text: "Loading...")
+        LoadingHUD.show()
         NetworkManager.shared.postJsonRequest(url: "/taxile/kilolaughish", json: json, responseType: BaseModel.self) { result in
             switch result {
             case .success(let success):
@@ -61,7 +61,7 @@ final class BasicViewModel {
     }
     
     func saveBankInfo(with json: [String: Any], completion: @escaping (BaseModel) -> Void) {
-        LoadingHUD.show(text: "Loading...")
+        LoadingHUD.show()
         NetworkManager.shared.postJsonRequest(url: "/taxile/sipirangeular", json: json, responseType: BaseModel.self) { result in
             switch result {
             case .success(let success):

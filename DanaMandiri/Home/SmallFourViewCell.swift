@@ -10,12 +10,15 @@ import SnapKit
 import RxSwift
 import RxCocoa
 import RxGesture
+import Kingfisher
 
 class SmallFourViewCell: UITableViewCell {
     
+    private static var isProcessingTap = false
+    
     let disposeBag = DisposeBag()
     
-    var cellTapClick: ((String) -> Void)?
+    var cellTapClick: ((UIButton, String) -> Void)?
     
     var smallModel: socialModel? {
         didSet {
@@ -28,6 +31,9 @@ class SmallFourViewCell: UITableViewCell {
             oneLabel.text = smallModel.tern ?? ""
             twoLabel.text = smallModel.platyid ?? ""
             threeLabel.text = smallModel.minaclike ?? ""
+            
+            let logoUrl = smallModel.vertindustryent ?? ""
+            logoImageView.kf.setImage(with: URL(string: logoUrl))
         }
     }
     
@@ -41,6 +47,8 @@ class SmallFourViewCell: UITableViewCell {
     
     lazy var logoImageView: UIImageView = {
         let logoImageView = UIImageView()
+        logoImageView.layer.cornerRadius = 4
+        logoImageView.clipsToBounds = true
         return logoImageView
     }()
     
@@ -91,7 +99,13 @@ class SmallFourViewCell: UITableViewCell {
         threeLabel.clipsToBounds = true
         return threeLabel
     }()
-
+    
+    lazy var clickBtn: UIButton = {
+        let clickBtn = UIButton()
+        clickBtn.isEnabled = true
+        return clickBtn
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -102,19 +116,20 @@ class SmallFourViewCell: UITableViewCell {
         bgView.addSubview(oneLabel)
         bgView.addSubview(twoLabel)
         bgView.addSubview(threeLabel)
+        bgView.addSubview(clickBtn)
         
         bgView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(12)
             make.centerX.equalToSuperview()
-            make.left.equalToSuperview().offset(20)
+            make.width.equalTo(345)
             make.height.equalTo(116)
             make.bottom.equalToSuperview().offset(-2)
         }
         
         logoImageView.snp.makeConstraints { make in
             make.size.equalTo(CGSize(width: 26, height: 26))
-            make.left.equalToSuperview().offset(25)
-            make.top.equalToSuperview().offset(25)
+            make.left.equalToSuperview().offset(20)
+            make.top.equalToSuperview().offset(20)
         }
         
         nameLabel.snp.makeConstraints { make in
@@ -147,14 +162,28 @@ class SmallFourViewCell: UITableViewCell {
             make.height.equalTo(38)
         }
         
-        bgView.rx
-            .tapGesture()
-            .when(.recognized)
-            .subscribe(onNext: { [weak self] _ in
-            if let self = self, let smallModel = smallModel {
-                self.cellTapClick?(String(smallModel.testnature ?? 0))
-            }
-        }).disposed(by: disposeBag)
+        clickBtn.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        clickBtn.rx.tap
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] in
+                guard let self = self, let smallModel = self.smallModel else { return }
+                
+                guard !SmallFourViewCell.isProcessingTap else { return }
+                
+                SmallFourViewCell.isProcessingTap = true
+                self.clickBtn.isEnabled = false
+                
+                self.cellTapClick?(self.clickBtn, String(smallModel.testnature ?? 0))
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    SmallFourViewCell.isProcessingTap = false
+                }
+            })
+            .disposed(by: disposeBag)
+        
     }
     
     required init?(coder: NSCoder) {

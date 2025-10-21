@@ -188,7 +188,7 @@ extension SettingViewController {
     
     /// LOG_OUT
     private func outInfo() {
-        LoadingHUD.show(text: "Loading...")
+        LoadingHUD.show()
         NetworkManager.shared.getRequest(url: "/taxile/aboutation", responseType: BaseModel.self) { reslut in
             switch reslut {
             case .success(let success):
@@ -210,7 +210,7 @@ extension SettingViewController {
     
     /// DELETE_ACC
     private func delInfo() {
-        LoadingHUD.show(text: "Loading...")
+        LoadingHUD.show()
         NetworkManager.shared.getRequest(url: "/taxile/tern", responseType: BaseModel.self) { reslut in
             switch reslut {
             case .success(let success):

@@ -11,7 +11,7 @@ class PersonalImageViewModel {
     
     /// 获取身份信息
     func getPersonalInfo(with json: [String: Any], completion: @escaping (BaseModel) -> Void) {
-        LoadingHUD.show(text: "Loading...")
+        LoadingHUD.show()
         NetworkManager.shared.getRequest(url: "/taxile/spatishowee", parameters: json, responseType: BaseModel.self) { result in
             switch result {
             case .success(let success):
@@ -29,7 +29,7 @@ class PersonalImageViewModel {
     
     /// UPLOAD_IMAGE_INFO
     func uploadPersonalImageInfo(with json: [String: Any], image: UIImage, completion: @escaping (BaseModel) -> Void) {
-        LoadingHUD.show(text: "Loading...")
+        LoadingHUD.show()
         NetworkManager.shared.uploadImage(url: "/taxile/collegeety", image: image, parameters: json, responseType: BaseModel.self) { result in
             switch result {
             case .success(let success):
@@ -47,7 +47,7 @@ class PersonalImageViewModel {
     
     /// SAVE_IMAGE_INFO
     func savePersonalInfo(with json: [String: Any], completion: @escaping (BaseModel) -> Void) {
-        LoadingHUD.show(text: "Loading...")
+        LoadingHUD.show()
         NetworkManager.shared.postJsonRequest(url: "/taxile/articleit", json: json, responseType: BaseModel.self) { result in
             switch result {
             case .success(let success):

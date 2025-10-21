@@ -16,7 +16,7 @@ class SmallTwoViewCell: UITableViewCell {
     
     let disposeBag = DisposeBag()
     
-    var tapClickBlock: ((String) -> Void)?
+    var tapClickBlock: ((UIButton, String) -> Void)?
     
     var smallModel: socialModel? {
         didSet {
@@ -55,6 +55,12 @@ class SmallTwoViewCell: UITableViewCell {
         bgImageView.image = UIImage(named: "sm_little_image")
         bgImageView.isUserInteractionEnabled = true
         return bgImageView
+    }()
+    
+    lazy var clickBtn: UIButton = {
+        let clickBtn = UIButton()
+        clickBtn.isEnabled = true
+        return clickBtn
     }()
     
     lazy var oneLabel: PaddedLabel = {
@@ -125,6 +131,8 @@ class SmallTwoViewCell: UITableViewCell {
     
     lazy var logoImageView: UIImageView = {
         let logoImageView = UIImageView()
+        logoImageView.layer.cornerRadius = 4
+        logoImageView.clipsToBounds = true
         return logoImageView
     }()
     
@@ -152,6 +160,7 @@ class SmallTwoViewCell: UITableViewCell {
         bgImageView.addSubview(sixLabel)
         bgImageView.addSubview(logoImageView)
         bgImageView.addSubview(applyLabel)
+        bgImageView.addSubview(clickBtn)
     
         bgImageView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(10)
@@ -201,12 +210,14 @@ class SmallTwoViewCell: UITableViewCell {
             make.height.equalTo(50)
             make.bottom.equalToSuperview().offset(-16)
         }
+        clickBtn.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
         
-        bgImageView.rx.tapGesture().when(.recognized).subscribe(onNext: { [weak self] _ in
-            if let self = self, let smallModel = smallModel {
-                self.tapClickBlock?(String(smallModel.testnature ?? 0))
-            }
+        clickBtn.rx.tap.subscribe(onNext: { [weak self] in
+            self?.tapClickBlock?(self?.clickBtn ?? UIButton(), String(self?.smallModel?.testnature ?? 0))
         }).disposed(by: disposeBag)
+        
     }
     
     required init?(coder: NSCoder) {

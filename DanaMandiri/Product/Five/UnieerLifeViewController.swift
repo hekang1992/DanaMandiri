@@ -16,11 +16,11 @@ class UnieerLifeViewController: BaseViewController {
     
     var pageUrl: String = ""
     
-    let disposeBag = DisposeBag()
-    
     var productID: String = ""
     
     var entertime: String = ""
+    
+    let disposeBag = DisposeBag()
     
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()

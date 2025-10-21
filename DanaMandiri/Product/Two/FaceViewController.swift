@@ -64,7 +64,18 @@ class FaceViewController: BaseViewController {
         }
         
         headView.againBtn.rx.tap.subscribe(onNext: { [weak self] in
-            self?.popToDetailViewController()
+            guard let self = self else { return }
+            let leaveView = PopLeaveDownView(frame: self.view.bounds)
+            let alertVc = TYAlertController(alert: leaveView, preferredStyle: .alert)!
+            self.present(alertVc, animated: true)
+            leaveView.cancelBlock = {
+                self.dismiss(animated: true) {
+                    self.popToDetailViewController()
+                }
+            }
+            leaveView.leaveBlock = {
+                self.dismiss(animated: true)
+            }
         }).disposed(by: disposeBag)
         
         faceView.uploadBlock = { [weak self] model in
@@ -126,10 +137,11 @@ extension FaceViewController {
                     "cladal": "1",
                     "archriskage": "en"]
         viewModel.uploadPersonalImageInfo(with: json, image: image) { [weak self] model in
-            ToastProgressHUD.showToastText(message: model.filmably ?? "")
             if ["0", "00"].contains(model.aboutation) {
                 self?.getPersonalInfo()
                 self?.colInfo()
+            }else {
+                ToastProgressHUD.showToastText(message: model.filmably ?? "")
             }
         }
     }

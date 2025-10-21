@@ -9,7 +9,7 @@ class LoginViewModel {
     
     func getCode(json: [String: Any],
                  completion: @escaping (BaseModel) -> Void) {
-        LoadingHUD.show(text: "Loading...")
+        LoadingHUD.show()
         NetworkManager.shared.postJsonRequest(
             url: "/taxile/leaderad",
             json: json,
@@ -29,7 +29,7 @@ class LoginViewModel {
     
     func toLogin(json: [String: Any],
                  completion: @escaping (BaseModel) -> Void) {
-        LoadingHUD.show(text: "Loading...")
+        LoadingHUD.show()
         NetworkManager.shared.postJsonRequest(
             url: "/taxile/thalam",
             json: json,

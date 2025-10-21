@@ -117,7 +117,8 @@ class OrderListViewCell: UITableViewCell {
     
     lazy var logoImageView: UIImageView = {
         let logoImageView = UIImageView()
-        logoImageView.backgroundColor = .purple
+        logoImageView.layer.cornerRadius = 4
+        logoImageView.clipsToBounds = true
         return logoImageView
     }()
     

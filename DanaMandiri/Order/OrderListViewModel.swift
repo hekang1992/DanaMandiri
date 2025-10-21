@@ -8,7 +8,7 @@
 class OrderListViewModel {
     
     func getOrderListInfo(with json: [String: Any], completion: @escaping (BaseModel) -> Void) {
-        LoadingHUD.show(text: "Loading...")
+        LoadingHUD.show()
         NetworkManager.shared.postJsonRequest(url: "/taxile/social", json: json, responseType: BaseModel.self) { result in
             switch result {
             case .success(let success):

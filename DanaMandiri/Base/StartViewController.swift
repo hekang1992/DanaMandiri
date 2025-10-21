@@ -71,7 +71,7 @@ class StartViewController: BaseViewController {
 extension StartViewController {
     
     private func startInfo() {
-        LoadingHUD.show(text: "Loading...")
+        LoadingHUD.show()
         let json = ["wearic": String(ProxyStatus.connectionState),
                     "feelaneity": String(VPNStatus.connectionState),
                     "taenisouthernition": Locale.preferredLanguages.first ?? ""]

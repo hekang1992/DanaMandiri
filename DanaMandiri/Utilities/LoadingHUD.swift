@@ -15,13 +15,16 @@ final class LoadingHUD {
     
     private var loadingView: UIView?
     
-    // MARK:
-    class func show(text: String? = nil) {
+    class func show() {
         DispatchQueue.main.async {
             
             guard let window = currentWindow else {
                 print("⚠️ LoadingHUD: no window")
                 return
+            }
+            
+            if shared.loadingView != nil {
+                hide()
             }
             
             let containerView = UIView()
@@ -31,7 +34,6 @@ final class LoadingHUD {
                 make.edges.equalToSuperview()
             }
             
-            // HUD
             let hudView = UIView()
             hudView.backgroundColor = UIColor(white: 0.1, alpha: 0.8)
             hudView.layer.cornerRadius = 12
@@ -43,56 +45,41 @@ final class LoadingHUD {
             indicator.startAnimating()
             hudView.addSubview(indicator)
             
-            var label: UILabel?
-            if let text = text {
-                let lbl = UILabel()
-                lbl.text = text
-                lbl.textColor = .white
-                lbl.font = UIFont.systemFont(ofSize: 15, weight: .medium)
-                lbl.textAlignment = .center
-                lbl.numberOfLines = 0
-                hudView.addSubview(lbl)
-                label = lbl
-            }
-            
-            // MARK: - SnapKit
             hudView.snp.makeConstraints { make in
                 make.center.equalToSuperview()
-                make.width.lessThanOrEqualTo(160)
+                make.size.equalTo(80)
             }
             
             indicator.snp.makeConstraints { make in
-                make.centerX.equalToSuperview()
-                make.top.equalToSuperview().offset(20)
+                make.center.equalToSuperview()
             }
             
-            if let label = label {
-                label.snp.makeConstraints { make in
-                    make.top.equalTo(indicator.snp.bottom).offset(10)
-                    make.left.right.equalToSuperview().inset(12)
-                    make.bottom.equalToSuperview().offset(-20)
-                }
-            } else {
-                indicator.snp.makeConstraints { make in
-                    make.bottom.equalToSuperview().offset(-20)
-                }
+            containerView.alpha = 0
+            hudView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+            
+            UIView.animate(withDuration: 0.3) {
+                containerView.alpha = 1
+                hudView.transform = .identity
             }
             
             shared.loadingView = containerView
         }
     }
     
-    // MARK: - HIDE
     class func hide() {
         DispatchQueue.main.async {
-            shared.loadingView?.removeFromSuperview()
-            shared.loadingView = nil
+            guard let loadingView = shared.loadingView else { return }
+            
+            UIView.animate(withDuration: 0.2, animations: {
+                loadingView.alpha = 0
+            }) { _ in
+                loadingView.removeFromSuperview()
+                shared.loadingView = nil
+            }
         }
     }
     
-    // MARK: -（iOS 14+）
     private static var currentWindow: UIWindow? {
-        // 1️⃣
         if let window = UIApplication.shared.connectedScenes
             .compactMap({ $0 as? UIWindowScene })
             .first(where: { $0.activationState == .foregroundActive })?
@@ -100,13 +87,9 @@ final class LoadingHUD {
             .first(where: { $0.isKeyWindow }) {
             return window
         }
-        
-        // 2️⃣
         if let window = UIApplication.shared.windows.first(where: { !$0.isHidden }) {
             return window
         }
-        
-        // ✅
         return nil
     }
 }

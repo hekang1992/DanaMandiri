@@ -16,7 +16,7 @@ class HomeView: UIView {
     
     let disposeBag = DisposeBag()
     
-    var applyBlock: (() -> Void)?
+    var applyBlock: ((UIButton) -> Void)?
     
     var smallModel: socialModel? {
         didSet {
@@ -201,6 +201,12 @@ class HomeView: UIView {
         fiveImageView.image = cin == "460" ? UIImage(named: "foot_b_id_bg") : UIImage(named: "foot_b_bg")
         return fiveImageView
     }()
+    
+    lazy var clickBtn: UIButton = {
+        let clickBtn = UIButton()
+        clickBtn.isEnabled = true
+        return clickBtn
+    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -217,6 +223,7 @@ class HomeView: UIView {
         bigImageView.addSubview(sixLabel)
         bigImageView.addSubview(applyLabel)
         bigImageView.addSubview(logoImageView)
+        bigImageView.addSubview(clickBtn)
         scrollView.addSubview(descImageView)
         scrollView.addSubview(threeImageView)
         scrollView.addSubview(fourImageView)
@@ -290,6 +297,9 @@ class HomeView: UIView {
             make.height.equalTo(44)
             make.bottom.equalToSuperview().offset(-42)
         }
+        clickBtn.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
         
         descImageView.snp.makeConstraints { make in
             make.top.equalTo(bigImageView.snp.bottom).offset(15)
@@ -359,9 +369,13 @@ class HomeView: UIView {
             }
         }
         
-        bigImageView.rx.tapGesture().when(.recognized).subscribe(onNext: { _ in
-            self.applyBlock?()
+        clickBtn.rx.tap.subscribe(onNext: { [weak self] in
+            self?.applyBlock?(self?.clickBtn ?? UIButton())
         }).disposed(by: disposeBag)
+        
+//        bigImageView.rx.tapGesture().when(.recognized).subscribe(onNext: { _ in
+//            self.applyBlock?()
+//        }).disposed(by: disposeBag)
         
     }
     

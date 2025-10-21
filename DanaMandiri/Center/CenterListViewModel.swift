@@ -8,7 +8,7 @@
 class CenterListViewModel {
     
     func getCenterInfo(completion: @escaping (BaseModel) -> Void) {
-        LoadingHUD.show(text: "Loading...")
+        LoadingHUD.show()
         NetworkManager.shared.getRequest(url: "/taxile/thatise", responseType: BaseModel.self) { result in
             switch result {
             case .success(let success):

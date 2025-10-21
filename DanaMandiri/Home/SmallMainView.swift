@@ -8,15 +8,21 @@
 import UIKit
 import SnapKit
 import Kingfisher
+import RxSwift
+import RxGesture
 
 class SmallMainView: UIView {
     
+    private var isProcessingTap = false
+    
     var smallModelArray: [sipirangeularModel]?
     
+    let disposeBag = DisposeBag()
+    
     var oneBlock: ((String) -> Void)?
-    var twoBlock: ((String) -> Void)?
+    var twoBlock: ((UIButton, String) -> Void)?
     var threeBlock: ((String) -> Void)?
-    var fourBlock: ((String) -> Void)?
+    var fourBlock: ((UIButton, String) -> Void)?
     
     var smallModel: socialModel? {
         didSet {
@@ -53,6 +59,7 @@ class SmallMainView: UIView {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.isMultipleTouchEnabled = false
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0
         }
@@ -152,9 +159,16 @@ extension SmallMainView: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SmallTwoViewCell", for: indexPath) as! SmallTwoViewCell
             cell.backgroundColor = .clear
             cell.selectionStyle = .none
-            cell.smallModel = model?.social?[indexPath.row]
-            cell.tapClickBlock = { [weak self] productID in
-                self?.twoBlock?(productID)
+            let smallModel = model?.social?[indexPath.row]
+            cell.smallModel = smallModel
+            cell.tapClickBlock = { [weak self] clickBtn, productID in
+                guard let self = self else { return }
+                guard !self.isProcessingTap else { return }
+                self.isProcessingTap = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.isProcessingTap = false
+                }
+                self.twoBlock?(clickBtn, productID)
             }
             return cell
         }else if skillette == "staracy" {
@@ -163,7 +177,13 @@ extension SmallMainView: UITableViewDelegate, UITableViewDataSource {
             cell.selectionStyle = .none
             cell.smallModel = model?.social ?? []
             cell.tapClick = { [weak self] pageUrl in
-                self?.threeBlock?(pageUrl)
+                guard let self = self else { return }
+                guard !self.isProcessingTap else { return }
+                self.isProcessingTap = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.isProcessingTap = false
+                }
+                self.threeBlock?(pageUrl)
             }
             return cell
         }else if skillette == "lessast" {
@@ -171,8 +191,14 @@ extension SmallMainView: UITableViewDelegate, UITableViewDataSource {
             cell.backgroundColor = .clear
             cell.selectionStyle = .none
             cell.smallModel = model?.social?[indexPath.row]
-            cell.cellTapClick = { [weak self] productID in
-                self?.fourBlock?(productID)
+            cell.cellTapClick = { [weak self] clickBtn, productID in
+                guard let self = self else { return }
+                guard !self.isProcessingTap else { return }
+                self.isProcessingTap = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.isProcessingTap = false
+                }
+                self.fourBlock?(clickBtn, productID)
             }
             return cell
         }

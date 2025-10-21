@@ -8,7 +8,7 @@
 class ProductViewModel {
     
     func getProductDetailInfo(with json: [String: Any], completion: @escaping (BaseModel) -> Void) {
-        LoadingHUD.show(text: "Loading...")
+        LoadingHUD.show()
         NetworkManager.shared.postJsonRequest(url: "/taxile/determine", json: json, responseType: BaseModel.self) { result in
             switch result {
             case .success(let success):
@@ -25,7 +25,7 @@ class ProductViewModel {
     }
     
     func orderInfo(with json: [String: Any], completion: @escaping (BaseModel) -> Void) {
-        LoadingHUD.show(text: "Loading...")
+        LoadingHUD.show()
         NetworkManager.shared.postJsonRequest(url: "/taxile/skillette", json: json, responseType: BaseModel.self) { result in
             switch result {
             case .success(let success):
