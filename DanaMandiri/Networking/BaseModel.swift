@@ -62,6 +62,7 @@ struct salinModel: Codable {
     var polyward: String?
     var clastoon: [clastoonModel]?
     var toughel: toughelModel?
+    var recordenne: recordenneModel?
 }
 
 struct sipirangeularModel: Codable {
@@ -258,4 +259,13 @@ struct terrtrialisticModel: Codable {
     var capite: String?
     var genperiod: String?
     var xylant: String?
+}
+
+struct recordenneModel: Codable {
+    var anteaneity: [anteaneityModel]?
+}
+
+struct anteaneityModel: Codable {
+    var veracitoption: String?
+    var singleain: String?
 }

@@ -101,7 +101,7 @@ class SmallFourViewCell: UITableViewCell {
     }()
     
     lazy var clickBtn: UIButton = {
-        let clickBtn = UIButton()
+        let clickBtn = UIButton(type: .custom)
         clickBtn.isEnabled = true
         return clickBtn
     }()

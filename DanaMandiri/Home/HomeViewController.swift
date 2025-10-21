@@ -11,6 +11,7 @@ import RxRelay
 import SnapKit
 import MJRefresh
 import CoreLocation
+import TYAlertController
 
 class HomeViewController: BaseViewController {
     
@@ -239,14 +240,34 @@ extension HomeViewController {
             clickBtn.isEnabled = true
             LoadingHUD.hide()
             if ["0", "00"].contains(model.aboutation) {
-                let singleain = model.salin?.singleain ?? ""
-                if singleain.contains(SCHEME_URL) {
-                    SchemeManager.handle(url: singleain)
+                let anteaneity = model.salin?.recordenne?.anteaneity ?? []
+                if anteaneity.isEmpty {
+                    let singleain = model.salin?.singleain ?? ""
+                    self?.goWithPageUrl(with: singleain, productID: productID)
                 }else {
-                    let webVc = UnieerLifeViewController()
-                    webVc.pageUrl = singleain
-                    webVc.productID = productID
-                    self?.navigationController?.pushViewController(webVc, animated: true)
+                    /// TOASW_INFO_POOP_VIEW
+                    guard let self = self else { return }
+                    let sayaView = PopSayaView(frame: self.view.bounds)
+                    sayaView.modelArray = anteaneity
+                    let alertVc = TYAlertController(alert: sayaView, preferredStyle: .alert)!
+                    self.present(alertVc, animated: true)
+                    
+                    sayaView.cancelBlock = { [weak self] in
+                        self?.dismiss(animated: true)
+                    }
+                    
+                    sayaView.oneBlock = { [weak self] pageUrl in
+                        self?.dismiss(animated: true) {
+                            self?.goWithPageUrl(with: pageUrl, productID: productID)
+                        }
+                    }
+                    
+                    sayaView.twoBlock = { [weak self] pageUrl in
+                        self?.dismiss(animated: true) {
+                            self?.goWithPageUrl(with: pageUrl, productID: productID)
+                        }
+                    }
+                    
                 }
             }else {
                 if model.aboutation == "-2" {
@@ -257,6 +278,17 @@ extension HomeViewController {
                 }
                 ToastProgressHUD.showToastText(message: model.filmably ?? "")
             }
+        }
+    }
+    
+    func goWithPageUrl(with pageUrl: String, productID: String) {
+        if pageUrl.contains(SCHEME_URL) {
+            SchemeManager.handle(url: pageUrl)
+        }else {
+            let webVc = UnieerLifeViewController()
+            webVc.pageUrl = pageUrl
+            webVc.productID = productID
+            self.navigationController?.pushViewController(webVc, animated: true)
         }
     }
     
