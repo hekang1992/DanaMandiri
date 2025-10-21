@@ -25,6 +25,8 @@ class ProductDetailViewController: BaseViewController {
     
     var entertime: String = ""
     
+    var leavetime: String = ""
+    
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
         bgImageView.image = UIImage(named: "dl_bg")
@@ -75,13 +77,14 @@ class ProductDetailViewController: BaseViewController {
         }
         
         productView.borrowBtn.rx.tap.subscribe(onNext: { [weak self] in
-            let resourceosity = self?.shakeModel?.resourceosity ?? ""
+            guard let self = self else { return }
+            let resourceosity = self.shakeModel?.resourceosity ?? ""
             /// IMAGE_PERSONAL_INFO
             if resourceosity.isEmpty {
                 /// ORDER_INFO
-                self?.orderToPage()
+                self.orderToPage()
             }else {
-                self?.goPageWithType(type: resourceosity)
+                self.goPageWithType(type: resourceosity, model: self.model ?? BaseModel(), productID: productID)
             }
         }).disposed(by: disposeBag)
         
@@ -116,69 +119,15 @@ extension ProductDetailViewController {
         let resourceosity = model.resourceosity ?? ""
         let articleit = model.articleit ?? 0
         if articleit == 1 {
-            goPageWithType(type: resourceosity)
+            goPageWithType(type: resourceosity, model: self.model ?? BaseModel(), productID: productID)
         }else {
             let type = self.shakeModel?.resourceosity ?? ""
-            goPageWithType(type: type)
-        }
-    }
-    
-    private func goPageWithType(type: String) {
-        let orderNumber = self.model?.salin?.etharium?.presentality ?? ""
-        switch type {
-        case "cunely":
-            let viewModel = PersonalImageViewModel()
-            let json = ["response": productID, "hispidity": "1"]
-            viewModel.getPersonalInfo(with: json) { [weak self] model in
-                guard let self = self else { return }
-                /// ID
-                let articleit = model.salin?.phobthougharian?.articleit ?? 0
-                /// FACE
-                let faceNum = model.salin?.feliimportant?.articleit ?? 0
-                if articleit == 1 {
-                    if faceNum == 1 {
-                        let bothVc = BothCompleteViewController()
-                        bothVc.productID = productID
-                        bothVc.orderNumber = orderNumber
-                        self.navigationController?.pushViewController(bothVc, animated: true)
-                    }else {
-                        let faceVc = FaceViewController()
-                        faceVc.productID = productID
-                        faceVc.orderNumber = orderNumber
-                        self.navigationController?.pushViewController(faceVc, animated: true)
-                    }
-                }else {
-                    let personalVc = PersonalImageViewController()
-                    personalVc.productID = productID
-                    personalVc.orderNumber = self.model?.salin?.etharium?.presentality ?? ""
-                    self.navigationController?.pushViewController(personalVc, animated: true)
-                }
-            }
-            break
-        case "caedular":
-            let basicVc = BasicViewController()
-            basicVc.productID = productID
-            basicVc.orderNumber = orderNumber
-            self.navigationController?.pushViewController(basicVc, animated: true)
-            break
-        case "consumer":
-            let cnpVc = CommonBpViewController()
-            cnpVc.productID = productID
-            cnpVc.orderNumber = orderNumber
-            self.navigationController?.pushViewController(cnpVc, animated: true)
-            break
-        case "anderdom":
-            let youngVc = ChangeYoungViewController()
-            youngVc.productID = productID
-            youngVc.orderNumber = orderNumber
-            self.navigationController?.pushViewController(youngVc, animated: true)
-            break
-        default:
-            break
+            goPageWithType(type: type, model: self.model ?? BaseModel(), productID: productID)
         }
     }
     
     private func orderToPage() {
+        leavetime = String(Int(Date().timeIntervalSince1970))
         let noency = self.model?.salin?.etharium?.presentality ?? ""
         let tergable = self.model?.salin?.etharium?.tergable ?? ""
         let coprattack = self.model?.salin?.etharium?.coprattack ?? ""
@@ -211,7 +160,7 @@ extension ProductDetailViewController {
                         "dens": entertime,
                         "graman": String(locationModel?.longitude ?? 0.0),
                         "anem": String(locationModel?.latitude ?? 0.0)]
-            ColsomeManager.colsomeInfo(with: json)
+            ColsomeManager.colsomeInfo(with: json, leavetime: leavetime)
         }
     }
     

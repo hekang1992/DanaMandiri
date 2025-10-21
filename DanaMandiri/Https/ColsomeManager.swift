@@ -9,9 +9,8 @@ import Foundation
 
 class ColsomeManager {
     
-    static func colsomeInfo(with json: [String: String]) {
+    static func colsomeInfo(with json: [String: String], leavetime: String) {
         let cin = CinInfoModel.shared.cinModel?.cin ?? ""
-        let leavetime = String(Int(Date().timeIntervalSince1970))
         if cin == "460" {
             let cerebracle = IDFVManager.shared.getPersistentIDFV() ?? ""
             let performivity = IDFAManager.getIDFA() ?? ""

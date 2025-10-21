@@ -23,6 +23,8 @@ class BasicViewController: BaseViewController {
     
     var entertime: String = ""
     
+    var leavetime: String = ""
+    
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
         bgImageView.image = UIImage(named: "dl_bg")
@@ -60,6 +62,8 @@ class BasicViewController: BaseViewController {
         let basicView = BasicView()
         return basicView
     }()
+    
+    let detailViewModel = ProductViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -162,13 +166,23 @@ extension BasicViewController {
     }
     
     private func saveBasicInfo(to json: [String: String]) {
+        leavetime = String(Int(Date().timeIntervalSince1970))
         viewModel.saveBasicInfo(with: json) { [weak self] model in
             if ["0", "00"].contains(model.aboutation) {
-                self?.popToDetailViewController()
                 self?.colInfo()
+                self?.prodetailInfo()
             }else {
                 ToastProgressHUD.showToastText(message: model.filmably ?? "")
             }
+        }
+    }
+    
+    private func prodetailInfo() {
+        let json = ["response": productID, "spatitenics": "101"]
+        detailViewModel.getProductDetailInfo(with: json) { [weak self] model in
+            guard let self = self else { return }
+            let type = model.salin?.shake?.resourceosity ?? ""
+            self.goPageWithType(type: type, model: model, productID: productID)
         }
     }
     
@@ -181,7 +195,7 @@ extension BasicViewController {
                         "dens": entertime,
                         "graman": String(locationModel?.longitude ?? 0.0),
                         "anem": String(locationModel?.latitude ?? 0.0)]
-            ColsomeManager.colsomeInfo(with: json)
+            ColsomeManager.colsomeInfo(with: json, leavetime: leavetime)
         }
     }
     

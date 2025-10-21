@@ -187,7 +187,7 @@ extension HomeViewController {
                            "dens": entertime,
                            "graman": String(locationModel?.longitude ?? 0.0),
                            "anem": String(locationModel?.latitude ?? 0.0)]
-            ColsomeManager.colsomeInfo(with: colJson)
+            ColsomeManager.colsomeInfo(with: colJson, leavetime: String(Int(Date().timeIntervalSince1970)))
         }
     }
     

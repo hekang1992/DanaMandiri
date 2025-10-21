@@ -21,6 +21,8 @@ class PersonalImageViewController: BaseViewController {
     
     let viewModel = PersonalImageViewModel()
     
+    let detailViewModel = ProductViewModel()
+    
     lazy var personalView: PersonalImageView = {
         let personalView = PersonalImageView()
         return personalView
@@ -33,6 +35,8 @@ class PersonalImageViewController: BaseViewController {
     }()
     
     var entertime: String = ""
+    
+    var leavetime: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -109,10 +113,17 @@ extension PersonalImageViewController {
         if type == "1" {
             /// GO_FACE
             if isNextBtn == "1" {
-                let faceVc = FaceViewController()
-                faceVc.productID = productID
-                faceVc.orderNumber = orderNumber
-                self.navigationController?.pushViewController(faceVc, animated: true)
+//                let faceVc = FaceViewController()
+//                faceVc.productID = productID
+//                faceVc.orderNumber = orderNumber
+//                self.navigationController?.pushViewController(faceVc, animated: true)
+                
+                let json = ["response": productID, "spatitenics": "101"]
+                detailViewModel.getProductDetailInfo(with: json) { [weak self] model in
+                    guard let self = self else { return }
+                    let type = model.salin?.shake?.resourceosity ?? ""
+                    self.goPageWithType(type: type, model: model, productID: productID)
+                }
             }else {
                 ToastProgressHUD.showToastText(message: LanguageManager.localizedString(for: "The identity information has been uploaded"))
             }
@@ -214,6 +225,7 @@ extension PersonalImageViewController {
             return
         }
         let phone = AuthLoginManager.shared.getPhoneNumber() ?? ""
+        leavetime = String(Int(Date().timeIntervalSince1970))
         let json = ["playty": "1",
                     "polyward": time,
                     "segetical": idnum,
@@ -224,8 +236,8 @@ extension PersonalImageViewController {
         viewModel.savePersonalInfo(with: json) { [weak self] model in
             if ["0", "00"].contains(model.aboutation) {
                 self?.dismiss(animated: true) {
-                    self?.getPersonalInfo()
                     self?.colInfo()
+                    self?.getPersonalInfo()                    
                 }
             }else {
                 ToastProgressHUD.showToastText(message: model.filmably ?? "")
@@ -242,7 +254,7 @@ extension PersonalImageViewController {
                         "dens": entertime,
                         "graman": String(locationModel?.longitude ?? 0.0),
                         "anem": String(locationModel?.latitude ?? 0.0)]
-            ColsomeManager.colsomeInfo(with: json)
+            ColsomeManager.colsomeInfo(with: json, leavetime: leavetime)
         }
     }
     

@@ -20,8 +20,10 @@ class UnieerLifeViewController: BaseViewController {
     
     var entertime: String = ""
     
-    let disposeBag = DisposeBag()
+    var leavetime: String = ""
     
+    let disposeBag = DisposeBag()
+        
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
         bgImageView.image = UIImage(named: "dl_bg")
@@ -182,6 +184,7 @@ extension UnieerLifeViewController {
     }
     
     private func colInfo(with orderNumber: String, productID: String) {
+        leavetime = String(Int(Date().timeIntervalSince1970))
         let locationModel = AddressLocationInfoModel.shared.locationModel
         let json = ["opportunityatory": productID,
                     "muls": "9",
@@ -189,7 +192,7 @@ extension UnieerLifeViewController {
                     "dens": entertime,
                     "graman": String(locationModel?.longitude ?? 0.0),
                     "anem": String(locationModel?.latitude ?? 0.0)]
-        ColsomeManager.colsomeInfo(with: json)
+        ColsomeManager.colsomeInfo(with: json, leavetime: leavetime)
     }
     
     private func goSendInfo(with email: String) {

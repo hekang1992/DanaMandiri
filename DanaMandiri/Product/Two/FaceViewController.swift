@@ -21,7 +21,11 @@ class FaceViewController: BaseViewController {
     
     var entertime: String = ""
     
+    var leavetime: String = ""
+    
     let viewModel = PersonalImageViewModel()
+    
+    let detailViewModel = ProductViewModel()
     
     lazy var faceView: FaceView = {
         let faceView = FaceView()
@@ -109,10 +113,12 @@ extension FaceViewController {
         if type == "1" {
             /// GO_FACE
             if isNextBtn == "1" {
-                let bothVc = BothCompleteViewController()
-                bothVc.productID = productID
-                bothVc.orderNumber = orderNumber
-                self.navigationController?.pushViewController(bothVc, animated: true)
+                let json = ["response": productID, "spatitenics": "101"]
+                detailViewModel.getProductDetailInfo(with: json) { [weak self] model in
+                    guard let self = self else { return }
+                    let type = model.salin?.shake?.resourceosity ?? ""
+                    self.goPageWithType(type: type, model: model, productID: productID)
+                }
             }else {
                 ToastProgressHUD.showToastText(message: LanguageManager.localizedString(for: "The identity information has been uploaded"))
             }
@@ -136,6 +142,7 @@ extension FaceViewController {
                     "mediast": "",
                     "cladal": "1",
                     "archriskage": "en"]
+        leavetime = String(Int(Date().timeIntervalSince1970))
         viewModel.uploadPersonalImageInfo(with: json, image: image) { [weak self] model in
             if ["0", "00"].contains(model.aboutation) {
                 self?.getPersonalInfo()
@@ -155,7 +162,7 @@ extension FaceViewController {
                         "dens": entertime,
                         "graman": String(locationModel?.longitude ?? 0.0),
                         "anem": String(locationModel?.latitude ?? 0.0)]
-            ColsomeManager.colsomeInfo(with: json)
+            ColsomeManager.colsomeInfo(with: json, leavetime: leavetime)
         }
     }
     
