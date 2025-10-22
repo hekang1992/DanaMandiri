@@ -72,8 +72,8 @@ extension StartViewController {
     
     private func startInfo() {
         LoadingHUD.show()
-        let json = ["wearic": String(ProxyStatus.connectionState),
-                    "feelaneity": String(VPNStatus.connectionState),
+        let json = ["wearic": String(DeinfoVoipInfo.proxyStatus.rawValue),
+                    "feelaneity": String(DeinfoVoipInfo.vpnStatus.rawValue),
                     "taenisouthernition": Locale.preferredLanguages.first ?? ""]
         NetworkManager.shared.postJsonRequest(url: "/taxile/pubertible",
                                               json: json,

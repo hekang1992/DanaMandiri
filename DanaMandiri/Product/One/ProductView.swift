@@ -62,6 +62,8 @@ class ProductView: UIView {
     lazy var bgImageView: UIImageView = {
         let bgImageView = UIImageView()
         bgImageView.image = UIImage(named: "deia_bg_image")
+        bgImageView.layer.cornerRadius = 4.5
+        bgImageView.clipsToBounds = true
         return bgImageView
     }()
     

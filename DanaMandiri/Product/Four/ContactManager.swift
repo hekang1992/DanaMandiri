@@ -35,7 +35,7 @@ class ContactManager: NSObject {
     private func showPermissionAlert(on vc: UIViewController) {
         let alert = UIAlertController(
             title: LanguageManager.localizedString(for: "Contacts permission is not enabled"),
-            message: LanguageManager.localizedString(for: "Please go to Settings and enable contacts access to continue using this feature"),
+            message: LanguageManager.localizedString(for: "REFUSE_CONTACT_USAGE_DESCRIPTION"),
             preferredStyle: .alert
         )
         alert.addAction(UIAlertAction(title: LanguageManager.localizedString(for: "Cancel"), style: .cancel))
@@ -71,7 +71,7 @@ class ContactManager: NSObject {
                 }
                 completion(results)
             } catch {
-                print("获取联系人失败：\(error)")
+                print("==========：\(error)")
                 completion([])
             }
         }

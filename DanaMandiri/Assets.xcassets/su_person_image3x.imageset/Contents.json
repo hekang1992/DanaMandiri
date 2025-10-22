@@ -1,6 +1,7 @@
 {
   "images" : [
     {
+      "filename" : "su_person_image3x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -9,7 +10,6 @@
       "scale" : "2x"
     },
     {
-      "filename" : "su_person_image@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

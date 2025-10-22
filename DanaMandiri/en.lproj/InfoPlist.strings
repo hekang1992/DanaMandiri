@@ -1,0 +1,13 @@
+/* 
+  InfoPlist.strings
+  DanaMandiri
+
+  Created by hekang on 2025/10/22.
+  
+*/
+
+/// PRESSION_INFO_PLIST
+"NSLocationWhenInUseUsageDescription" = "To provide you with loan services, Dana Mandiri needs to use your location information to confirm whether your area is within our service coverage. This is also a crucial step to ensure the security of the application process.";
+"NSCameraUsageDescription" = "During the identity verification process, to ensure the accuracy of the information you submit, Dana Mandiri will access your camera to capture photos of your ID document and for real-time facial recognition.";
+"NSUserTrackingUsageDescription" = "To strengthen account security measures, Dana Mandiri will request permission to enable ad tracking. This permission also helps us recommend loan product information that better suits your needs, thereby enhancing service precision and user experience.";
+"NSContactsUsageDescription" = "During the identity verification process, to assist in validating the authenticity of the information you provided and enhance application credibility, Dana Mandiri will request access to your contact list.";

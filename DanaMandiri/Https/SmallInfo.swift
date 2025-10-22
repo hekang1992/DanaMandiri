@@ -81,7 +81,6 @@ class GetIpInfo {
             let interface = ptr.pointee
             let addrFamily = interface.ifa_addr.pointee.sa_family
             
-            // 只查找 IPv4 地址
             guard addrFamily == UInt8(AF_INET) else { continue }
             
             let name = String(cString: interface.ifa_name)

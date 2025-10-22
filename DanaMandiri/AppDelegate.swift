@@ -83,20 +83,26 @@ extension AppDelegate {
     }
     
     private func uploadInfo(with roctJson: [String: String]) {
-        let centrten = IDFVManager.shared.getPersistentIDFV() ?? ""
-        let coldlike = IDFAManager.getIDFA() ?? ""
-        let json = ["centrten": centrten, "coldlike": coldlike]
-        uoinfo(json: json) { model in
-            if ["0", "00"].contains(model.aboutation) {
-                Settings.shared.appID = model.terrtrialistic?.cystence ?? ""
-                Settings.shared.clientToken = model.terrtrialistic?.capite ?? ""
-                Settings.shared.displayName = model.terrtrialistic?.genperiod ?? ""
-                Settings.shared.appURLSchemeSuffix = model.terrtrialistic?.xylant ?? ""
-                ApplicationDelegate.shared.application(UIApplication.shared, didFinishLaunchingWithOptions: nil)
-            }
-            if roctJson["type"] == "0" {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-                    NotificationCenter.default.post(name: Notification.Name("switchRootVc"), object: nil)
+        let attcak = UserDefaults.standard.object(forKey: "attcak") as? String ?? ""
+        if attcak != "2" {
+            let centrten = IDFVManager.shared.getPersistentIDFV() ?? ""
+            let coldlike = IDFAManager.getIDFA() ?? ""
+            let json = ["centrten": centrten, "coldlike": coldlike]
+            uoinfo(json: json) { model in
+                if ["0", "00"].contains(model.aboutation) {
+                    Settings.shared.appID = model.terrtrialistic?.cystence ?? ""
+                    Settings.shared.clientToken = model.terrtrialistic?.capite ?? ""
+                    Settings.shared.displayName = model.terrtrialistic?.genperiod ?? ""
+                    Settings.shared.appURLSchemeSuffix = model.terrtrialistic?.xylant ?? ""
+                    ApplicationDelegate.shared.application(UIApplication.shared, didFinishLaunchingWithOptions: nil)
+                }
+                if roctJson["type"] == "0" {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                        NotificationCenter.default.post(name: Notification.Name("switchRootVc"), object: nil)
+                    }
+                }else {
+                    UserDefaults.standard.set("2", forKey: "attcak")
+                    UserDefaults.standard.synchronize()
                 }
             }
         }

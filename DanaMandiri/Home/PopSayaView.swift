@@ -2,7 +2,7 @@
 //  PopSayaView.swift
 //  DanaMandiri
 //
-//  Created by hekang on 2025/10/21.
+//  Created by Ethan Johnson on 2025/10/21.
 //
 
 import UIKit

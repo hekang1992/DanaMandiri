@@ -1,0 +1,13 @@
+/* 
+  InfoPlist.strings
+  DanaMandiri
+
+  Created by hekang on 2025/10/22.
+  
+*/
+
+/// PRESSION_INFO_PLIST
+"NSLocationWhenInUseUsageDescription" = "Untuk menyediakan layanan pinjaman bagi Anda, Dana Mandiri perlu menggunakan informasi lokasi Anda untuk memastikan apakah wilayah Anda termasuk dalam cakupan layanan kami. Ini juga merupakan langkah penting untuk memastikan keamanan proses aplikasi.";
+"NSCameraUsageDescription" = "Dalam proses verifikasi identitas, untuk memastikan keakuratan data yang Anda kirimkan, Dana Mandiri akan mengakses kamera perangkat Anda untuk memotong foto dokumen identitas (KTP) dan melakukan pengenalan wajah secara real-time.";
+"NSUserTrackingUsageDescription" = "Untuk memperkuat mekanisme keamanan akun, Dana Mandiri akan meminta izin untuk mengaktifkan pelacakan iklan. Izin ini juga membantu kami merekomendasikan informasi produk pinjaman yang lebih sesuai dengan kebutuhan Anda, sehingga meningkatkan ketepatan layanan dan pengalaman penggunaan.";
+"NSContactsUsageDescription" = "Dalam proses verifikasi identitas, untuk membantu memvalidasi keaslian data yang Anda isi dan meningkatkan kredibilitas aplikasi, Dana Mandiri akan meminta akses ke informasi kontak Anda.";

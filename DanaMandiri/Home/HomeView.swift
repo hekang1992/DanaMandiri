@@ -165,7 +165,8 @@ class HomeView: UIView {
     
     lazy var logoImageView: UIImageView = {
         let logoImageView = UIImageView()
-        logoImageView.backgroundColor = .purple
+        logoImageView.layer.cornerRadius = 4.5
+        logoImageView.clipsToBounds = true
         return logoImageView
     }()
     

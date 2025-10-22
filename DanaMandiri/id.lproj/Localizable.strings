@@ -69,3 +69,4 @@
 "Check" = "Memeriksa";
 "Location permission is disabled" = "Izin lokasi dinonaktifkan";
 "Please enable location permission in Settings to use the location" = "Harap aktifkan izin lokasi di Pengaturan untuk menggunakan lokasi";
+"REFUSE_CONTACT_USAGE_DESCRIPTION" = "Untuk memastikan kelancaran dan efisiensi proses autentikasi identitas, disarankan agar Anda memilih \"Izinkan Semua\" saat mengatur izin akses kontak, dan hindari memilih \"Akses Sebagian\" atau \"Tolak Akses\" untuk mencegah terganggunya langkah-langkah selanjutnya.";

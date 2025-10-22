@@ -69,3 +69,4 @@
 "Check" = "Check";
 "Location permission is disabled" = "Location permission is disabled";
 "Please enable location permission in Settings to use the location" = "Please enable location permission in Settings to use the location";
+"REFUSE_CONTACT_USAGE_DESCRIPTION" = "To ensure a smooth and efficient identity authentication process, it is recommended that you select \"Allow All\" when setting contact access permissions, and avoid selecting \"Partial Access\" or \"Deny Access\" to prevent any impact on subsequent steps.";

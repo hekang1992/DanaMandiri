@@ -19,7 +19,7 @@
 		73204E512EA0F6DB0040FE1E /* ChangeYoungViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73204E502EA0F6DB0040FE1E /* ChangeYoungViewController.swift */; };
 		732C1C7C2E9895830005A18F /* LoadingHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732C1C7B2E9895820005A18F /* LoadingHUD.swift */; };
 		732C1C7E2E9898220005A18F /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732C1C7D2E9898180005A18F /* Extension.swift */; };
-		732C1C802E98AEEB0005A18F /* Untitled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732C1C7F2E98AEEA0005A18F /* Untitled.swift */; };
+		732C1C802E98AEEB0005A18F /* AppAdSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732C1C7F2E98AEEA0005A18F /* AppAdSupport.swift */; };
 		732C1C842E98CD8B0005A18F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732C1C832E98CD8B0005A18F /* LoginView.swift */; };
 		732C1C862E98CFAC0005A18F /* PhoneListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732C1C852E98CFA70005A18F /* PhoneListView.swift */; };
 		732C1C882E98D6180005A18F /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732C1C872E98D6170005A18F /* LanguageManager.swift */; };
@@ -32,6 +32,8 @@
 		732C1C982E98FCE70005A18F /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732C1C972E98FCE10005A18F /* HomeViewModel.swift */; };
 		732C1C9A2E9904200005A18F /* SmallMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732C1C992E9904080005A18F /* SmallMainView.swift */; };
 		732CCE6A2EA61A78004C325D /* PopLeaveDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732CCE692EA61A65004C325D /* PopLeaveDownView.swift */; };
+		732E7B342EA88A930001FAD6 /* LoginUntitled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732E7B332EA88A8F0001FAD6 /* LoginUntitled.swift */; };
+		732E7B412EA8AE120001FAD6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 732E7B3F2EA8AE120001FAD6 /* InfoPlist.strings */; };
 		732FB1A62EA3DCAE0091D35F /* DeviceInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732FB1A52EA3DCA60091D35F /* DeviceInfoManager.swift */; };
 		732FB1A82EA3E1C60091D35F /* Untitleds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732FB1A72EA3E1C50091D35F /* Untitleds.swift */; };
 		732FB1AA2EA3E9E00091D35F /* SmallInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732FB1A92EA3E9DA0091D35F /* SmallInfo.swift */; };
@@ -53,7 +55,6 @@
 		73AF98512E97A5FA006BFCCA /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AF98502E97A5F5006BFCCA /* BaseViewController.swift */; };
 		73AF98532E97A6C3006BFCCA /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AF98522E97A6C3006BFCCA /* BaseNavigationController.swift */; };
 		73AF98552E97A6EC006BFCCA /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AF98542E97A6EC006BFCCA /* StartViewController.swift */; };
-		73AF98582E97A73A006BFCCA /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AF98572E97A736006BFCCA /* Color.swift */; };
 		73AF985D2E97A8D8006BFCCA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AF985C2E97A8D8006BFCCA /* LoginViewController.swift */; };
 		73AF985F2E97A8EF006BFCCA /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AF985E2E97A8E5006BFCCA /* LoginViewModel.swift */; };
 		73AF98612E97A9A8006BFCCA /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AF98602E97A9A4006BFCCA /* BaseModel.swift */; };
@@ -107,7 +108,7 @@
 		73204E502EA0F6DB0040FE1E /* ChangeYoungViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeYoungViewController.swift; sourceTree = "<group>"; };
 		732C1C7B2E9895820005A18F /* LoadingHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingHUD.swift; sourceTree = "<group>"; };
 		732C1C7D2E9898180005A18F /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
-		732C1C7F2E98AEEA0005A18F /* Untitled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Untitled.swift; sourceTree = "<group>"; };
+		732C1C7F2E98AEEA0005A18F /* AppAdSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAdSupport.swift; sourceTree = "<group>"; };
 		732C1C832E98CD8B0005A18F /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		732C1C852E98CFA70005A18F /* PhoneListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneListView.swift; sourceTree = "<group>"; };
 		732C1C872E98D6170005A18F /* LanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
@@ -120,6 +121,9 @@
 		732C1C972E98FCE10005A18F /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		732C1C992E9904080005A18F /* SmallMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallMainView.swift; sourceTree = "<group>"; };
 		732CCE692EA61A65004C325D /* PopLeaveDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopLeaveDownView.swift; sourceTree = "<group>"; };
+		732E7B332EA88A8F0001FAD6 /* LoginUntitled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUntitled.swift; sourceTree = "<group>"; };
+		732E7B402EA8AE120001FAD6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		732E7B422EA8AE2A0001FAD6 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		732FB1A52EA3DCA60091D35F /* DeviceInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoManager.swift; sourceTree = "<group>"; };
 		732FB1A72EA3E1C50091D35F /* Untitleds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Untitleds.swift; sourceTree = "<group>"; };
 		732FB1A92EA3E9DA0091D35F /* SmallInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallInfo.swift; sourceTree = "<group>"; };
@@ -146,7 +150,6 @@
 		73AF98502E97A5F5006BFCCA /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		73AF98522E97A6C3006BFCCA /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		73AF98542E97A6EC006BFCCA /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
-		73AF98572E97A736006BFCCA /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		73AF985C2E97A8D8006BFCCA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		73AF985E2E97A8E5006BFCCA /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		73AF98602E97A9A4006BFCCA /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
@@ -233,6 +236,7 @@
 			children = (
 				73AF98312E979B4F006BFCCA /* Info.plist */,
 				73AF98302E979B4F006BFCCA /* Assets.xcassets */,
+				732E7B3F2EA8AE120001FAD6 /* InfoPlist.strings */,
 				73AF984C2E97A4B1006BFCCA /* Localizable.strings */,
 				73AF98402E979B7F006BFCCA /* DanaMandiri.entitlements */,
 				73AF982F2E979B4F006BFCCA /* AppDelegate.swift */,
@@ -313,11 +317,11 @@
 		73AF98562E97A72C006BFCCA /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				732E7B332EA88A8F0001FAD6 /* LoginUntitled.swift */,
 				732CCE692EA61A65004C325D /* PopLeaveDownView.swift */,
 				73D9D3042E9A554800E223C0 /* SchemeManager.swift */,
 				732C1C872E98D6170005A18F /* LanguageManager.swift */,
-				732C1C7F2E98AEEA0005A18F /* Untitled.swift */,
-				73AF98572E97A736006BFCCA /* Color.swift */,
+				732C1C7F2E98AEEA0005A18F /* AppAdSupport.swift */,
 				732C1C7D2E9898180005A18F /* Extension.swift */,
 				732C1C7B2E9895820005A18F /* LoadingHUD.swift */,
 				7376564D2E9C9E990018258E /* CommonHeadView.swift */,
@@ -514,6 +518,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				73AF983C2E979B4F006BFCCA /* Assets.xcassets in Resources */,
+				732E7B412EA8AE120001FAD6 /* InfoPlist.strings in Resources */,
 				73AF984E2E97A4B1006BFCCA /* Localizable.strings in Resources */,
 				73AF983E2E979B4F006BFCCA /* LaunchScreen.storyboard in Resources */,
 			);
@@ -603,7 +608,7 @@
 				73F71AA32E99EF6A00BB6091 /* SmallOneViewCell.swift in Sources */,
 				73B1AD862E9D325C001590B8 /* ProductView.swift in Sources */,
 				737656542E9CE0340018258E /* OrderListViewModel.swift in Sources */,
-				732C1C802E98AEEB0005A18F /* Untitled.swift in Sources */,
+				732C1C802E98AEEB0005A18F /* AppAdSupport.swift in Sources */,
 				73204E472EA0C0840040FE1E /* CommonBpViewModel.swift in Sources */,
 				73AF98632E97ABA4006BFCCA /* NetworkManager.swift in Sources */,
 				732C1C942E98F58E0005A18F /* CenterViewController.swift in Sources */,
@@ -619,7 +624,7 @@
 				73F71AA92E99F67100BB6091 /* SmallThreeCollectionViewCell.swift in Sources */,
 				732CCE6A2EA61A78004C325D /* PopLeaveDownView.swift in Sources */,
 				732C1C862E98CFAC0005A18F /* PhoneListView.swift in Sources */,
-				73AF98582E97A73A006BFCCA /* Color.swift in Sources */,
+				732E7B342EA88A930001FAD6 /* LoginUntitled.swift in Sources */,
 				732C1C962E98FCDC0005A18F /* HomeView.swift in Sources */,
 				73AF98392E979B4F006BFCCA /* AppDelegate.swift in Sources */,
 				735159B62EA20C420007347F /* LocationManager.swift in Sources */,
@@ -657,6 +662,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		732E7B3F2EA8AE120001FAD6 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				732E7B402EA8AE120001FAD6 /* en */,
+				732E7B422EA8AE2A0001FAD6 /* id */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		73AF98332E979B4F006BFCCA /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -686,17 +700,19 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DanaMandiri/DanaMandiri.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = XS8842FK7N;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 8K9YQ3M42C;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DanaMandiri/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Dana Mandiri";
-				INFOPLIST_KEY_NSCameraUsageDescription = "需要相机";
-				INFOPLIST_KEY_NSContactsUsageDescription = "需要通讯录";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "需要你的定位";
-				INFOPLIST_KEY_NSUserTrackingUsageDescription = "想要idfa";
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSContactsUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -708,9 +724,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.wentao.ald;
+				PRODUCT_BUNDLE_IDENTIFIER = www.ksp1017;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = www.ksp1017;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -733,17 +750,19 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DanaMandiri/DanaMandiri.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = XS8842FK7N;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 8K9YQ3M42C;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DanaMandiri/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Dana Mandiri";
-				INFOPLIST_KEY_NSCameraUsageDescription = "需要相机";
-				INFOPLIST_KEY_NSContactsUsageDescription = "需要通讯录";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "需要你的定位";
-				INFOPLIST_KEY_NSUserTrackingUsageDescription = "想要idfa";
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSContactsUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -755,9 +774,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.wentao.ald;
+				PRODUCT_BUNDLE_IDENTIFIER = www.ksp1017;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = www.ksp1017;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
