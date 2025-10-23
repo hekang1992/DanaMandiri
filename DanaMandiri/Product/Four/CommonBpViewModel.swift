@@ -9,15 +9,15 @@ class CommonBpViewModel {
     
     /// GET_BASIC_INFO
     func getCommonBpInfo(with json: [String: Any], completion: @escaping (BaseModel) -> Void) {
-        LoadingHUD.show()
+        LoadingHUD.shared.show()
         NetworkManager.shared.postJsonRequest(url: "/taxile/phone", json: json, responseType: BaseModel.self) { result in
             switch result {
             case .success(let success):
-                LoadingHUD.hide()
+                LoadingHUD.shared.hide()
                 completion(success)
                 break
             case .failure(_):
-                LoadingHUD.hide()
+                LoadingHUD.shared.hide()
                 let model = BaseModel()
                 completion(model)
                 break
@@ -26,15 +26,15 @@ class CommonBpViewModel {
     }
     
     func saveCommonBpInfo(with json: [String: Any], completion: @escaping (BaseModel) -> Void) {
-        LoadingHUD.show()
+        LoadingHUD.shared.show()
         NetworkManager.shared.postJsonRequest(url: "/taxile/senselike", json: json, responseType: BaseModel.self) { result in
             switch result {
             case .success(let success):
-                LoadingHUD.hide()
+                LoadingHUD.shared.hide()
                 completion(success)
                 break
             case .failure(_):
-                LoadingHUD.hide()
+                LoadingHUD.shared.hide()
                 let model = BaseModel()
                 completion(model)
                 break

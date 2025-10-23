@@ -158,7 +158,7 @@ extension LoginViewController {
     
     private func getIcacInfo() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-            NotificationCenter.default.post(name: Notification.Name("aTTracking"), object: nil, userInfo: ["type": "1"])
+            NotificationCenter.default.post(name: Notification.Name("aTTracking"), object: nil, userInfo: ["type": "login"])
         }
     }
 }

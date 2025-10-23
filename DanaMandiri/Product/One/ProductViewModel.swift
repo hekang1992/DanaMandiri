@@ -8,15 +8,15 @@
 class ProductViewModel {
     
     func getProductDetailInfo(with json: [String: Any], completion: @escaping (BaseModel) -> Void) {
-        LoadingHUD.show()
+        LoadingHUD.shared.show()
         NetworkManager.shared.postJsonRequest(url: "/taxile/determine", json: json, responseType: BaseModel.self) { result in
             switch result {
             case .success(let success):
-                LoadingHUD.hide()
+                LoadingHUD.shared.hide()
                 completion(success)
                 break
             case .failure(_):
-                LoadingHUD.hide()
+                LoadingHUD.shared.hide()
                 let model = BaseModel()
                 completion(model)
                 break
@@ -25,15 +25,15 @@ class ProductViewModel {
     }
     
     func orderInfo(with json: [String: Any], completion: @escaping (BaseModel) -> Void) {
-        LoadingHUD.show()
+        LoadingHUD.shared.show()
         NetworkManager.shared.postJsonRequest(url: "/taxile/skillette", json: json, responseType: BaseModel.self) { result in
             switch result {
             case .success(let success):
-                LoadingHUD.hide()
+                LoadingHUD.shared.hide()
                 completion(success)
                 break
             case .failure(_):
-                LoadingHUD.hide()
+                LoadingHUD.shared.hide()
                 let model = BaseModel()
                 completion(model)
                 break

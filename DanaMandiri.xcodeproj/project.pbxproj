@@ -159,6 +159,7 @@
 		73B1AD852E9D325C001590B8 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
 		73B1AD872E9D4442001590B8 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		73C8301C2EA74FEE001D00EB /* PopSayaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopSayaView.swift; sourceTree = "<group>"; };
+		73D7A5492EAA1E5400519295 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		73D9D3022E9A420700E223C0 /* CenterListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterListViewCell.swift; sourceTree = "<group>"; };
 		73D9D3042E9A554800E223C0 /* SchemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemeManager.swift; sourceTree = "<group>"; };
 		73D9D3062E9A606500E223C0 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -676,6 +677,7 @@
 			children = (
 				73AF98322E979B4F006BFCCA /* Base */,
 				73AF98472E97A38F006BFCCA /* id */,
+				73D7A5492EAA1E5400519295 /* en */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

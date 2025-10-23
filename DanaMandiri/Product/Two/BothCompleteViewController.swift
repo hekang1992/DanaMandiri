@@ -21,6 +21,8 @@ class BothCompleteViewController: BaseViewController {
     
     let viewModel = PersonalImageViewModel()
     
+    let detailViewModel = ProductViewModel()
+    
     lazy var bothView: BothComleteView = {
         let bothView = BothComleteView()
         return bothView
@@ -61,7 +63,13 @@ class BothCompleteViewController: BaseViewController {
         getPersonalInfo()
         
         bothView.againBtn.rx.tap.subscribe(onNext: { [weak self] in
-            self?.popToDetailViewController()
+            guard let self = self else { return }
+            let json = ["response": productID, "spatitenics": "101"]
+            detailViewModel.getProductDetailInfo(with: json) { [weak self] model in
+                guard let self = self else { return }
+                let type = model.salin?.shake?.resourceosity ?? ""
+                self.goPageWithType(type: type, model: model, productID: productID)
+            }
         }).disposed(by: disposeBag)
         
     }

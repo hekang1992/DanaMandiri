@@ -188,7 +188,7 @@ extension SettingViewController {
     
     /// LOG_OUT
     private func outInfo() {
-        LoadingHUD.show()
+        LoadingHUD.shared.show()
         NetworkManager.shared.getRequest(url: "/taxile/aboutation", responseType: BaseModel.self) { reslut in
             switch reslut {
             case .success(let success):
@@ -199,10 +199,10 @@ extension SettingViewController {
                     }
                 }
                 ToastProgressHUD.showToastText(message: success.filmably ?? "")
-                LoadingHUD.hide()
+                LoadingHUD.shared.hide()
                 break
             case .failure(_):
-                LoadingHUD.hide()
+                LoadingHUD.shared.hide()
                 break
             }
         }
@@ -210,7 +210,7 @@ extension SettingViewController {
     
     /// DELETE_ACC
     private func delInfo() {
-        LoadingHUD.show()
+        LoadingHUD.shared.show()
         NetworkManager.shared.getRequest(url: "/taxile/tern", responseType: BaseModel.self) { reslut in
             switch reslut {
             case .success(let success):
@@ -221,10 +221,10 @@ extension SettingViewController {
                     }
                 }
                 ToastProgressHUD.showToastText(message: success.filmably ?? "")
-                LoadingHUD.hide()
+                LoadingHUD.shared.hide()
                 break
             case .failure(_):
-                LoadingHUD.hide()
+                LoadingHUD.shared.hide()
                 break
             }
         }

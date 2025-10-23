@@ -29,7 +29,7 @@ final class LocationManager: NSObject {
     private override init() {
         super.init()
         manager.delegate = self
-        manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager.desiredAccuracy = kCLLocationAccuracyHundredMeters
     }
     
     func requestLocation(completion: @escaping (LocationInfoModel) -> Void) {

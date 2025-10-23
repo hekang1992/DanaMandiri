@@ -92,6 +92,10 @@ class UnieerLifeViewController: BaseViewController {
         
         getWebInfo()
         
+        reloadUrl(with: self.pageUrl)
+    }
+    
+    func reloadUrl(with url: String) {
         guard let encodedUrlString = pageUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
               let finalUrlString = URLQueryBuilder.appendingQueryParameters(
                 to: encodedUrlString,
@@ -103,7 +107,6 @@ class UnieerLifeViewController: BaseViewController {
         }
         
         webView.load(URLRequest(url: finalUrl))
-        
     }
     
 }
@@ -141,6 +144,8 @@ extension UnieerLifeViewController {
 extension UnieerLifeViewController: WKNavigationDelegate, WKScriptMessageHandler {
     
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        print("name=====\(message.name)")
+        print("body=====\(message.body)")
         switch message.name {
         case "picish":
             self.navigationController?.popToRootViewController(animated: true)
@@ -156,6 +161,16 @@ extension UnieerLifeViewController: WKNavigationDelegate, WKScriptMessageHandler
             colInfo(with: body?.last ?? "", productID: body?.first ?? "")
             break
         case "chlorid":
+            let body = message.body as? String ?? ""
+            if body.isEmpty {
+                return
+            }
+            if body.contains(SCHEME_URL) {
+                SchemeManager.handle(url: body)
+            }else if body.hasPrefix("http://") || body.hasPrefix("https://") {
+                self.pageUrl = body
+                reloadUrl(with: self.pageUrl)
+            }
             break
         case "thrixacious":
             let body = message.body as? String ?? ""
@@ -165,7 +180,6 @@ extension UnieerLifeViewController: WKNavigationDelegate, WKScriptMessageHandler
             break
         }
     }
-    
     
 }
 

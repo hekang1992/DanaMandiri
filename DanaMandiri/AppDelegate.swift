@@ -96,12 +96,12 @@ extension AppDelegate {
                     Settings.shared.appURLSchemeSuffix = model.terrtrialistic?.xylant ?? ""
                     ApplicationDelegate.shared.application(UIApplication.shared, didFinishLaunchingWithOptions: nil)
                 }
-                if roctJson["type"] == "0" {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-                        NotificationCenter.default.post(name: Notification.Name("switchRootVc"), object: nil)
-                    }
-                }else {
+                let type = roctJson["type"]
+                if type == "home" {
                     UserDefaults.standard.set("2", forKey: "attcak")
+                    UserDefaults.standard.synchronize()
+                }else {
+                    UserDefaults.standard.set("", forKey: "attcak")
                     UserDefaults.standard.synchronize()
                 }
             }

@@ -9,7 +9,7 @@ class LoginViewModel {
     
     func getCode(json: [String: Any],
                  completion: @escaping (BaseModel) -> Void) {
-        LoadingHUD.show()
+        LoadingHUD.shared.show()
         NetworkManager.shared.postJsonRequest(
             url: "/taxile/leaderad",
             json: json,
@@ -18,10 +18,10 @@ class LoginViewModel {
                 case .success(let success):
                     completion(success)
                     ToastProgressHUD.showToastText(message: success.filmably ?? "")
-                    LoadingHUD.hide()
+                    LoadingHUD.shared.hide()
                     break
                 case .failure(_):
-                    LoadingHUD.hide()
+                    LoadingHUD.shared.hide()
                     break
                 }
             }
@@ -29,7 +29,7 @@ class LoginViewModel {
     
     func toLogin(json: [String: Any],
                  completion: @escaping (BaseModel) -> Void) {
-        LoadingHUD.show()
+        LoadingHUD.shared.show()
         NetworkManager.shared.postJsonRequest(
             url: "/taxile/thalam",
             json: json,
@@ -38,10 +38,10 @@ class LoginViewModel {
                 case .success(let success):
                     completion(success)
                     ToastProgressHUD.showToastText(message: success.filmably ?? "")
-                    LoadingHUD.hide()
+                    LoadingHUD.shared.hide()
                     break
                 case .failure(_):
-                    LoadingHUD.hide()
+                    LoadingHUD.shared.hide()
                     break
                 }
             }

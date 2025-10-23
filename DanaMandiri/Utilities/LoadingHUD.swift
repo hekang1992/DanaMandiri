@@ -1,5 +1,5 @@
 //
-//  LoadingHUD.swift
+//  LoadingHUD.shared.swift
 //  DanaMandiri
 //
 //  Created by Ethan Johnson on 2025/10/10.
@@ -11,85 +11,79 @@ import SnapKit
 final class LoadingHUD {
     
     static let shared = LoadingHUD()
+    
+    private var containerView: UIView?
+    private var activityIndicator: UIActivityIndicatorView?
+    private var loadingCount = 0
+    
     private init() {}
     
-    private var loadingView: UIView?
-    
-    class func show() {
+    func show() {
         DispatchQueue.main.async {
+            self.loadingCount += 1
+            if self.containerView != nil { return }
             
-            guard let window = currentWindow else {
-                print("⚠️ LoadingHUD: no window")
-                return
-            }
+            guard let window = self.getKeyWindow() else { return }
             
-            if shared.loadingView != nil {
-                hide()
-            }
-            
-            let containerView = UIView()
-            containerView.backgroundColor = UIColor.black.withAlphaComponent(0.3)
-            window.addSubview(containerView)
-            containerView.snp.makeConstraints { make in
+            let background = UIView()
+            background.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+            window.addSubview(background)
+            background.snp.makeConstraints { make in
                 make.edges.equalToSuperview()
             }
             
-            let hudView = UIView()
-            hudView.backgroundColor = UIColor(white: 0.1, alpha: 0.8)
-            hudView.layer.cornerRadius = 12
-            hudView.clipsToBounds = true
-            containerView.addSubview(hudView)
+            let hudBox = UIView()
+            hudBox.backgroundColor = UIColor.black.withAlphaComponent(0.7)
+            hudBox.layer.cornerRadius = 12
+            background.addSubview(hudBox)
+            hudBox.snp.makeConstraints { make in
+                make.center.equalToSuperview()
+                make.width.height.equalTo(100)
+            }
             
             let indicator = UIActivityIndicatorView(style: .large)
             indicator.color = .white
             indicator.startAnimating()
-            hudView.addSubview(indicator)
-            
-            hudView.snp.makeConstraints { make in
-                make.center.equalToSuperview()
-                make.size.equalTo(80)
-            }
-            
+            hudBox.addSubview(indicator)
             indicator.snp.makeConstraints { make in
                 make.center.equalToSuperview()
             }
             
-            containerView.alpha = 0
-            hudView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
-            
-            UIView.animate(withDuration: 0.3) {
-                containerView.alpha = 1
-                hudView.transform = .identity
-            }
-            
-            shared.loadingView = containerView
+            self.containerView = background
+            self.activityIndicator = indicator
         }
     }
     
-    class func hide() {
+    func hide() {
         DispatchQueue.main.async {
-            guard let loadingView = shared.loadingView else { return }
+            self.loadingCount = max(self.loadingCount - 1, 0)
+            guard self.loadingCount == 0 else { return }
             
-            UIView.animate(withDuration: 0.2, animations: {
-                loadingView.alpha = 0
-            }) { _ in
-                loadingView.removeFromSuperview()
-                shared.loadingView = nil
-            }
+            self.activityIndicator?.stopAnimating()
+            self.containerView?.removeFromSuperview()
+            self.containerView = nil
+            self.activityIndicator = nil
         }
     }
     
-    private static var currentWindow: UIWindow? {
-        if let window = UIApplication.shared.connectedScenes
-            .compactMap({ $0 as? UIWindowScene })
-            .first(where: { $0.activationState == .foregroundActive })?
-            .windows
-            .first(where: { $0.isKeyWindow }) {
-            return window
+    func forceHide() {
+        DispatchQueue.main.async {
+            self.loadingCount = 0
+            self.activityIndicator?.stopAnimating()
+            self.containerView?.removeFromSuperview()
+            self.containerView = nil
+            self.activityIndicator = nil
         }
-        if let window = UIApplication.shared.windows.first(where: { !$0.isHidden }) {
-            return window
+    }
+    
+    private func getKeyWindow() -> UIWindow? {
+        if #available(iOS 15.0, *) {
+            return UIApplication.shared.connectedScenes
+                .compactMap { $0 as? UIWindowScene }
+                .flatMap { $0.windows }
+                .first { $0.isKeyWindow }
+        } else {
+            return UIApplication.shared.windows.first { $0.isKeyWindow }
         }
-        return nil
     }
 }

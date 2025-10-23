@@ -118,7 +118,7 @@ class HomeViewController: BaseViewController {
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-            NotificationCenter.default.post(name: Notification.Name("aTTracking"), object: nil, userInfo: ["type": "1"])
+            NotificationCenter.default.post(name: Notification.Name("aTTracking"), object: nil, userInfo: ["type": "home"])
         }
         
         LocationManager.shared.requestLocation { model in
@@ -160,8 +160,8 @@ extension HomeViewController {
                 ("memberion", model.countryCode ?? ""),
                 ("sphinct", model.country ?? ""),
                 ("matrkeyast", model.name ?? ""),
-                ("anem", model.latitude),
-                ("graman", model.longitude),
+                ("anem", String(model.latitude)),
+                ("graman", String(model.longitude)),
                 ("nascitious", model.locality ?? ""),
                 ("pancreesque", model.subLocality ?? "")
             ]
@@ -231,14 +231,14 @@ extension HomeViewController {
     }
     private func applyProductInfo(with productID: String, clickBtn: UIButton) {
         clickBtn.isEnabled = false
-        LoadingHUD.show()
+        LoadingHUD.shared.show()
         let json = ["typefication": "1001",
                     "dynaance": "1000",
                     "noticeion": "1000",
                     "response": productID]
         homeViewModel.applyProductInfo(with: json) { [weak self] model in
             clickBtn.isEnabled = true
-            LoadingHUD.hide()
+            LoadingHUD.shared.hide()
             if ["0", "00"].contains(model.aboutation) {
                 let anteaneity = model.salin?.recordenne?.anteaneity ?? []
                 if anteaneity.isEmpty {

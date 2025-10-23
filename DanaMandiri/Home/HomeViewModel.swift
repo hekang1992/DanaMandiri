@@ -8,7 +8,7 @@
 class HomeViewModel {
     
     func getHomeInfo(completion: @escaping (BaseModel) -> Void) {
-        LoadingHUD.show()
+        LoadingHUD.shared.show()
         NetworkManager
             .shared
             .getRequest(url: "/taxile/filmably",
@@ -16,10 +16,10 @@ class HomeViewModel {
                 switch result {
                 case .success(let success):
                     completion(success)
-                    LoadingHUD.hide()
+                    LoadingHUD.shared.hide()
                     break
                 case .failure(_):
-                    LoadingHUD.hide()
+                    LoadingHUD.shared.hide()
                     let model = BaseModel()
                     completion(model)
                     break

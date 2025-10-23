@@ -9,15 +9,15 @@ final class BasicViewModel {
     
     /// GET_BASIC_INFO
     func getBasicInfo(with json: [String: Any], completion: @escaping (BaseModel) -> Void) {
-        LoadingHUD.show()
+        LoadingHUD.shared.show()
         NetworkManager.shared.postJsonRequest(url: "/taxile/fancmuchion", json: json, responseType: BaseModel.self) { result in
             switch result {
             case .success(let success):
-                LoadingHUD.hide()
+                LoadingHUD.shared.hide()
                 completion(success)
                 break
             case .failure(_):
-                LoadingHUD.hide()
+                LoadingHUD.shared.hide()
                 let model = BaseModel()
                 completion(model)
                 break
@@ -26,15 +26,15 @@ final class BasicViewModel {
     }
     
     func saveBasicInfo(with json: [String: Any], completion: @escaping (BaseModel) -> Void) {
-        LoadingHUD.show()
+        LoadingHUD.shared.show()
         NetworkManager.shared.postJsonRequest(url: "/taxile/nihilics", json: json, responseType: BaseModel.self) { result in
             switch result {
             case .success(let success):
-                LoadingHUD.hide()
+                LoadingHUD.shared.hide()
                 completion(success)
                 break
             case .failure(_):
-                LoadingHUD.hide()
+                LoadingHUD.shared.hide()
                 let model = BaseModel()
                 completion(model)
                 break
@@ -44,15 +44,15 @@ final class BasicViewModel {
     
     /// GET_BANK_INFO
     func getBankInfo(with json: [String: Any], completion: @escaping (BaseModel) -> Void) {
-        LoadingHUD.show()
+        LoadingHUD.shared.show()
         NetworkManager.shared.postJsonRequest(url: "/taxile/kilolaughish", json: json, responseType: BaseModel.self) { result in
             switch result {
             case .success(let success):
-                LoadingHUD.hide()
+                LoadingHUD.shared.hide()
                 completion(success)
                 break
             case .failure(_):
-                LoadingHUD.hide()
+                LoadingHUD.shared.hide()
                 let model = BaseModel()
                 completion(model)
                 break
@@ -61,15 +61,15 @@ final class BasicViewModel {
     }
     
     func saveBankInfo(with json: [String: Any], completion: @escaping (BaseModel) -> Void) {
-        LoadingHUD.show()
+        LoadingHUD.shared.show()
         NetworkManager.shared.postJsonRequest(url: "/taxile/sipirangeular", json: json, responseType: BaseModel.self) { result in
             switch result {
             case .success(let success):
-                LoadingHUD.hide()
+                LoadingHUD.shared.hide()
                 completion(success)
                 break
             case .failure(_):
-                LoadingHUD.hide()
+                LoadingHUD.shared.hide()
                 let model = BaseModel()
                 completion(model)
                 break

@@ -71,7 +71,7 @@ class StartViewController: BaseViewController {
 extension StartViewController {
     
     private func startInfo() {
-        LoadingHUD.show()
+        LoadingHUD.shared.show()
         let json = ["wearic": String(DeinfoVoipInfo.proxyStatus.rawValue),
                     "feelaneity": String(DeinfoVoipInfo.vpnStatus.rawValue),
                     "taenisouthernition": Locale.preferredLanguages.first ?? ""]
@@ -97,11 +97,11 @@ extension StartViewController {
                     self?.againBtn.isHidden = false
                     ToastProgressHUD.showToastText(message: success.filmably ?? "")
                 }
-                LoadingHUD.hide()
+                LoadingHUD.shared.hide()
                 break
             case .failure(_):
                 self?.againBtn.isHidden = false
-                LoadingHUD.hide()
+                LoadingHUD.shared.hide()
                 break
             }
         }
