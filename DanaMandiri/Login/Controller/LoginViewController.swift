@@ -71,6 +71,7 @@ class LoginViewController: BaseViewController {
 extension LoginViewController {
     
     private func toLoginInfo() {
+        leavetime = String(Int(Date().timeIntervalSince1970))
         UserDefaults.standard.set(leavetime, forKey: "leavetime")
         UserDefaults.standard.synchronize()
         

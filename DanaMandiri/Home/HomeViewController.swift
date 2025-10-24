@@ -180,6 +180,7 @@ extension HomeViewController {
     private func buOneInfo() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
             let entertime = UserDefaults.standard.object(forKey: "entertime") as? String ?? ""
+            let leavetime = UserDefaults.standard.object(forKey: "leavetime") as? String ?? ""
             let locationModel = AddressLocationInfoModel.shared.locationModel
             let colJson = ["opportunityatory": "",
                            "muls": "1",
@@ -187,7 +188,7 @@ extension HomeViewController {
                            "dens": entertime,
                            "graman": String(locationModel?.longitude ?? 0.0),
                            "anem": String(locationModel?.latitude ?? 0.0)]
-            ColsomeManager.colsomeInfo(with: colJson, leavetime: String(Int(Date().timeIntervalSince1970)))
+            ColsomeManager.colsomeInfo(with: colJson, leavetime: leavetime)
         }
     }
     
@@ -210,15 +211,12 @@ extension HomeViewController {
     }
     
     private func applyInfo(with productID: String, clickBtn: UIButton) {
-        buOneInfo()
         upComputerLoadInfo()
-        toLocationInfo()
-        
         let cin = CinInfoModel.shared.cinModel?.cin ?? ""
-        
         let status = CLLocationManager().authorizationStatus
-        
         if status == .authorizedAlways || status == .authorizedWhenInUse {
+            buOneInfo()
+            toLocationInfo()
             applyProductInfo(with: productID, clickBtn: clickBtn)
         }else {
             if cin == "460" {

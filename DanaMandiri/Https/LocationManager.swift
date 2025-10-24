@@ -67,7 +67,7 @@ extension LocationManager: CLLocationManagerDelegate {
             guard let self else { return }
             
             if let error {
-                print("error========\(error.localizedDescription)")
+                print("location=====error========\(error.localizedDescription)")
                 let locationModel = LocationInfoModel()
                 completion?(locationModel)
                 return
