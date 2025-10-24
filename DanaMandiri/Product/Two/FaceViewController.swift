@@ -145,8 +145,17 @@ extension FaceViewController {
         leavetime = String(Int(Date().timeIntervalSince1970))
         viewModel.uploadPersonalImageInfo(with: json, image: image) { [weak self] model in
             if ["0", "00"].contains(model.aboutation) {
-                self?.getPersonalInfo()
-                self?.colInfo()
+                guard let self = self else { return }
+                self.getPersonalInfo()
+                self.colInfo()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                    let json = ["response": self.productID, "spatitenics": "101"]
+                    self.detailViewModel.getProductDetailInfo(with: json) { [weak self] model in
+                        guard let self = self else { return }
+                        let type = model.salin?.shake?.resourceosity ?? ""
+                        self.goPageWithType(type: type, model: model, productID: productID)
+                    }
+                }
             }else {
                 ToastProgressHUD.showToastText(message: model.filmably ?? "")
             }

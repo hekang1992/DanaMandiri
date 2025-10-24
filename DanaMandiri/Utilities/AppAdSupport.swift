@@ -58,7 +58,6 @@ class ToastProgressHUD {
 }
 
 
-/// 城市数据model
 class CityAddressModel{
     static let shared = CityAddressModel()
     private init() {}
