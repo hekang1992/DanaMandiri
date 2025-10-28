@@ -52,9 +52,9 @@ class Lausize {
     var statementative: String?
     
     init(allelery: String? = nil, kindment: String? = nil, gratern: String? = nil, statementative: String? = nil) {
-        let diskInfo = DiskSpaceHelper.debugPrintDiskInfo()
-        self.allelery = String((diskInfo["free"] as! Int) * 1_073_741_824)
-        self.kindment = String((diskInfo["total"] as! Int) * 1_073_741_824)
+        let diskInfo = DiskSpaceHelper.getDiskSpaceInfo()
+        self.allelery = diskInfo.available
+        self.kindment = diskInfo.total
         self.gratern = MemerinConfig.getTotalMemoryString()
         self.statementative = MemerinConfig.getAvailableMemoryString()
     }
@@ -65,7 +65,7 @@ class Lausize {
                 "gratern": gratern ?? "",
                 "statementative": statementative ?? ""]
     }
-   
+    
 }
 
 class Forgetacity {
@@ -192,37 +192,26 @@ class Subter {
 
 struct DiskSpaceHelper {
     
-    static func debugPrintDiskInfo() -> [String: Any] {
-        let url = URL(fileURLWithPath: NSHomeDirectory())
+   static func getDiskSpaceInfo() -> (total: String, available: String) {
+        let rootURL = URL(fileURLWithPath: "/")
         do {
-            let values = try url.resourceValues(forKeys: [
-                .volumeAvailableCapacityKey,
-                .volumeAvailableCapacityForImportantUsageKey,
-                .volumeAvailableCapacityForOpportunisticUsageKey,
-                .volumeTotalCapacityKey
-            ])
+            let values = try rootURL.resourceValues(forKeys: [.volumeTotalCapacityKey, .volumeAvailableCapacityKey])
             
-            let total = values.volumeTotalCapacity ?? -1
-            _ = values.volumeAvailableCapacity ?? -1
-            let important = values.volumeAvailableCapacityForImportantUsage ?? -1
-            _ = values.volumeAvailableCapacityForOpportunisticUsage ?? -1
-            return ["total": bytesToGBInt(Int64(total)), "free": bytesToGBInt(Int64(important))]
+            if let total = values.volumeTotalCapacity,
+               let available = values.volumeAvailableCapacity {
+                return ("\(total)", "\(available)")
+            } else {
+                return ("0", "0")
+            }
         } catch {
-            print("Error: \(error)")
-            return [:]
+            return ("0", "0")
         }
     }
-    
-    private static func bytesToGBInt(_ bytes: Int64) -> Int {
-        guard bytes >= 0 else { return 0 }
-        let gb = Double(bytes) / 1_000_000_000
-        return Int(round(gb))
-    }
-    
+
 }
 
 class MemerinConfig: NSObject {
-
+    
     static func getTotalMemoryString() -> String {
         let totalMemory = ProcessInfo.processInfo.physicalMemory
         return String(totalMemory)

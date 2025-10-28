@@ -199,13 +199,17 @@ extension UnieerLifeViewController {
     
     private func colInfo(with orderNumber: String, productID: String) {
         leavetime = String(Int(Date().timeIntervalSince1970))
-        let locationModel = AddressLocationInfoModel.shared.locationModel
+//        let locationModel = AddressLocationInfoModel.shared.locationModel
+        
+        let latitude = UserDefaults.standard.object(forKey: "latitude") as? Double
+        let longitude = UserDefaults.standard.object(forKey: "longitude") as? Double
+        
         let json = ["opportunityatory": productID,
                     "muls": "9",
                     "presentality": orderNumber,
                     "dens": entertime,
-                    "graman": String(locationModel?.longitude ?? 0.0),
-                    "anem": String(locationModel?.latitude ?? 0.0)]
+                    "graman": String(longitude ?? 0.0),
+                    "anem": String(latitude ?? 0.0)]
         ColsomeManager.colsomeInfo(with: json, leavetime: leavetime)
     }
     

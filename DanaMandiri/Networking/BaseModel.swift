@@ -9,13 +9,11 @@ struct BaseModel: Codable {
     var aboutation: String?
     var filmably: String?
     var salin: salinModel?
-    var terrtrialistic: terrtrialisticModel?
     
     enum CodingKeys: String, CodingKey {
         case aboutation
         case filmably
         case salin
-        case terrtrialistic
     }
     
     init(aboutation: String? = nil,
@@ -25,7 +23,6 @@ struct BaseModel: Codable {
         self.aboutation = aboutation
         self.filmably = filmably
         self.salin = salin
-        self.terrtrialistic = terrtrialistic
     }
     
     init(from decoder: Decoder) throws {
@@ -40,7 +37,6 @@ struct BaseModel: Codable {
         
         filmably = try? container.decode(String.self, forKey: .filmably)
         salin = try? container.decode(salinModel.self, forKey: .salin)
-        terrtrialistic = try? container.decode(terrtrialisticModel.self, forKey: .terrtrialistic)
     }
 }
 
@@ -63,6 +59,7 @@ struct salinModel: Codable {
     var clastoon: [clastoonModel]?
     var toughel: toughelModel?
     var recordenne: recordenneModel?
+    var terrtrialistic: terrtrialisticModel?
 }
 
 struct sipirangeularModel: Codable {

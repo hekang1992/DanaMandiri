@@ -122,13 +122,17 @@ extension BaseViewController {
     
     private func ocolInfo(with productID: String, orderNumber: String, entertime: String, leavetime: String) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-            let locationModel = AddressLocationInfoModel.shared.locationModel
+//            let locationModel = AddressLocationInfoModel.shared.locationModel
+            
+            let latitude = UserDefaults.standard.object(forKey: "latitude") as? Double
+            let longitude = UserDefaults.standard.object(forKey: "longitude") as? Double
+            
             let json = ["opportunityatory": productID,
                         "muls": "8",
                         "presentality": orderNumber,
                         "dens": entertime,
-                        "graman": String(locationModel?.longitude ?? 0.0),
-                        "anem": String(locationModel?.latitude ?? 0.0)]
+                        "graman": String(longitude ?? 0.0),
+                        "anem": String(latitude ?? 0.0)]
             ColsomeManager.colsomeInfo(with: json, leavetime: leavetime)
         }
     }

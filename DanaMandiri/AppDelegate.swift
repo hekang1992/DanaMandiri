@@ -90,10 +90,10 @@ extension AppDelegate {
             let json = ["centrten": centrten, "coldlike": coldlike]
             uoinfo(json: json) { model in
                 if ["0", "00"].contains(model.aboutation) {
-                    Settings.shared.appID = model.terrtrialistic?.cystence ?? ""
-                    Settings.shared.clientToken = model.terrtrialistic?.capite ?? ""
-                    Settings.shared.displayName = model.terrtrialistic?.genperiod ?? ""
-                    Settings.shared.appURLSchemeSuffix = model.terrtrialistic?.xylant ?? ""
+                    Settings.shared.appID = model.salin?.terrtrialistic?.capite ?? ""
+                    Settings.shared.clientToken = model.salin?.terrtrialistic?.xylant ?? ""
+                    Settings.shared.displayName = model.salin?.terrtrialistic?.genperiod ?? ""
+                    Settings.shared.appURLSchemeSuffix = model.salin?.terrtrialistic?.cystence ?? ""
                     ApplicationDelegate.shared.application(UIApplication.shared, didFinishLaunchingWithOptions: nil)
                 }
                 let type = roctJson["type"]

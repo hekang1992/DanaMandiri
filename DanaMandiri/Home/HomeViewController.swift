@@ -152,7 +152,8 @@ extension HomeViewController {
     }
     
     private func toLocationInfo() {
-        if let model = AddressLocationInfoModel.shared.locationModel {
+        
+        LocationManager.shared.requestLocation { [weak self] model in
             let administrativeArea = model.administrativeArea ?? ""
             let locality = model.locality ?? ""
             let pairs: [(String, Any)] = [
@@ -168,28 +169,66 @@ extension HomeViewController {
             
             let json = Dictionary(uniqueKeysWithValues: pairs)
             
-            locationManagerModel.uoAddressinfo(json: json) { model in
+            self?.locationManagerModel.uoAddressinfo(json: json) { model in
                 if ["0", "00"].contains(model.aboutation) {
                     print("location=======suceess=======")
                 }
             }
         }
         
+        
+//        if let model = AddressLocationInfoModel.shared.locationModel {
+//            let administrativeArea = model.administrativeArea ?? ""
+//            let locality = model.locality ?? ""
+//            let pairs: [(String, Any)] = [
+//                ("studminute", administrativeArea.isEmpty ? locality : administrativeArea),
+//                ("memberion", model.countryCode ?? ""),
+//                ("sphinct", model.country ?? ""),
+//                ("matrkeyast", model.name ?? ""),
+//                ("anem", String(model.latitude)),
+//                ("graman", String(model.longitude)),
+//                ("nascitious", model.locality ?? ""),
+//                ("pancreesque", model.subLocality ?? "")
+//            ]
+//            
+//            let json = Dictionary(uniqueKeysWithValues: pairs)
+//            
+//            locationManagerModel.uoAddressinfo(json: json) { model in
+//                if ["0", "00"].contains(model.aboutation) {
+//                    print("location=======suceess=======")
+//                }
+//            }
+//        }
+        
     }
     
     private func buOneInfo() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-            let entertime = UserDefaults.standard.object(forKey: "entertime") as? String ?? ""
-            let leavetime = UserDefaults.standard.object(forKey: "leavetime") as? String ?? ""
-            let locationModel = AddressLocationInfoModel.shared.locationModel
-            let colJson = ["opportunityatory": "",
-                           "muls": "1",
-                           "presentality": "",
-                           "dens": entertime,
-                           "graman": String(locationModel?.longitude ?? 0.0),
-                           "anem": String(locationModel?.latitude ?? 0.0)]
-            ColsomeManager.colsomeInfo(with: colJson, leavetime: leavetime)
-        }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+//            let entertime = UserDefaults.standard.object(forKey: "entertime") as? String ?? ""
+//            let leavetime = UserDefaults.standard.object(forKey: "leavetime") as? String ?? ""
+//            let locationModel = AddressLocationInfoModel.shared.locationModel
+//            let colJson = ["opportunityatory": "",
+//                           "muls": "1",
+//                           "presentality": "",
+//                           "dens": entertime,
+//                           "graman": String(locationModel?.longitude ?? 0.0),
+//                           "anem": String(locationModel?.latitude ?? 0.0)]
+//            ColsomeManager.colsomeInfo(with: colJson, leavetime: leavetime)
+//        }
+        let entertime = UserDefaults.standard.object(forKey: "entertime") as? String ?? ""
+        let leavetime = UserDefaults.standard.object(forKey: "leavetime") as? String ?? ""
+//        let locationModel = AddressLocationInfoModel.shared.locationModel
+        
+        let latitude = UserDefaults.standard.object(forKey: "latitude") as? Double
+        let longitude = UserDefaults.standard.object(forKey: "longitude") as? Double
+        
+        let colJson = ["opportunityatory": "",
+                       "muls": "1",
+                       "presentality": "",
+                       "dens": entertime,
+                       "graman": String(longitude ?? 0.0),
+                       "anem": String(latitude ?? 0.0)]
+        ColsomeManager.colsomeInfo(with: colJson, leavetime: leavetime)
     }
     
     private func getHomeInfo() {
