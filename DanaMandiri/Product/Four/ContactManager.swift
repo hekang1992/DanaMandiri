@@ -22,7 +22,7 @@ class ContactManager: NSObject {
         case .notDetermined:
             contactStore.requestAccess(for: .contacts) { granted, _ in
                 DispatchQueue.main.async {
-                    completion(granted)
+                    completion(CNContactStore.authorizationStatus(for: .contacts) == .authorized)
                 }
             }
         case .denied, .restricted, .limited:
@@ -41,7 +41,7 @@ class ContactManager: NSObject {
         alert.addAction(UIAlertAction(title: LanguageManager.localizedString(for: "Cancel"), style: .cancel))
         alert.addAction(UIAlertAction(title: LanguageManager.localizedString(for: "Settings"), style: .default, handler: { _ in
             if let url = URL(string: UIApplication.openSettingsURLString) {
-                UIApplication.shared.open(url)
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }
         }))
         vc.present(alert, animated: true)

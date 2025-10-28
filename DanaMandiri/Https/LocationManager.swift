@@ -39,8 +39,7 @@ final class LocationManager: NSObject {
         if status == .notDetermined {
             manager.requestWhenInUseAuthorization()
         } else if status == .denied || status == .restricted {
-            let locationModel = LocationInfoModel()
-            completion(locationModel)
+
         } else {
             manager.startUpdatingLocation()
         }
@@ -54,8 +53,7 @@ extension LocationManager: CLLocationManagerDelegate {
             manager.authorizationStatus == .authorizedAlways {
             manager.startUpdatingLocation()
         } else if manager.authorizationStatus == .denied {
-            let locationModel = LocationInfoModel()
-            completion?(locationModel)
+
         }
     }
     
@@ -73,16 +71,11 @@ extension LocationManager: CLLocationManagerDelegate {
         geocoder.reverseGeocodeLocation(location) { [weak self] placemarks, error in
             guard let self else { return }
             
-            if let error {
-                print("location=====error========\(error.localizedDescription)")
-                let locationModel = LocationInfoModel()
-                completion?(locationModel)
+            if error != nil {
                 return
             }
             
             guard let placemark = placemarks?.first else {
-                let locationModel = LocationInfoModel()
-                completion?(locationModel)
                 return
             }
             
@@ -98,12 +91,12 @@ extension LocationManager: CLLocationManagerDelegate {
             model.name = placemark.name
             
             self.completion?(model)
+            self.completion = nil
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        let locationModel = LocationInfoModel()
-        completion?(locationModel)
+
     }
 }
 

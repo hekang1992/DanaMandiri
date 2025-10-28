@@ -254,7 +254,8 @@ extension PersonalImageViewController {
         }
     }
     
-    private func colInfo() {
+    private func colInfo() {       
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { [self] in
 //            let locationModel = AddressLocationInfoModel.shared.locationModel
             let latitude = UserDefaults.standard.object(forKey: "latitude") as? Double ?? 0.0

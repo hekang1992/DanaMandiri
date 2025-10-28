@@ -167,6 +167,8 @@ extension HomeViewController {
                 ("pancreesque", model.subLocality ?? "")
             ]
             
+            self?.buOneInfo()
+            
             let json = Dictionary(uniqueKeysWithValues: pairs)
             
             self?.locationManagerModel.uoAddressinfo(json: json) { model in
@@ -203,32 +205,23 @@ extension HomeViewController {
     }
     
     private func buOneInfo() {
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-//            let entertime = UserDefaults.standard.object(forKey: "entertime") as? String ?? ""
-//            let leavetime = UserDefaults.standard.object(forKey: "leavetime") as? String ?? ""
-//            let locationModel = AddressLocationInfoModel.shared.locationModel
-//            let colJson = ["opportunityatory": "",
-//                           "muls": "1",
-//                           "presentality": "",
-//                           "dens": entertime,
-//                           "graman": String(locationModel?.longitude ?? 0.0),
-//                           "anem": String(locationModel?.latitude ?? 0.0)]
-//            ColsomeManager.colsomeInfo(with: colJson, leavetime: leavetime)
-//        }
         let entertime = UserDefaults.standard.object(forKey: "entertime") as? String ?? ""
         let leavetime = UserDefaults.standard.object(forKey: "leavetime") as? String ?? ""
-//        let locationModel = AddressLocationInfoModel.shared.locationModel
-        
-        let latitude = UserDefaults.standard.object(forKey: "latitude") as? Double
-        let longitude = UserDefaults.standard.object(forKey: "longitude") as? Double
-        
-        let colJson = ["opportunityatory": "",
-                       "muls": "1",
-                       "presentality": "",
-                       "dens": entertime,
-                       "graman": String(longitude ?? 0.0),
-                       "anem": String(latitude ?? 0.0)]
-        ColsomeManager.colsomeInfo(with: colJson, leavetime: leavetime)
+        if entertime.count > 0 &&  leavetime.count > 0{
+            let latitude = UserDefaults.standard.object(forKey: "latitude") as? Double
+            let longitude = UserDefaults.standard.object(forKey: "longitude") as? Double
+            let colJson = ["opportunityatory": "",
+                           "muls": "1",
+                           "presentality": "",
+                           "dens": entertime,
+                           "graman": String(longitude ?? 0.0),
+                           "anem": String(latitude ?? 0.0)]
+            ColsomeManager.colsomeInfo(with: colJson, leavetime: leavetime)
+            UserDefaults.standard.set("", forKey: "entertime")
+            UserDefaults.standard.set("", forKey: "leavetime")
+            UserDefaults.standard.synchronize()
+        }
+
     }
     
     private func getHomeInfo() {
@@ -254,7 +247,6 @@ extension HomeViewController {
         let cin = CinInfoModel.shared.cinModel?.cin ?? ""
         let status = CLLocationManager().authorizationStatus
         if status == .authorizedAlways || status == .authorizedWhenInUse {
-            buOneInfo()
             toLocationInfo()
             applyProductInfo(with: productID, clickBtn: clickBtn)
         }else {
@@ -343,7 +335,7 @@ class ShowLocationPermissionAlert {
         alert.addAction(UIAlertAction(title: LanguageManager.localizedString(for: "Cancel"), style: .cancel))
          alert.addAction(UIAlertAction(title: LanguageManager.localizedString(for: "Settings"), style: .default, handler: { _ in
              if let url = URL(string: UIApplication.openSettingsURLString) {
-                 UIApplication.shared.open(url)
+                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
              }
          }))
          

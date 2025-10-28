@@ -208,6 +208,7 @@ extension CommonBpViewController {
     }
     
     private func colInfo() {
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { [self] in
 //            let locationModel = AddressLocationInfoModel.shared.locationModel
             
