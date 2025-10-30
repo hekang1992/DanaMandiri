@@ -27,15 +27,18 @@ class HomeViewModel {
             }
     }
     
-    func applyProductInfo(with json: [String: Any], completion: @escaping (BaseModel) -> Void) {        
+    func applyProductInfo(with json: [String: Any], completion: @escaping (BaseModel) -> Void) {
+        LoadingHUD.shared.show()
         NetworkManager.shared.postJsonRequest(url: "/taxile/himselfform", json: json, responseType: BaseModel.self) { result in
             switch result {
             case .success(let success):
                 completion(success)
+                LoadingHUD.shared.hide()
                 break
             case .failure(_):
                 let model = BaseModel()
                 completion(model)
+                LoadingHUD.shared.hide()
                 break
             }
         }

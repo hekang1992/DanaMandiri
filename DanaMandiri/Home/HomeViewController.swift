@@ -69,6 +69,7 @@ class HomeViewController: BaseViewController {
         }
         
         smallView.fourBlock = { [weak self] clickBtn, productID in
+            clickBtn.isEnabled = false
             self?.applyInfo(with: productID, clickBtn: clickBtn)
         }
         
@@ -108,6 +109,7 @@ class HomeViewController: BaseViewController {
         ///APPLY_PRODUCT
         homeView.applyBlock = { [weak self] clickBtn in
             let testnature = String(self?.smallModel?.testnature ?? 0)
+            clickBtn.isEnabled = false
             self?.applyInfo(with: testnature, clickBtn: clickBtn)
         }
         
@@ -256,19 +258,17 @@ extension HomeViewController {
                     self?.applyProductInfo(with: productID, clickBtn: clickBtn)
                 }
             }
+            clickBtn.isEnabled = true
         }
         
     }
     private func applyProductInfo(with productID: String, clickBtn: UIButton) {
-        clickBtn.isEnabled = false
-        LoadingHUD.shared.show()
         let json = ["typefication": "1001",
                     "dynaance": "1000",
                     "noticeion": "1000",
                     "response": productID]
         homeViewModel.applyProductInfo(with: json) { [weak self] model in
             clickBtn.isEnabled = true
-            LoadingHUD.shared.hide()
             if ["0", "00"].contains(model.aboutation) {
                 let anteaneity = model.salin?.recordenne?.anteaneity ?? []
                 if anteaneity.isEmpty {
