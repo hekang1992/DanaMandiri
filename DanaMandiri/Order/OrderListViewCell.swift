@@ -32,34 +32,29 @@ class OrderListViewCell: UITableViewCell {
                 }
             }
             let threeite = model.westernenne?.threeite ?? ""
+            typeLabel.text = model.westernenne?.selendom ?? ""
             switch threeite {
             case "stirpargueious":
-                typeLabel.text = "Delay"
                 typeLabel.textColor = UIColor.init(hexString: "#EC1812")
                 bgView.backgroundColor = UIColor.init(hexString: "#F7DDDC")
                 break
             case "macijobia":
-                typeLabel.text = "Repayment"
                 typeLabel.textColor = UIColor.init(hexString: "#EAA028")
                 bgView.backgroundColor = UIColor.init(hexString: "#FAF2E1")
                 break
             case "ptyalfold":
-                typeLabel.text = "Apply"
                 typeLabel.textColor = UIColor.init(hexString: "#009F1E")
                 bgView.backgroundColor = UIColor.init(hexString: "#DEF0DF")
                 break
             case "sacchar":
-                typeLabel.text = "Review"
                 typeLabel.textColor = UIColor.init(hexString: "#49A9E4")
                 bgView.backgroundColor = UIColor.init(hexString: "#E6F2FA")
                 break
             case "itself":
-                typeLabel.text = "Finish"
                 typeLabel.textColor = UIColor.init(hexString: "#8D8D8D")
                 bgView.backgroundColor = UIColor.init(hexString: "#EDF0F2")
                 break
             default:
-                typeLabel.text = ""
                 typeLabel.textColor = UIColor.init(hexString: "#FFFFFF")
                 bgView.backgroundColor = UIColor.init(hexString: "#EDF0F2")
                 break
