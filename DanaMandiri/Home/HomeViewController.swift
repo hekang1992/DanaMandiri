@@ -167,8 +167,6 @@ extension HomeViewController {
                 ("pancreesque", model.subLocality ?? "")
             ]
             
-            self?.buOneInfo()
-            
             let json = Dictionary(uniqueKeysWithValues: pairs)
             
             self?.locationManagerModel.uoAddressinfo(json: json) { model in
@@ -178,6 +176,7 @@ extension HomeViewController {
             }
         }
         
+        self.buOneInfo()
         
 //        if let model = AddressLocationInfoModel.shared.locationModel {
 //            let administrativeArea = model.administrativeArea ?? ""
@@ -207,7 +206,7 @@ extension HomeViewController {
     private func buOneInfo() {
         let entertime = UserDefaults.standard.object(forKey: "entertime") as? String ?? ""
         let leavetime = UserDefaults.standard.object(forKey: "leavetime") as? String ?? ""
-        if entertime.count > 0 &&  leavetime.count > 0{
+        if entertime.count > 0 && leavetime.count > 0{
             let latitude = UserDefaults.standard.object(forKey: "latitude") as? Double
             let longitude = UserDefaults.standard.object(forKey: "longitude") as? Double
             let colJson = ["opportunityatory": "",
@@ -217,9 +216,6 @@ extension HomeViewController {
                            "graman": String(longitude ?? 0.0),
                            "anem": String(latitude ?? 0.0)]
             ColsomeManager.colsomeInfo(with: colJson, leavetime: leavetime)
-            UserDefaults.standard.set("", forKey: "entertime")
-            UserDefaults.standard.set("", forKey: "leavetime")
-            UserDefaults.standard.synchronize()
         }
 
     }
@@ -243,17 +239,22 @@ extension HomeViewController {
     }
     
     private func applyInfo(with productID: String, clickBtn: UIButton) {
-        upComputerLoadInfo()
         let cin = CinInfoModel.shared.cinModel?.cin ?? ""
         let status = CLLocationManager().authorizationStatus
         if status == .authorizedAlways || status == .authorizedWhenInUse {
             toLocationInfo()
-            applyProductInfo(with: productID, clickBtn: clickBtn)
+            upComputerLoadInfo()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) { [weak self] in
+                self?.applyProductInfo(with: productID, clickBtn: clickBtn)
+            }
         }else {
             if cin == "460" {
                 ShowLocationPermissionAlert.showPermissionAlert(on: self)
             }else {
-                applyProductInfo(with: productID, clickBtn: clickBtn)
+                upComputerLoadInfo()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) { [weak self] in
+                    self?.applyProductInfo(with: productID, clickBtn: clickBtn)
+                }
             }
         }
         

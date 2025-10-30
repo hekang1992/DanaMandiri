@@ -59,12 +59,15 @@ class LoginViewController: BaseViewController {
         /// GET_IDFA_INFO
         self.getIcacInfo()
         
+        entertime = String(Int(Date().timeIntervalSince1970))
+        UserDefaults.standard.set(entertime, forKey: "entertime")
+        UserDefaults.standard.synchronize()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         entertime = String(Int(Date().timeIntervalSince1970))
-        
         UserDefaults.standard.set(entertime, forKey: "entertime")
         UserDefaults.standard.synchronize()
     }
