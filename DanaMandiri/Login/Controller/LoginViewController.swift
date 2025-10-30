@@ -42,11 +42,6 @@ class LoginViewController: BaseViewController {
             make.edges.equalToSuperview()
         }
         
-        entertime = String(Int(Date().timeIntervalSince1970))
-        
-        UserDefaults.standard.set(entertime, forKey: "entertime")
-        UserDefaults.standard.synchronize()
-        
         loginView.phoneCodeView.againBtn.rx.tap.subscribe(onNext: { [weak self] in
             self?.toCodeInfo()
         }).disposed(by: disposeBag)
@@ -64,6 +59,14 @@ class LoginViewController: BaseViewController {
         /// GET_IDFA_INFO
         self.getIcacInfo()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        entertime = String(Int(Date().timeIntervalSince1970))
+        
+        UserDefaults.standard.set(entertime, forKey: "entertime")
+        UserDefaults.standard.synchronize()
     }
     
 }
