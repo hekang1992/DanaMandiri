@@ -315,23 +315,20 @@ extension HomeViewController {
         if pageUrl.contains(SCHEME_URL) {
             SchemeManager.handle(url: pageUrl)
         }else {
-            let cin = CinInfoModel.shared.cinModel?.cin ?? ""
-            if cin == "460" {
+            if pageUrl.isEmpty {
+                let productDetailVc = ProductDetailViewController()
+                productDetailVc.productID = productID
+                self.navigationController?.pushViewController(productDetailVc, animated: true)
+            }else {
                 let webVc = UnieerLifeViewController()
                 webVc.pageUrl = pageUrl
                 webVc.productID = productID
                 self.navigationController?.pushViewController(webVc, animated: true)
-            }else {
-                let productDetailVc = ProductDetailViewController()
-                productDetailVc.productID = productID
-                self.navigationController?.pushViewController(productDetailVc, animated: true)
             }
-            
         }
     }
     
 }
-
 
 class ShowLocationPermissionAlert {
     static func showPermissionAlert(on vc: UIViewController) {
