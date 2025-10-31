@@ -47,8 +47,15 @@ class PersonalImageViewModel {
     
     /// SAVE_IMAGE_INFO
     func savePersonalInfo(with json: [String: Any], completion: @escaping (BaseModel) -> Void) {
+        let cin = CinInfoModel.shared.cinModel?.cin ?? ""
+        var apiUrl: String = ""
+        if apiUrl == "460" {
+            apiUrl = "/taxile/articleit"
+        }else {
+            apiUrl = "/taxile/spicorganizationess"
+        }
         LoadingHUD.shared.show()
-        NetworkManager.shared.postJsonRequest(url: "/taxile/articleit", json: json, responseType: BaseModel.self) { result in
+        NetworkManager.shared.postJsonRequest(url: apiUrl, json: json, responseType: BaseModel.self) { result in
             switch result {
             case .success(let success):
                 LoadingHUD.shared.hide()
