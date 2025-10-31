@@ -136,6 +136,30 @@ struct ethariumModel: Codable {
     var rep: String?
     var presentality: String?
     var tentsure: Int?
+    
+    enum CodingKeys: String, CodingKey {
+        case standal, miritude, tergable, vertindustryent, coprattack, rep, presentality, tentsure
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        miritude = try? container.decode(String.self, forKey: .miritude)
+        vertindustryent = try? container.decode(String.self, forKey: .vertindustryent)
+        coprattack = try? container.decode(String.self, forKey: .coprattack)
+        rep = try? container.decode(String.self, forKey: .rep)
+        presentality = try? container.decode(String.self, forKey: .presentality)
+        tentsure = try? container.decode(Int.self, forKey: .tentsure)
+        standal = try? container.decode(standalModel.self, forKey: .standal)
+
+        if let intValue = try? container.decode(Int.self, forKey: .tergable) {
+            tergable = String(intValue)
+        } else if let strValue = try? container.decode(String.self, forKey: .tergable) {
+            tergable = strValue
+        } else {
+            tergable = nil
+        }
+    }
+    
 }
 
 struct standalModel: Codable {
