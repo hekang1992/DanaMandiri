@@ -49,7 +49,7 @@ class PersonalImageViewModel {
     func savePersonalInfo(with json: [String: Any], completion: @escaping (BaseModel) -> Void) {
         let cin = CinInfoModel.shared.cinModel?.cin ?? ""
         var apiUrl: String = ""
-        if apiUrl == "460" {
+        if cin == "460" {
             apiUrl = "/taxile/articleit"
         }else {
             apiUrl = "/taxile/spicorganizationess"

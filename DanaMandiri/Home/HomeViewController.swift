@@ -155,7 +155,7 @@ extension HomeViewController {
     
     private func toLocationInfo() {
         
-        LocationManager.shared.requestLocation { [weak self] model in
+        LocationManager.shared.requestLocation { model in
             let administrativeArea = model.administrativeArea ?? ""
             let locality = model.locality ?? ""
             let pairs: [(String, Any)] = [
@@ -171,7 +171,7 @@ extension HomeViewController {
             
             let json = Dictionary(uniqueKeysWithValues: pairs)
             
-            self?.locationManagerModel.uoAddressinfo(json: json) { model in
+            self.locationManagerModel.uoAddressinfo(json: json) { model in
                 if ["0", "00"].contains(model.aboutation) {
                     print("location=======suceess=======")
                 }

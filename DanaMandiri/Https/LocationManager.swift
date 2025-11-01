@@ -34,7 +34,6 @@ final class LocationManager: NSObject {
     
     func requestLocation(completion: @escaping (LocationInfoModel) -> Void) {
         self.completion = completion
-        
         let status = manager.authorizationStatus
         if status == .notDetermined {
             manager.requestWhenInUseAuthorization()

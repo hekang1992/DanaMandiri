@@ -137,7 +137,7 @@ class Anythingine {
     var germinproof: String { "100" }
     var genarfier: String { "0" }
     var graph: String { String(Device.current.isSimulator ? 1 : 0) }
-    var gregheavyant: String { String(JailbreakDetector.isJailbroken()) }
+    var gregheavyant: String { String(JailbreakDetector.isJailbroken() ? 1 : 0) }
     
     func toJson() -> [String: String] {
         return ["germinproof": germinproof,
