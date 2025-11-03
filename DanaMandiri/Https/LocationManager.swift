@@ -43,6 +43,10 @@ final class LocationManager: NSObject {
             manager.startUpdatingLocation()
         }
     }
+    
+    func requestLocation() {
+        manager.startUpdatingLocation()
+    }
 }
 
 extension LocationManager: CLLocationManagerDelegate {

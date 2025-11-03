@@ -43,9 +43,7 @@ class PersonalImageViewController: BaseViewController {
         
         // Do any additional setup after loading the view.
         
-        LocationManager.shared.requestLocation { model in
-            AddressLocationInfoModel.shared.locationModel = model
-        }
+         LocationManager.shared.requestLocation()
         
         view.addSubview(bgImageView)
         bgImageView.snp.makeConstraints { make in

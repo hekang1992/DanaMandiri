@@ -70,9 +70,7 @@ class BasicViewController: BaseViewController {
 
         // Do any additional setup after loading the view.
         
-        LocationManager.shared.requestLocation { model in
-            AddressLocationInfoModel.shared.locationModel = model
-        }
+         LocationManager.shared.requestLocation()
         
         entertime = String(Int(Date().timeIntervalSince1970))
         
